@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Midis Blog</title>
+  <link rel="icon" type="image/png" href="./image/midis m final logo-03.png">
+
+  <style>
+    /* (same styles you had earlier — keeping untouched) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: black;
+      color: #f1f1f1;
+      overflow-x: hidden;
+    }
+    .animated-header {
+      text-align: center;
+      padding: 80px 20px 50px;
+      background-color: white;
+      color: black;
+      animation: fadeSlideIn 1s ease forwards;
+    }
+    .animated-header h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    .animated-header h1 span {
+      background: linear-gradient(to right, #ff8a00, #e52e71);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .animated-header p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+      opacity: 0.9;
+    }
+    .side-blog-section {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      padding: 60px 8%;
+    }
+    .blog-box {
+      display: flex;
+      gap: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      padding: 20px;
+      backdrop-filter: blur(12px);
+      transform: translateY(40px);
+      opacity: 0;
+      animation: fadeInCard 1s ease forwards;
+    }
+    .blog-box img {
+      width: 300px;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .blog-text {
+      flex: 1;
+    }
+    .blog-text h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .blog-text p {
+      color: #ccc;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .blog-text a {
+      text-decoration: none;
+      color: #e100ff;
+      font-weight: bold;
+    }
+    .blog-text a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .blog-box {
+        flex-direction: column;
+      }
+      .blog-box img {
+        width: 100%;
+        height: 200px;
+      }
+    }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInCard {
+      0% { opacity: 0; transform: translateY(60px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="animated-header">
+    <h1><span>Our</span> Blog</h1>
+    <p>Explore cutting-edge digital marketing trends, tools, and techniques that help brands grow faster 🚀</p>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="side-blog-section" id="blogList">
+    <!-- Blogs will be injected here dynamically -->
+  </section>
+
+ <script src="blog.js"> </script>
+
+</body>
+</html>
