@@ -4,7 +4,12 @@ body {
     color: #111;
     background-color: #e9f4fc;
   }
-
+:root {
+      --main-orange: #FF7518;
+      --main-red: #fc5c5c;
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.2);
+    }
 
   /* Navbar styles */
 .navbar {
@@ -215,7 +220,7 @@ body {
 
   button {
     padding: 12px;
-   background: linear-gradient(90deg, #ff6a3d, #ffbe2e);
+     background: linear-gradient(to right, var(--main-red), var(--main-orange));
     color: white;
     border: none;
     border-radius: 6px;

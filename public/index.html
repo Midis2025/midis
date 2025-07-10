@@ -238,7 +238,7 @@
         <img src="./image/sett.webp" alt="Content Icon" />
       </div>
       <h4>Content Creation</h4>
-      <p>We craft compelling, SEO-optimized content for blogs, ads, and social media to boost engagement and conversion.</p>
+      <p>We craft compelling, SEO-optimized content for blogs, and social media to boost engagement and conversion.</p>
       <a href="./content.html"><button class="cta-btn">Explore</button></a>
     </div>
   </div>
@@ -247,7 +247,7 @@
   </div>
 
   <div class="container3">
-    <section class="about-section">
+    <section class="about-section" id="about">
       <div class="about-text">
         <h1>ABOUT US</h1>
         <h2>
@@ -264,7 +264,10 @@
         <button class="cta-btn openPopupBtn" data-service="Web Development">Explore now</button>
       </div>
       <div class="about-image">
-        <img src="./image/new2.jpg" alt="Team discussion" />
+           <div class="flying-airplane"></div>
+
+
+     <img src="./image/1 (2).png" alt="About Midis Team" class="cutie">
       </div>
     </section>
   </div>
@@ -272,6 +275,7 @@
   </div>
 
   <div class="container4">
+    <div id="emoji-explosion-container"></div>
     <section class="why-choose-section">
       <div class="container">
         <div class="left">
@@ -551,19 +555,31 @@
   </footer>
   </footer>
 
-  <!-- Chat Toggle Button -->
-  <button id="openChat">💬 Chat</button>
+  <!-- Welcome Popup (clickable to open chat) -->
+<!-- <div id="welcomePopup" class="hidden" onclick="openChat()">
+  👋 Hi! How can we help?
+</div> -->
 
-  <!-- Chat Popup -->
-  <div id="chatPopup">
-    <div id="chatHeader">Chat with us</div>
-    <div id="chatTyping"></div>
-    <div id="messages"></div>
-    <div id="inputArea">
-      <input type="text" id="userMessage" placeholder="Type your message..." />
-      <button id="sendBtn">Send</button>
+<!-- Chat Toggle Button -->
+<button id="openChat">💬 Chat</button>
+
+<!-- Chat Popup -->
+<div id="chatPopup" class="hidden">
+  <div id="chatHeader">
+    Chat with us
+    <span id="closeChat" style="float:right;cursor:pointer;">&times;</span>
+  </div>
+  <div id="chatTyping"></div>
+  <div id="messages">
+    <div class="chat-bubble bot">
+      👋 Hi! How can we help?
     </div>
   </div>
+  <div id="inputArea">
+    <input type="text" id="userMessage" placeholder="Type your message..." />
+    <button id="sendBtn">Send</button>
+  </div>
+</div>
 
   <script src="/socket.io/socket.io.js" defer></script>
   <script src="script.js" defer></script>

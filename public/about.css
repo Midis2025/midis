@@ -5,6 +5,12 @@
       color: #111;
       line-height: 1.6;
     }
+     :root {
+      --main-orange: #FF7518;
+      --main-red: #fc5c5c;
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.2);
+    }
 
     /* Navbar */
 
@@ -146,7 +152,7 @@
 .cta-btn {
   display: inline-block;
   margin-top: 20px;
-  background: linear-gradient(90deg, #FF6A00, #FF9472);
+  background: linear-gradient(to right, var(--main-red), var(--main-orange));
   color: white;
   padding: 12px 28px;
   font-size: 1rem;
@@ -409,7 +415,7 @@
       font-size: 14px;
     }
     .cta-banner a {
-      background: linear-gradient(90deg, #ff6a3d, #ffbe2e);
+        background: linear-gradient(to right, var(--main-red), var(--main-orange));
       color: white;
       text-decoration: none;
       padding: 12px 30px;
@@ -639,7 +645,7 @@ body {
 .btn {
   display: inline-block;
   padding: 12px 30px;
-  background: linear-gradient(90deg, #ff6a3d, #ffbe2e);
+   background: linear-gradient(to right, var(--main-red), var(--main-orange));
   color: white;
   border-radius: 25px;
   text-decoration: none;
@@ -746,7 +752,7 @@ form textarea {
 }
 
 form button {
-  background: linear-gradient(90deg, #ff6a3d, #ffbe2e);
+  background: linear-gradient(to right, var(--main-red), var(--main-orange));
   color: white;
   padding: 14px;
   font-size: 16px;

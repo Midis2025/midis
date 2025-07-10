@@ -1,4 +1,66 @@
 
+ document.addEventListener("DOMContentLoaded", function () {
+    const aboutSection = document.querySelector(".about-section");
+    const image = document.querySelector(".about-image img");
+
+    const observer = new IntersectionObserver(
+      function (entries, observer) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            image.classList.add("zoomed");
+          } else {
+            image.classList.remove("zoomed");
+          }
+        });
+      },
+      {
+        threshold: 0.10, // Trigger when 50% of the section is visible
+      }
+    );
+
+    observer.observe(aboutSection);
+  });
+// why choose us 
+
+  document.addEventListener("DOMContentLoaded", function () {
+  const targetSection = document.querySelector('.why-choose-section');
+  const container = document.getElementById('emoji-explosion-container');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        triggerEmojiExplosion();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(targetSection);
+
+  function triggerEmojiExplosion() {
+    const emojis = ['🚀', '🎯', '🔥', '💥', '✨', '🎉', '👍', '💡'];
+
+    for (let i = 0; i < 25; i++) {
+      const emoji = document.createElement('div');
+      emoji.classList.add('emoji');
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = '50vw';
+      emoji.style.top = '50vh';
+
+      const x = (Math.random() - 0.5) * 600 + 'px';
+      const y = (Math.random() - 0.5) * 600 + 'px';
+      emoji.style.setProperty('--x', x);
+      emoji.style.setProperty('--y', y);
+
+      container.appendChild(emoji);
+
+      setTimeout(() => {
+        emoji.remove();
+      }, 1300);
+    }
+  }
+});
+
+
 
 
 
@@ -532,9 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     
-  // chat bot
- // 🌐 Socket.IO initialization — supports both localhost and production
-// chat bot
+ // chat bot
 // 🌐 Socket.IO initialization — supports both localhost and production
 const isLocal = window.location.hostname === 'localhost';
 const socket = io(isLocal ? 'http://localhost:5000' : window.location.origin);
@@ -559,20 +619,50 @@ const userMessageInput = document.getElementById('userMessage');
 const messagesBox = document.getElementById('messages');
 const chatStatus = document.getElementById('chatStatus');
 const chatTyping = document.getElementById('chatTyping');
+const welcomePopup = document.getElementById('welcomePopup');
+const closeChat = document.getElementById('closeChat');
 
-if (chatPopup) {
-  chatPopup.style.display = 'none';
+if (chatPopup) chatPopup.style.display = 'none';
+
+// 👋 Show welcome popup outside when chat is closed
+function showWelcomePopup() {
+  if (chatPopup.style.display === 'none') {
+    welcomePopup.classList.remove('hidden');
+  }
 }
 
-// 👋 Toggle Chat
-if (chatPopupBtn && chatPopup) {
-  chatPopupBtn.addEventListener('click', () => {
-    const isVisible = chatPopup.style.display === 'flex';
-    chatPopup.style.display = isVisible ? 'none' : 'flex';
-    if (!isVisible) {
-      socket.emit('userJoin', { userId, userName });
-    }
-  });
+// 👋 Hide welcome popup immediately when chat opens
+function hideWelcomePopup() {
+  welcomePopup.classList.add('hidden');
+}
+
+// 🔥 Open chat from welcome popup click
+welcomePopup?.addEventListener('click', () => {
+  openChat();
+});
+
+// 👋 Toggle Chat from chat button
+chatPopupBtn?.addEventListener('click', () => {
+  const isVisible = chatPopup.style.display === 'flex';
+  if (isVisible) {
+    chatPopup.style.display = 'none';
+    setTimeout(showWelcomePopup, 1000);
+  } else {
+    openChat();
+  }
+});
+
+// ❌ Close chat button logic
+closeChat?.addEventListener('click', () => {
+  chatPopup.style.display = 'none';
+  setTimeout(showWelcomePopup, 1000);
+});
+
+// ✅ Open chat function
+function openChat() {
+  chatPopup.style.display = 'flex';
+  socket.emit('userJoin', { userId, userName });
+  hideWelcomePopup();
 }
 
 // ✉️ Send message
@@ -618,7 +708,9 @@ socket.on('adminReply', ({ userId: fromId, message }) => {
 
 // 🔴 Admin status
 socket.on('adminStatus', (status) => {
-  chatStatus.innerText = status === 'online' ? '🟢 Admin is online' : '🔴 Admin is offline';
+  if (chatStatus) {
+    chatStatus.innerText = status === 'online' ? '🟢 Admin is online' : '🔴 Admin is offline';
+  }
 });
 
 // ✍️ Typing indicator
@@ -687,6 +779,9 @@ function removeQuickReplies() {
   const existing = document.querySelector('.quick-replies');
   if (existing) existing.remove();
 }
+
+// Show welcome popup after 2 seconds initially
+setTimeout(showWelcomePopup, 2000);
 
 
 

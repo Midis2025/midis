@@ -3,6 +3,12 @@
     margin: 0;
     padding: 0;
   }
+   :root {
+      --main-orange: #FF7518;
+      --main-red: #fc5c5c;
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.2);
+    }
 
 /*===== Navbar for Desktop ========== */
 .navbar {
@@ -206,11 +212,11 @@
 .explore-btn {
   margin-top: 20px;
   padding: 10px 20px;
-  background: linear-gradient(to right, #fd8b34, #fc5c5c);
+  background: linear-gradient(to right, var(--main-red), var(--main-orange));
   color: #fff;
   border: none;
   font-weight: 600;
-  border-radius: 25px;
+  border-radius: 5px;
   cursor: pointer;
   transition: 0.3s ease;
 }
