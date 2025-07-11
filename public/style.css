@@ -469,7 +469,7 @@ button[type="submit"] {
   margin-left: 10px;
   margin-top: 20px;
   background: linear-gradient(to right, var(--main-red), var(--main-orange));
-  color: #000;
+  color: white;
   font-weight: bold;
   font-size: 1.1rem;
   border: none;
@@ -529,9 +529,7 @@ textarea {
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-  form{
-    padding-right: 20px;
-  }
+ 
 
   .popup-content {
     flex-direction: column;
@@ -745,20 +743,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
     display: none;
   }
 }
-/* hero-section */
-/* .container {
-  background-color: #111;
-  color: white;
-  margin: 0 auto;
-  padding: 40px 30px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-   width: 100%;
-  max-width: 1400px; 
-} */
+
  .container {
   width: 100%;
   padding: 60px 40px;
@@ -777,7 +762,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
    
   flex: 1;
   min-width: 280px;
-  padding-left: 20px;
+  
  
    
 
@@ -808,7 +793,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
 .leftside h2 {
   font-size: 28px;
   font-weight: 700;
-  margin: 10px 0;
+  
   line-height: 1.4;
 }
 
@@ -822,6 +807,8 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
 .leftside img {
  
   max-width: 100%;
+  margin-top: -10px;
+  margin-left: -9px;
   
 }
 
@@ -849,7 +836,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      max-width: 600px;
+      max-width: 630px;
       
     }
     .image-box1{
@@ -1176,7 +1163,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
  
 .services-section {
   background: linear-gradient(160deg, var(--main-orange) 50%, #ffffff 0%);
-  padding: 50px 20px 80px;
+
   position: relative;
   text-align: center;
   min-height: 100vh;
@@ -1217,22 +1204,26 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
 
 
     .services-section h2 {
+      padding-top: 20px;
       font-size: 40px;
      
       color: white;
-     margin-bottom: 20px;
+    
       position: relative;
       z-index: 2;
       
     }
      .services-section h4{
+       padding-top: 8px;
       font-size: 30px;
-      margin-bottom: 15px;
+      
+     
       color: black;
      }
     
 
     .cards {
+      padding-top: 20px;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -1388,7 +1379,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
 .about-text h2 {
   font-size: 2rem;
   color: #1d1d36;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: bold;
   line-height: 1.4;
 }
@@ -1514,6 +1505,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 40px;
+  text-align: center;
 }
 
 .card-container-why {
@@ -1686,6 +1678,10 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   }
 }
 /* rank-section */
+.container6{
+  width: 100%;
+}
+
 .rank-sell-form-section {
   padding: 40px 20px;
   background-color: #fff;
@@ -1694,6 +1690,8 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  justify-content: center;
+  max-width: 1400px;
 }
 
 .rank-sell-container {
@@ -1720,7 +1718,8 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
 
 .rank-sell-left img {
   width: 100%;
-  height: 400px;
+  height: auto;
+  max-height: 600px;
   border-radius: 14px;
   object-fit: cover;
 }
@@ -1731,8 +1730,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   display: flex;
   flex-direction: column;
   justify-content: center;
- 
- 
+  padding: 20px;
 }
 
 .right-form h3 {
@@ -1740,8 +1738,6 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   font-weight: bold;
   margin-bottom: 10px;
   text-align: center;
-  
-  
 }
 
 .right-form h3 span {
@@ -1770,7 +1766,7 @@ textarea {
   border-radius: 6px;
   background: #fff;
   transition: border-color 0.3s ease;
-  margin: 8px;
+  margin: 8px 0;
 }
 
 input:focus,
@@ -1787,7 +1783,7 @@ textarea {
 
 button {
   padding: 12px;
- background: linear-gradient(to right, var(--main-red), var(--main-orange));
+  background: linear-gradient(to right, var(--main-red), var(--main-orange));
   color: white;
   border: none;
   border-radius: 6px;
@@ -1801,6 +1797,72 @@ button {
   color: #FF7518;
   font-weight: bold;
 }
+
+/* --------------------------
+📱 Responsive Media Queries 
+--------------------------- */
+
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  .rank-sell-left,
+  .rank-sell-right {
+    flex: 1 1 100%;
+    padding: 10px;
+  }
+
+  .right-form {
+    max-width: 100%;
+  }
+
+  .rank-sell-left img {
+    max-height: 400px;
+  }
+
+  .rank-sell-left h2,
+  .right-form h3 {
+    font-size: 24px;
+  }
+}
+
+/* Mobile Devices (≤768px) */
+@media (max-width: 768px) {
+  .rank-sell-form-section {
+    flex-direction: column;
+    padding: 30px 15px;
+  }
+ 
+
+  .rank-sell-left,
+  .rank-sell-right {
+    flex: 1 1 100%;
+    padding: 0;
+  }
+
+  .right-form {
+    padding: 0;
+  }
+
+  .right-form h3 {
+    font-size: 22px;
+  }
+
+  .right-form .subtext {
+    font-size: 13px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 15px;
+    padding: 10px 12px;
+  }
+
+  button {
+    font-size: 15px;
+  }
+}
+
+
  /* site-footer */
  .site-footer {
   background-color:black;

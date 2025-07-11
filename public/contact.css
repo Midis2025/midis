@@ -150,6 +150,7 @@ body {
   .rank-sell-left {
     flex: 1 1 400px;
     max-width: 500px;
+    padding-top: 20px;
   }
 
   .rank-sell-left img {
@@ -254,6 +255,7 @@ body {
     .right h2 {
       font-size: 20px;
       order: 2;
+      margin-top: -20px;
     }
      .rank-sell-left p {
       font-size: 15px;
