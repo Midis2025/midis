@@ -14,51 +14,12 @@
         });
       },
       {
-        threshold: 0.10, // Trigger when 50% of the section is visible
+        threshold: 0.20, // Trigger when 50% of the section is visible
       }
     );
 
     observer.observe(aboutSection);
   });
-// why choose us 
-
-  document.addEventListener("DOMContentLoaded", function () {
-  const targetSection = document.querySelector('.why-choose-section');
-  const container = document.getElementById('emoji-explosion-container');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        triggerEmojiExplosion();
-      }
-    });
-  }, { threshold: 0.5 });
-
-  observer.observe(targetSection);
-
-  function triggerEmojiExplosion() {
-    const emojis = ['🚀', '🎯', '🔥', '💥', '✨', '🎉', '👍', '💡'];
-
-    for (let i = 0; i < 25; i++) {
-      const emoji = document.createElement('div');
-      emoji.classList.add('emoji');
-      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-      emoji.style.left = '50vw';
-      emoji.style.top = '50vh';
-
-      const x = (Math.random() - 0.5) * 600 + 'px';
-      const y = (Math.random() - 0.5) * 600 + 'px';
-      emoji.style.setProperty('--x', x);
-      emoji.style.setProperty('--y', y);
-
-      container.appendChild(emoji);
-
-      setTimeout(() => {
-        emoji.remove();
-      }, 1300);
-    }
-  }
-});
 
 
 
@@ -122,41 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
  
 // counter
 
- const counters = document.querySelectorAll(".stats h3");
-let animated = false;
 
-function animateCounters() {
-  if (animated) return;
+ 
 
-  const section = document.querySelector(".stats");
-  const rect = section.getBoundingClientRect();
-  const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-
-  if (isVisible) {
-    counters.forEach(counter => {
-      const target = +counter.getAttribute("data-target");
-      let count = 0;
-      const increment = target / 200; // smaller increment for smoother/slower count
-
-      const updateCounter = () => {
-        count += increment;
-        if (count < target) {
-          counter.textContent = Math.floor(count);
-          setTimeout(updateCounter, 5); // control speed here
-        } else {
-          counter.textContent = target;
-        }
-      };
-
-      updateCounter();
-    });
-
-    animated = true;
-  }
-}
-
-window.addEventListener("scroll", animateCounters);
-
+  
 
 // book a meeting
 
