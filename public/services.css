@@ -421,6 +421,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   font-size: 14px;
   margin: 15px 0 5px;
   display: block;
+  color: black;
 }
 
 .popup .left input,

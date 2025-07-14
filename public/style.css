@@ -186,6 +186,7 @@ body {
   font-size: 14px;
   margin: 15px 0 5px;
   display: block;
+  color: black;
 }
 
 .popup .left input,
@@ -799,7 +800,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
 .leftside img {
  
   max-width: 100%;
-  margin-top: -10px;
+  
   margin-left: -9px;
   
 }
@@ -974,7 +975,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   .leftside h2 {
     font-size: 20px;
   }
-   
+    
 
   .leftside p {
     font-size: 14px;
@@ -1052,6 +1053,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   .leftside h2 {
     font-size: 18px;
   }
+   
 
   .leftside p {
     font-size: 13px;
@@ -1231,7 +1233,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
       border-radius: 18px;
       width: 320px;
       padding: 35px 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       overflow: hidden;
       position: relative;
@@ -1335,9 +1337,13 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
       .services-section h2 {
         font-size: 38px;
       }
+      .services-section h4 {
+        font-size: 25px;
+      }
 
       .card {
         width: 90%;
+        margin-bottom: 20px;
       }
     }
  /* about-section */
@@ -1496,7 +1502,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
    color: #FF7518;
   font-size: 36px;
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -1680,7 +1686,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   flex-wrap: wrap;
  
   justify-content: center;
-  max-width: 1400px;
+
 }
 
 .rank-sell-container {
@@ -1835,6 +1841,7 @@ button {
 
   .right-form h3 {
     font-size: 22px;
+    padding-top: 10px;
   }
 
   .right-form .subtext {

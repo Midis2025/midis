@@ -405,6 +405,10 @@ body {
       font-size: 14px;
       margin: 15px 0 5px;
       display: block;
+<<<<<<< HEAD
+=======
+      color: black;
+>>>>>>> 51ec5b6 (Updated alignment)
     }
 
      .popup .left input,
