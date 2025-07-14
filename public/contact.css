@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-family: 'Inter', sans-serif;
     color: #111;
     background-color: #e9f4fc;
   }
@@ -330,162 +330,217 @@ body {
   }
  
   /* Popup Overlay */
-  #popupOverlay {
-    display: none;
-    position: fixed; top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.6);
-    justify-content: center; align-items: center;
-    z-index: 9999;
-  }
+   /* Popup Overlay */
+ /* Overlay */
+    #popupOverlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
 
-  #popupOverlay.show {
-    display: flex;
-  }
+    #popupOverlay.show {
+      display: flex;
+    }
 
-  /* Popup container */
-  .popup {
-    background: white;
-    width: 90%; max-width: 900px;
-    display: flex;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  }
+    /* Popup Container */
+    .popup {
+      background: #fff;
+      width: 100%;
+      max-width: 950px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+      display: flex;
+      position: relative;
+      transition: transform 0.3s ease;
+      animation: popupIn 0.3s ease;
+    }
 
-  .popup .left {
-    flex: 1;
-    padding: 30px;
-    background: #f9f9f9;
-  }
+    @keyframes popupIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
 
-  .popup .left h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
-  }
-  .popup .left h3,
-  .popup .left p {
-    margin: 5px 0;
-  }
-  .popup .left label {
-    font-weight: bold;
-    display: block;
-    margin: 20px 0 8px;
-  }
-  .popup .left select {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  .popup .left button#submitBooking {
-    margin-top: 30px;
-    padding: 12px 24px;
-    font-size: 16px;
-    background: #ff8c42;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-  }
-  .popup .left button#submitBooking:disabled {
-    background: #999;
-    cursor: not-allowed;
-  }
+    .popup .left, .popup .right {
+      flex: 1;
+      padding: 35px;
+    }
 
-  .popup .right {
-    flex: 1;
-    padding: 30px;
-  }
+    /* Left (Form) Side */
+    .popup .left {
+      background: #f7f9fc;
+    }
 
-  .calendar-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  .calendar-head button.nav-btn {
-    font-size: 18px;
-    cursor: pointer;
-    background: none;
-    border: none;
-  }
+    .popup .left h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+      color: #333;
+    }
 
-  #monthYear {
-    font-weight: bold;
-    font-size: 18px;
-  }
+    .popup .left h3 {
+      font-weight: 600;
+      margin-top: 0;
+      color: #555;
+    }
 
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    font-size: 14px;
-    user-select: none;
-  }
-  .calendar-grid span {
-    font-weight: bold;
-    text-align: center;
-    padding: 5px 0;
-  }
+    .popup .left p {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 25px;
+    }
 
-  .calendar-grid div.day {
-    text-align: center;
-    padding: 8px 0;
-    cursor: pointer;
-    border-radius: 4px;
-    user-select: none;
-  }
-  .calendar-grid div.day:hover {
-    background-color: #e0e0e0;
-  }
-  .calendar-grid div.day.active {
-    background-color: #ff8c42;
-    color: white;
-  }
-  .calendar-grid div.day.disabled {
-    pointer-events: none;
-    opacity: 0.4;
-    cursor: default;
-  }
+    .popup .left label {
+      font-weight: 600;
+      font-size: 14px;
+      margin: 15px 0 5px;
+      display: block;
+    }
 
-  .time-slots {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .time-slots div.slot {
-    padding: 8px 16px;
-    background: #f0f0f0;
-    border-radius: 20px;
-    cursor: pointer;
-    user-select: none;
-  }
-  .time-slots div.slot.active {
-    background-color: #ff8c42;
-    color: white;
-  }
+     .popup .left input,
+.popup .left select {
+  width: 100%;
+  padding: 10px 12px;
+  height: 42px; /* Ensures same fixed height */
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  line-height: 1.4;
+  outline: none;
+  box-sizing: border-box;
+  transition: border 0.2s;
+   background-color: #fff;
+}
 
-  /* Close button */
-  .close-btn {
-    position: absolute;
-    top: 15px; right: 20px;
-    font-size: 28px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
 
-@media (max-width: 768px) {
+    .popup .left input:focus,
+    .popup .left select:focus {
+      border-color: #ff8c42;
+    }
+
+    .popup .left button#submitBooking {
+      margin-top: 30px;
+      padding: 12px 0;
+      width: 100%;
+      font-size: 16px;
+      background: #ff8c42;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .popup .left button#submitBooking:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
+
+    /* Right (Calendar) Side */
+    .calendar-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .calendar-head button.nav-btn {
+      font-size: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ff8c42;
+    }
+
+    #monthYear {
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      font-size: 14px;
+    }
+
+    .calendar-grid span {
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .calendar-grid div.day {
+      text-align: center;
+      padding: 10px 0;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #eee;
+      transition: background 0.2s;
+    }
+
+    .calendar-grid div.day:hover {
+      background: #ddd;
+    }
+
+    .calendar-grid div.day.active {
+      background:#ff8c42;
+      color: white;
+    }
+
+    .calendar-grid div.day.disabled {
+      pointer-events: none;
+      opacity: 0.4;
+      background: #f2f2f2;
+    }
+
+    .time-slots {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .time-slots div.slot {
+      padding: 8px 16px;
+      background: #eaeaea;
+      border-radius: 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .time-slots div.slot.active {
+      background-color: #ff8c42;
+      color: white;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: #fff;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
       .popup {
         flex-direction: column;
         max-height: 90vh;
         overflow-y: auto;
-        margin: 20px;
       }
 
       .popup .left,

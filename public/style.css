@@ -674,7 +674,7 @@ textarea {
 .nav-links a {
   text-decoration: none;
   color: #fff;
-  font-weight: 500;
+  
   padding: 5px 10px;
   transition: 0.3s;
 }
@@ -683,15 +683,7 @@ textarea {
 .nav-links a.active {
   color: #ff8c42;
 }
-.login-btn{
-  border-radius: 5px;
-}
-.login-btn{
-  border-radius: 5px;
-}
-.register-btn{
-  border-radius: 5px;
-}
+
 .btn {
 background: linear-gradient(to right, var(--main-red), var(--main-orange));
   padding: 10px 18px;
@@ -1557,10 +1549,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   color: #f25ce2;
 }
 
-.active {
-  background-color: #1d1d1d;
- 
-}
+
 
 .active-link {
  color: #FF7518;
@@ -1689,7 +1678,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+ 
   justify-content: center;
   max-width: 1400px;
 }
@@ -1698,7 +1687,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  gap: 30px;
+ 
   justify-content: center;
 }
 
@@ -1708,6 +1697,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   padding: 20px;
   box-sizing: border-box;
 }
+
 
 .rank-sell-left h2 {
   font-size: 28px;
@@ -1757,10 +1747,11 @@ form {
   gap: 15px;
 }
 
+
 input,
 select,
 textarea {
-  padding: 12px 15px;
+ padding-right:40px ;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 6px;
