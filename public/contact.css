@@ -303,8 +303,8 @@ body {
   }
 
   .footer-col ul li a{
-    color: #e65c00;
-    text-decoration: none;
+    color: white;
+    text-decoration: underline;
 
   }
   .footer-map {
@@ -405,10 +405,7 @@ body {
       font-size: 14px;
       margin: 15px 0 5px;
       display: block;
-<<<<<<< HEAD
-=======
       color: black;
->>>>>>> 51ec5b6 (Updated alignment)
     }
 
      .popup .left input,

@@ -14,7 +14,7 @@
         });
       },
       {
-        threshold: 0.20, // Trigger when 50% of the section is visible
+        threshold: 0.60, // Trigger when 50% of the section is visible
       }
     );
 
@@ -55,32 +55,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// book a meeting
+
 document.addEventListener("DOMContentLoaded", function () {
     // Menu Toggle
     document.getElementById("menuToggle").addEventListener("click", function () {
       document.getElementById("nav-links").classList.toggle("active");
     });
-
-    // Card Animation on Scroll
-    const cards = document.querySelectorAll('.service-card');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-          observer.unobserve(entry.target); // Stop observing once animated
-        }
-      });
-    }, {
-      threshold: 0.15 // Adjust how early animation triggers
     });
 
-    cards.forEach((card) => {
-      observer.observe(card);
+   document.addEventListener("DOMContentLoaded", function () {
+  const section = document.querySelector('.services-section'); // 👈 Change this to your actual section selector
+  const cards = document.querySelectorAll('.container2'); // 👈 Cards inside that section
+
+  // Step 1: Observe the services section
+  const sectionObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Step 2: When section appears, animate cards
+        cards.forEach(card => card.classList.add('animate'));
+        
+      }
     });
+  }, {
+    threshold: 0.8 // You can adjust this
   });
- 
+
+  sectionObserver.observe(section);
+});
+
 // counter
 
 
@@ -524,8 +526,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     
- // chat bot
-// 🌐 Socket.IO initialization — supports both localhost and production
+// chatbot
+ // 🌐 Socket.IO initialization — supports both localhost and production
 const isLocal = window.location.hostname === 'localhost';
 const socket = io(isLocal ? 'http://localhost:5000' : window.location.origin);
 
@@ -535,11 +537,6 @@ let userName = localStorage.getItem('userName');
 if (!userId) {
   userId = 'user_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
   localStorage.setItem('userId', userId);
-}
-
-if (!userName) {
-  userName = prompt('Please enter your name:') || 'Anonymous';
-  localStorage.setItem('userName', userName);
 }
 
 const chatPopupBtn = document.getElementById('openChat');
@@ -608,11 +605,77 @@ userMessageInput?.addEventListener('keypress', (e) => {
 function sendUserMessage() {
   const message = userMessageInput.value.trim();
   if (!message) return;
+
+  if (!userName) {
+    // 🚨 Ask for name first
+    appendMessage('bot', "👋 Hi! Before we start, what’s your name?");
+    showNameInput(message); // Pass first message to send later
+    userMessageInput.value = '';
+    return;
+  }
+
+  // Send message as usual
   socket.emit('userMessage', { userId, userName, message });
   appendMessage('user', message);
   userMessageInput.value = '';
   chatTyping.innerText = '';
   removeQuickReplies();
+}
+
+// 📝 Show name input in chat
+function showNameInput(pendingMessage) {
+  const nameInputContainer = document.createElement('div');
+  nameInputContainer.classList.add('name-input-container');
+
+  nameInputContainer.innerHTML = `
+    <input type="text" id="nameInputField" placeholder="Enter your name..." class="name-input" />
+    <button id="nameSubmitBtn" class="name-submit-btn">Submit</button>
+  `;
+
+  messagesBox.appendChild(nameInputContainer);
+  messagesBox.scrollTop = messagesBox.scrollHeight;
+
+  const nameInputField = document.getElementById('nameInputField');
+  const nameSubmitBtn = document.getElementById('nameSubmitBtn');
+
+  nameInputField.focus();
+
+  // Submit on button click
+  nameSubmitBtn.addEventListener('click', () => submitName(nameInputField.value.trim(), pendingMessage));
+  // Submit on Enter key
+  nameInputField.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      submitName(nameInputField.value.trim(), pendingMessage);
+      e.preventDefault();
+    }
+  });
+}
+
+// 📥 Handle name submission
+function submitName(enteredName, pendingMessage) {
+  if (!enteredName) {
+    alert("Please enter a valid name.");
+    return;
+  }
+
+  userName = enteredName;
+  localStorage.setItem('userName', userName);
+  socket.emit('userJoin', { userId, userName });
+
+  appendMessage('user', userName); // Show name as user message
+  removeNameInput();
+
+  // Send pending first message
+  if (pendingMessage) {
+    socket.emit('userMessage', { userId, userName, message: pendingMessage });
+    appendMessage('user', pendingMessage);
+  }
+}
+
+// 🧹 Remove name input from chat
+function removeNameInput() {
+  const nameInputContainer = document.querySelector('.name-input-container');
+  if (nameInputContainer) nameInputContainer.remove();
 }
 
 // 🧠 Bot Replies (support quick replies)
@@ -712,9 +775,6 @@ function removeQuickReplies() {
 
 // Show welcome popup after 2 seconds initially
 setTimeout(showWelcomePopup, 2000);
-
-
-
 
 
 // Book call

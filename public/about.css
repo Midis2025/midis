@@ -549,8 +549,8 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
       gap: 40px;
     }
     .footer-col ul li a{
-    color: #e65c00;
-    text-decoration: none;
+    color: white;
+    text-decoration: underline;
 
   }
     .footer-col { flex: 1; min-width: 200px; }

@@ -309,7 +309,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
 
   .footer-col ul li {
     margin-bottom: 10px;
-    color: #d4d4d4;
+   
   }
 
   .footer-map {
@@ -324,8 +324,8 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
     margin-top: 20px;
   }
   .footer-col ul li a{
-    color: #e65c00;
-    text-decoration: none;
+  color: white;
+    text-decoration: underline;
 
   }
 
