@@ -307,6 +307,9 @@ body {
     text-decoration: underline;
 
   }
+   .footer-col ul li a:hover{
+    color:#FF7518 ;
+  }
   .footer-map {
     margin-top: 40px;
   }
