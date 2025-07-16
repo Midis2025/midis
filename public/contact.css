@@ -61,33 +61,11 @@ body {
   font-weight: bold;
   text-decoration: none;
 }
-.space-boy-dev {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 180px;
-  z-index: 9999;
-  pointer-events: none;
-  animation: floatDev 20s ease-in-out infinite;
-  filter: drop-shadow(0 0 10px #FF7518);
-}
 
-/* Flight path animation */
-@keyframes floatDev {
-  0%   { transform: translate(0vw, 0vh) rotate(0deg); }
-  10%  { transform: translate(15vw, 5vh) rotate(15deg); }
-  20%  { transform: translate(30vw, 12vh) rotate(0deg); }
-  35%  { transform: translate(50vw, 20vh) rotate(-15deg); }
-  50%  { transform: translate(75vw, 40vh) rotate(10deg); }
-  65%  { transform: translate(90vw, 65vh) rotate(0deg); }
-  80%  { transform: translate(60vw, 85vh) rotate(-10deg); }
-  90%  { transform: translate(30vw, 60vh) rotate(10deg); }
-  100% { transform: translate(0vw, 0vh) rotate(0deg); }
-}
-@keyframes screenGlow {
-  0%, 100% { filter: brightness(1); }
-  50%      { filter: brightness(1.5); }
-}
+
+
+
+
 
 
 /* ========== Hamburger Icon ========== */
@@ -298,7 +276,40 @@ body {
     color: #fff;
     font-size: 15px;
     padding: 40px 10% 0;
+    
   }
+.footer-dog-road {
+  position: relative;
+  height: 80px;
+  background-color: white; /* white background like your screenshot */
+  margin-top: 0;
+  padding: 0;
+  z-index: 5;
+}
+
+.dog-wrapper {
+  position: absolute;
+  bottom: 34px; /* Aligns exactly to bottom (above black footer) */
+  left: -150px;
+  height: 80px;
+  animation: walkDogOnEdge 20s linear infinite;
+  
+}
+
+.dog-wrapper img {
+  height: 150px;
+}
+
+/* Animation to move dog across the screen */
+@keyframes walkDogOnEdge {
+  0% {
+    left: -150px;
+  }
+  100% {
+    left: 100vw;
+  }
+}
+
 
   .footer-columns {
     display: flex;
