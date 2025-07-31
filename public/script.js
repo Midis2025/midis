@@ -1,5 +1,49 @@
 
- document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const preloader = document.getElementById("preloader");
+        const mainContent = document.getElementById("main-container");
+
+        preloader.classList.add("fade-out");
+
+        setTimeout(() => {
+          preloader.style.display = "none";
+          document.body.style.background = "#fff";
+          mainContent.style.display = "block";
+        }, 0);
+      }, 8000);
+    });
+
+
+// window.addEventListener("load", () => {
+//       setTimeout(() => {
+//         const preloader = document.getElementById("preloader");
+//         const mainContent = document.getElementById("main-content");
+
+//         preloader.classList.add("fade-out");
+
+//         setTimeout(() => {
+//           preloader.style.display = "none";
+//           document.body.style.background = "#fff";
+//           mainContent.style.display = "block";  // 👈 Show your website
+//         }, 1000); // fade-out duration
+//       }, 7000); // preloader duration
+//     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
     const aboutSection = document.querySelector(".about-section");
     const image = document.querySelector(".about-image img");
 
