@@ -119,6 +119,56 @@
   from { opacity: 1; transform: scale(1); }
   to { opacity: 0; transform: scale(0.9); }
 }
+@media (max-width: 768px) {
+  .logo-img {
+    height: 100px;
+  }
+
+   .preloader {
+   position: fixed;
+
+
+
+  
+  }
+  .tagline-text {
+    font-size: 18px;
+  }
+
+ 
+
+  .spinner {
+    width: 35px;
+    height: 35px;
+    border-width: 4px;
+  }
+}
+@media (max-width: 480px) {
+ 
+  .preloader {
+   position: fixed;
+   left: 0%;
+  
+   
+  
+  }
+
+  .tagline-text {
+    font-size: 20px;
+  }
+
+  .logo-img {
+    height: 120px;
+    width: auto;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+  }
+}
+
 
     /* preloader */
 
