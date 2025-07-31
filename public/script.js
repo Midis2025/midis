@@ -1,18 +1,4 @@
 
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        const preloader = document.getElementById("preloader");
-        const mainContent = document.getElementById("main-container");
-
-        preloader.classList.add("fade-out");
-
-        setTimeout(() => {
-          preloader.style.display = "none";
-          document.body.style.background = "#fff";
-          mainContent.style.display = "block";
-        }, 0);
-      }, 8000);
-    });
 
 
 // window.addEventListener("load", () => {
