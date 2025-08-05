@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Explore Our Work</title>
+  <style>
+    @font-face {
+      font-family: 'Quivert';
+      src: url('./fonts/Quivert-Regular.woff2') format('woff2'),
+           url('./fonts/Quivert-Regular.woff') format('woff'),
+           url('./fonts/Quivert-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quivert', serif;
+      background: #111;
+      color: white;
+    }
+
+    .container {
+      background: #FF7518;
+      padding: 100px 20px 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 72px;
+      position: relative;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-align: center;
+      padding-bottom: 10px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      height: 5px;
+      width: 100px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px white;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        width: 100px;
+        opacity: 0.6;
+      }
+      50% {
+        width: 140px;
+        opacity: 1;
+      }
+    }
+
+    .gallery {
+      
+      gap: 30px;
+      padding: 60px 40px;
+      justify-items: center;
+      background: linear-gradient(to bottom, #111, #1a1a1a);
+    }
+
+    .glass-card {
+      width: 70%;
+ 
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin: 20px;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 50px rgba(255, 255, 255, 0.3);
+    }
+
+    .glass-card img {
+      width: 100%;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 42px;
+      }
+
+      h1::after {
+        width: 70px;
+      }
+
+      .gallery {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Heading Section -->
+  <div class="container">
+    <h1>Explore Our Work</h1>
+  </div>
+
+  <!-- Image Gallery Section -->
+  <div class="gallery">
+    <div class="glass-card">
+      <img src="./cardimage/1.jpg" alt="Work 1">
+    </div>
+    <div class="glass-card">
+      <img src="./cardimage/2.jpg" alt="Work 2">
+    </div>
+    <div class="glass-card">
+      <img src="./cardimage/3.jpg" alt="Work 3">
+    </div>
+    <div class="glass-card">
+      <img src="./cardimage/4.jpg" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./cardimage/5.jpg" alt="Work 4">
+    </div> 
+    <div class="glass-card">
+      <img src="./cardimage/6.jpg" alt="Work 4">
+    </div> 
+    <div class="glass-card">
+      <img src="./cardimage/7.jpg" alt="Work 4">
+    </div> 
+    <div class="glass-card">
+      <img src="./cardimage/8.jpg" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./cardimage/9.jpg" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./cardimage/10.jpg" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./cardimage/11.jpg" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./cardimage/12.jpg" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./cardimage/13.jpg" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./cardimage/14.jpg" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./cardimage/15.jpg" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./cardimage/17.jpg" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./cardimage/18.jpg" alt="Work 4">
+    </div>
+  </div>
+
+</body>
+</html>
