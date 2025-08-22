@@ -1,0 +1,597 @@
+body {
+    margin: 0;
+   font-family: 'Inter', sans-serif;
+    color: #111;
+    background-color: #e9f4fc;
+  }
+:root {
+      --main-orange: #FF7518;
+      --main-red: #fc5c5c;
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.2);
+    }
+
+  /* Navbar styles */
+.navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: #111;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  padding: 15px 30px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+  margin: auto;
+}
+
+.logo img {
+  height: 80px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ff8c42;
+}
+
+.btn {
+  background: linear-gradient(90deg, #ff6a3d, #ffbe2e);
+  padding: 10px 18px;
+  border-radius: 30px;
+  color: #111;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+/* ========== Hamburger Icon ========== */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* ========== Mobile Sidebar Nav (Glass effect) ========== */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+  
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 148px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.6);
+    padding: 100px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: right 0.4s ease;
+    z-index: 1001;
+  }
+  .nav-links a{
+    color: black;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  /* Hide desktop nav when mobile menu is open */
+  .navbar .nav-links.desktop {
+    display: none;
+  }
+}
+
+  /* CTA button */
+  .cta-button {
+    background: linear-gradient(to right, #fd8b34, #fc5c5c);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .cta-button:hover {
+    opacity: 0.9;
+  }
+
+  
+  .rank-sell-form-section {
+    padding: 40px 20px;
+    background-color: #fff;
+    
+    margin: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .rank-sell-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .rank-sell-left {
+    flex: 1 1 400px;
+    max-width: 500px;
+    padding-top: 20px;
+  }
+
+  .rank-sell-left img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  .fab{
+    color:  #e65c00;
+  }
+  .increase{
+    font-weight: bold;
+  }
+
+  .right {
+    flex: 1 1 400px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .right h3 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .right h3 span {
+    color: #e65c00;
+  }
+
+  .right .subtext {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    transition: border-color 0.3s ease;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #e65c00;
+    outline: none;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  button {
+    padding: 12px;
+     background: linear-gradient(to right, var(--main-red), var(--main-orange));
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #e65c00;
+  }
+
+  #formResponse {
+    margin-top: 10px;
+    color: #e65c00;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    .rank-sell-form-section {
+      flex-direction: column;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .rank-sell-left,
+    .right {
+      max-width: 100%;
+    }
+     .rank-sell-left,
+    .right h2 {
+      font-size: 20px;
+      order: 2;
+      margin-top: -20px;
+    }
+     .rank-sell-left p {
+      font-size: 15px;
+     
+    }
+    
+    
+  }
+
+  .site-footer {
+    background-color: black;
+    color: #fff;
+    font-size: 15px;
+    padding: 40px 10% 0;
+    
+  }
+.footer-dog-road {
+  position: relative;
+  height: 80px;
+  background-color: white; /* white background like your screenshot */
+  margin-top: 0;
+  padding: 0;
+  z-index: 5;
+}
+
+.dog-wrapper {
+  position: absolute;
+  bottom: 34px; /* Aligns exactly to bottom (above black footer) */
+  left: -150px;
+  height: 80px;
+  animation: walkDogOnEdge 20s linear infinite;
+  
+}
+
+.dog-wrapper img {
+  height: 150px;
+}
+
+/* Animation to move dog across the screen */
+@keyframes walkDogOnEdge {
+  0% {
+    left: -150px;
+  }
+  100% {
+    left: 100vw;
+  }
+}
+  .social-links a{
+      font-size: 25px;
+      padding: 2px;
+
+    }
+
+  .footer-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .footer-col {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .footer-col h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-col ul li {
+    margin-bottom: 10px;
+    color: #d4d4d4;
+  }
+
+  .footer-col ul li a{
+    color: white;
+    text-decoration: underline;
+
+  }
+   .footer-col ul li a:hover{
+    color:#FF7518 ;
+  }
+  .footer-map {
+    margin-top: 40px;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    background-color: black;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer-columns {
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+      align-items: center;
+    }
+  }
+ 
+  /* Popup Overlay */
+   /* Popup Overlay */
+ /* Overlay */
+    #popupOverlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    #popupOverlay.show {
+      display: flex;
+    }
+
+    /* Popup Container */
+    .popup {
+      background: #fff;
+      width: 100%;
+      max-width: 950px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+      display: flex;
+      position: relative;
+      transition: transform 0.3s ease;
+      animation: popupIn 0.3s ease;
+    }
+
+    @keyframes popupIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .popup .left, .popup .right {
+      flex: 1;
+      padding: 35px;
+    }
+
+    /* Left (Form) Side */
+    .popup .left {
+      background: #f7f9fc;
+    }
+
+    .popup .left h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .popup .left h3 {
+      font-weight: 600;
+      margin-top: 0;
+      color: #555;
+    }
+
+    .popup .left p {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 25px;
+    }
+
+    .popup .left label {
+      font-weight: 600;
+      font-size: 14px;
+      margin: 15px 0 5px;
+      display: block;
+      color: black;
+    }
+
+     .popup .left input,
+.popup .left select {
+  width: 100%;
+  padding: 10px 12px;
+  height: 42px; /* Ensures same fixed height */
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  line-height: 1.4;
+  outline: none;
+  box-sizing: border-box;
+  transition: border 0.2s;
+   background-color: #fff;
+}
+
+
+    .popup .left input:focus,
+    .popup .left select:focus {
+      border-color: #ff8c42;
+    }
+
+    .popup .left button#submitBooking {
+      margin-top: 30px;
+      padding: 12px 0;
+      width: 100%;
+      font-size: 16px;
+      background: #ff8c42;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .popup .left button#submitBooking:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
+
+    /* Right (Calendar) Side */
+    .calendar-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .calendar-head button.nav-btn {
+      font-size: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ff8c42;
+    }
+
+    #monthYear {
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      font-size: 14px;
+    }
+
+    .calendar-grid span {
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .calendar-grid div.day {
+      text-align: center;
+      padding: 10px 0;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #eee;
+      transition: background 0.2s;
+    }
+
+    .calendar-grid div.day:hover {
+      background: #ddd;
+    }
+
+    .calendar-grid div.day.active {
+      background:#ff8c42;
+      color: white;
+    }
+
+    .calendar-grid div.day.disabled {
+      pointer-events: none;
+      opacity: 0.4;
+      background: #f2f2f2;
+    }
+
+    .time-slots {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .time-slots div.slot {
+      padding: 8px 16px;
+      background: #eaeaea;
+      border-radius: 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .time-slots div.slot.active {
+      background-color: #ff8c42;
+      color: white;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: #fff;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .popup {
+        flex-direction: column;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .popup .left,
+      .popup .right {
+        padding: 20px;
+      }
+    }

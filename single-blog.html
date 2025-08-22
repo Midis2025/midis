@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Details - Midis Digital</title>
+  <link rel="icon" type="image/png" href="./image/midis m final logo-03.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fdf9ff;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #6a1b9a, #ff6f00);
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .blog-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .blog-title {
+      font-size: 2rem;
+      color: #6a1b9a;
+      margin-bottom: 20px;
+    }
+    .blog-content {
+      font-size: 1.1rem;
+      color: #333;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: linear-gradient(to right, #6a1b9a, #ff6f00);
+      border-radius: 30px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+    .back-btn:hover {
+      background: linear-gradient(to right, #ff6f00, #6a1b9a);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Blog Details</h1>
+  </header>
+
+  <div class="container">
+    <img id="blog-image" class="blog-image" src="" alt="Blog Image">
+    <h2 id="blog-title" class="blog-title"></h2>
+    <div id="blog-content" class="blog-content"></div>
+    <a href="blogs.html" class="back-btn">⬅ Back to Blogs</a>
+  </div>
+
+  <script>
+    async function loadSingleBlog() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id"); // ✅ documentId passed from blogs.html
+
+      if (!id) {
+        document.getElementById("blog-content").innerHTML = "<p>Blog not found!</p>";
+        return;
+      }
+
+      try {
+        // ✅ Fetch by documentId instead of numeric id
+        const res = await fetch(
+          `https://devoted-captain-c1ad6bbc4b.strapiapp.com/api/blogs?filters[documentId][$eq]=${id}&populate=*`
+        );
+        const data = await res.json();
+        const blog = data.data[0]; // first matching blog
+
+        if (!blog) {
+          document.getElementById("blog-content").innerHTML = "<p>Blog not found!</p>";
+          return;
+        }
+
+        const attrs = blog.attributes;
+
+        // ✅ Image handling
+        const imageUrl =
+          attrs.image?.data?.attributes?.formats?.large?.url ||
+          attrs.image?.data?.attributes?.url ||
+          "https://via.placeholder.com/800x400";
+
+        const blogImage = document.getElementById("blog-image");
+        blogImage.src = imageUrl;
+        blogImage.alt = attrs.image?.data?.attributes?.alternativeText || attrs.title;
+
+        // ✅ Title
+        document.getElementById("blog-title").textContent = attrs.title;
+
+        // ✅ Content (fallback if empty)
+        document.getElementById("blog-content").innerHTML =
+          attrs.content || attrs.description || "No content available.";
+      } catch (err) {
+        console.error("Error fetching blog:", err);
+        document.getElementById("blog-content").innerHTML = "<p>Error loading blog.</p>";
+      }
+    }
+
+    loadSingleBlog();
+  </script>
+</body>
+</html>

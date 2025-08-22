@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team — Midis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0a0a;          /* page background */
+      --panel:#111;          /* card background */
+      --ink:#f5f5f5;         /* primary text */
+      --muted:#a9a9a9;       /* secondary text */
+      --line:#1f1f1f;        /* hairline borders */
+      --accent:#ff6b00;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background-color: black;
+      color:var(--ink);
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero{padding:clamp(56px,8vw,120px) 6vw 0 6vw; text-align:center}
+    .eyebrow{letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-size:.85rem}
+    .title{font-size:clamp(2.4rem,6vw,3.6rem); font-weight:800; margin:.4rem 0 0; background:linear-gradient(90deg,#fff,var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
+    .sub{max-width:56ch; margin:.8rem auto 3.2rem; color:#bfbfbf}
+
+    /* hairline divider */
+    .divider{
+      width:100%; height:2px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin:0 auto clamp(32px,5vw,56px);
+      animation: glowline 4s linear infinite;
+    }
+    @keyframes glowline {
+      0% {opacity:.2; transform:scaleX(0.6);}
+      50% {opacity:1; transform:scaleX(1);}
+      100% {opacity:.2; transform:scaleX(0.6);}
+    }
+
+    /* ---------- Grid System ---------- */
+    .container{padding:0 6vw clamp(48px,6vw,96px)}
+    .grid{display:grid; gap:clamp(16px,2vw,28px); grid-template-columns:repeat(12,minmax(0,1fr))}
+
+    .founder-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 96px;
+    }
+    .founder-img img {
+      width: 85%;
+      object-fit: cover;
+      aspect-ratio: 3/5;
+      filter: grayscale(100%);
+      transition: filter .6s ease, transform .6s ease;
+    }
+    .founder-row:hover img {filter: grayscale(0); transform: scale(1.04);}
+    .founder-text .name {font-size: 2rem; font-weight: 700;}
+    .founder-text .role {
+color: #ff6b00;
+       
+      margin: 6px 0 16px;}
+    .founder-text .bio {color: #bfbfbf; max-width: 65ch;}
+
+    @media (max-width: 860px){
+      .founder-row {grid-template-columns: 1fr; text-align: center;}
+      .founder-text {order:2;}
+      .founder-img {order:1;}
+    }
+
+    /* ---------- Feature (Co-founders) ---------- */
+    .feature{position:relative; overflow:hidden; border-radius:18px; background:var(--panel); border:1px solid var(--line)}
+    .feature.media{aspect-ratio: 4/5}
+    .feature img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(100%); transition:filter .5s ease, transform .8s cubic-bezier(.2,.8,.2,1)}
+    .feature .shade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.0) 20%, rgba(0,0,0,.75) 100%); opacity:.9; transition:opacity .4s ease}
+    .feature .meta{position:absolute; left:0; right:0; bottom:0; padding:22px 22px 24px;}
+    .feature .name{font-size:clamp(1.3rem,2.2vw,1.8rem); font-weight:700}
+    .feature .role{color:var(--muted); margin-top:2px}
+    .feature:hover img{filter:grayscale(0); transform:scale(1.05)}
+    .feature:hover .shade{opacity:1}
+
+    /* responsive spans */
+    .span-6{grid-column:span 12}
+    @media (min-width: 960px){ .span-6{grid-column:span 6} }
+
+    /* ---------- Team Cards (slider) ---------- */
+    .section {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 80px 40px;
+      gap: 40px;
+    }
+    .section .text {
+      flex: 1;
+      font-size: 1.8rem;
+      line-height: 1.4;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+    .section .text.show {opacity: 1; transform: translateY(0);}
+    .section .slider {
+      flex: 1.2;
+      display: flex;
+      overflow-x: hidden;
+      gap: 20px;
+      scroll-behavior:auto;
+    }
+    .card {
+      position: relative;
+      min-width: 260px;
+      height: 380px;
+      flex-shrink: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #111;
+    }
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.2);
+      transition: all 0.5s ease;
+    }
+    .card:hover img {filter: grayscale(0%) contrast(1); transform: scale(1.05);}
+    .overlay {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #fff;
+      z-index: 2;
+    }
+    .overlay .name {font-size: 1.2rem; font-weight: 600;}
+    .overlay .role {font-size: 0.95rem; color: #ccc;}
+
+    /* ---------- Big Scrolling Text Add-on ---------- */
+    .big-scroll-text {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin: 46px 0;
+    }
+    .big-scroll-text .marquee {
+      white-space: nowrap;
+      overflow: hidden;
+      display: flex;
+    }
+    .big-scroll-text h2 {
+      font-size: clamp(3rem, 12vw, 10rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      margin: 0;
+      padding: 30px 0;
+      color: white;
+    
+     
+      flex-shrink: 0;
+    }
+    .big-scroll-text .reverse h2 {
+      -webkit-text-stroke: 1px #fff;
+    }
+    
+    /* ---------- Responsive Fixes ---------- */
+
+/* Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .hero {padding: 80px 4vw 0 4vw;}
+  .title {font-size: clamp(2rem, 5vw, 3rem);}
+  .sub {font-size: 1rem;}
+
+  .founder-row {gap: 28px;}
+  .founder-img img {width: 95%;}
+
+  .section {
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+  }
+  .section .text {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .section .slider {
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
+  }
+  .card {
+    min-width: 220px;
+    height: 340px;
+  }
+}
+
+/* Phones (max-width: 768px) */
+@media (max-width: 768px) {
+  .hero {padding: 60px 20px 0 20px;}
+  .title {font-size: 2rem;}
+  .sub {font-size: 0.95rem; margin-bottom: 2rem;}
+
+  .founder-row {grid-template-columns: 1fr; margin-bottom: 60px;}
+  .founder-img img {width: 100%; max-width: 360px; margin: 0 auto; display: block;}
+  .founder{
+    
+  }
+  .founder-text {text-align: center; padding: 0 10px;}
+  .founder-text .name {font-size: 1.6rem;}
+  .founder-text .bio {font-size: 0.95rem;}
+
+  .section {padding: 40px 16px;}
+  .section .text {font-size: 1.2rem;}
+     .section .slider {
+      gap: 16px;
+    }
+    .card {
+      min-width: 220px;
+      height: 320px;
+    }
+  }
+
+  .overlay .name {font-size: 1rem;}
+  .overlay .role {font-size: 0.8rem;}
+  
+  .big-scroll-text h2 {font-size: clamp(2rem, 8vw, 9rem);}
+
+
+/* Small Phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .title {font-size: 1.6rem;}
+  .sub {font-size: 0.85rem;}
+
+  .founder-text .name {font-size: 1.4rem;}
+  .founder-text .bio {font-size: 0.9rem;}
+
+  .section .text {font-size: 1rem;}
+  .card {
+    min-width: 160px;
+    height: 240px;
+  }
+  .overlay {bottom: 12px; left: 12px;}
+  .overlay .name {font-size: 0.9rem;}
+  .overlay .role {font-size: 0.75rem;}
+}
+
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce){
+      .feature img, .card img, .feature .shade {transition:none}
+      .reveal{opacity:1; transform:none}
+    }
+ .img-text{
+  /* basic look */
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 8vw, 140px);
+  letter-spacing: 2px;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+
+  /* image inside text */
+ background-image: url('./image/midis\ portfolio-13.png');
+      background-size: 200%; /* bigger so we can animate inside */
+      background-position: 0% 50%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+
+      /* Animate background */
+      animation: moveBg 8s linear infinite;
+    }
+
+    @keyframes moveBg {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  
+ 
+.text p{
+  font-size: 15px;
+  text-align: justify;
+}
+
+/* optional: dark background par thoda contrast ke liye outline */
+@supports (-webkit-text-stroke: 1px black) {
+  .img-text {
+    -webkit-text-stroke: 0.5px rgba(0,0,0,0.15);
+  }
+}
+
+/* fallback (agar koi purana browser ho jisme clip support na ho) */
+@supports not (-webkit-background-clip: text) {
+  .img-text{
+    color: #222;               /* normal solid color */
+    background-image: none;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero reveal" data-delay="0">
+    <p class="eyebrow">Team</p>
+    <h1 class="title">The people behind the work</h1>
+    <p class="sub">A compact, cinematic roster in pure black & white. Hover for details, scroll to reveal. Built to mirror that moody, minimal, high-contrast vibe.</p>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- CO-FOUNDERS -->
+  <section class="container">
+    <div class="founder-row reveal" data-delay="0.05">
+      <div class="founder-img from-left">
+        <img src="./image/e3fbadcb-f3f0-489d-baa7-16f46eee0757.jpg" alt="Portrait of Sagar Bakshi" class="founder">
+      </div>
+      <div class="founder-text from-right">
+        <h3 class="name">Sagar Bakshi</h3>
+        <p class="role">Co-Founder & Director</p>
+        <p class="bio">Sagar Bakshi, Co-founder & Director of Midis, is a visionary entrepreneur passionate about empowering businesses with cutting-edge digital solutions. With a strong understanding of global market trends, Sagar bakshi leads Midis in transforming how companies connect, communicate, and grow online.
+
+Under his leadership, Midis has become a trusted partner for brands across industries, offering end-to-end digital marketing, branding, and web development solutions. From building engaging websites to driving impactful campaigns, Sagar ensures that every project delivers measurable growth and long-term value for clients.
+
+Beyond digital marketing, Sagar and his team specialize in eCommerce development and business acceleration. From Shopify and Amazon solutions to dropshipping and online expansion strategies, Midis supports startups and enterprises in scaling their digital presence effectively.
+
+Driven by innovation and a community-first approach, Sagar Bakshi continues to position Midis as a global hub for digital transformation,
+
+#DigitalMarketing #WebDevelopment #EcommerceSolutions  </p>
+      </div>
+    </div>
+    <div class="founder-row reveal" data-delay="0.15">
+      <div class="founder-text from-left">
+        <h3 class="name">Gaurav Sharma</h3>
+        <p class="role">Co-Founder & CEO</p>
+        <p class="bio">Michael Clark, Co-founder & Director of Midis, is a forward-thinking entrepreneur dedicated to driving digital innovation for businesses worldwide. With a strong background in technology and strategic growth, Michael plays a key role in shaping Midis into a trusted partner for brands seeking impactful digital transformation.
+
+At Midis, Michael leads initiatives that combine creative design, advanced marketing strategies, and powerful web development to deliver measurable results. His focus on innovation and client success ensures that every Midis project not only meets expectations but sets new benchmarks in digital excellence.
+
+With expertise in branding, digital advertising, and eCommerce solutions.
+
+#DigitalInnovation #BrandGrowth #EcommerceSuccess  </div>
+      <div class="founder-img from-right">
+        <img src="./image/Untitled design (3).png" alt="Portrait of Gaurav Sharma">
+      </div>
+    </div>
+  </section>
+
+  <!-- BIG TEXT STRIP -->
+  <section class="big-scroll-text">
+    <div class="marquee"><h2>OUR TEAM — • OUR TEAM — MIDIS • OUR TEAM — MIDIS •</h2></div>
+    <div class="marquee reverse"><h2>CREATIVITY • INNOVATION • STRATEGY • EXECUTION •</h2></div>
+  </section>
+
+  <!-- TEAM GRID (slider) -->
+  <section class="section">
+    <div class="text" id="text-block">
+         <h2 class="img-text">OUR TEAM</h2>
+         <p>At Midis, we believe that great ideas don’t just happen — they’re brought to life by passionate, creative, and dedicated individuals. Our team is more than just professionals; we’re collaborators, problem-solvers, and visionaries who deeply care about the impact we create for our clients.</p>
+    </div>
+    <div class="slider" id="slider">
+      <div class="card">
+        <img src="./image/Alin.jpg" alt="">
+        <div class="overlay"><div class="name">Alin</div><div class="role">Shopify Developer</div></div>
+      </div>
+      <div class="card">
+          <img src="./image/mem9.jpg" alt="">
+        <div class="overlay"><div class="name">Swayam Gandhi</div><div class="role">Backend Developer</div></div>
+      </div>
+       <div class="card">
+          <img src="./image/shiviiii.png" alt="">
+         <div class="overlay"><div class="name">Shivani dixit</div><div class="role">Front-end Developer</div></div>
+      </div>
+       <div class="card">
+          <img src="./image/IMG20250624091652 (1).jpg" alt="">
+         <div class="overlay"><div class="name">Anchal Pal</div><div class="role">front-end Developer</div></div>
+      </div>
+      <div class="card">
+        <img src="./image/member4.jpg" alt="">
+        <div class="overlay"><div class="name">Rahul Gehlot</div><div class="role"> Graphic Designer</div></div>
+      </div>
+      <div class="card">
+          <img src="./image/member6.jpg" alt="">
+         <div class="overlay"><div class="name">Navkirat Bhogal</div><div class="role">SEO</div></div>
+      </div>
+        <div class="card">
+          <img src="./image/member3.jpg" alt="">
+         <div class="overlay"><div class="name">Chanda</div><div class="role">Graphic Designer</div></div>
+      </div>
+        <div class="card">
+          <img src="./image/Mehul (2).png" alt="">
+         <div class="overlay"><div class="name">Mehul</div><div class="role">Content Creator</div></div>
+      </div>
+       <div class="card">
+          <img src="./image/member2.jpg" alt="">
+         <div class="overlay"><div class="name">Ojaswini Saini</div><div class="role">Graphic designer</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    (function(){
+      if(typeof gsap === 'undefined'){ 
+        document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity = 1; el.style.transform = 'none';});
+        return;
+      }
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Reveal animations
+      gsap.utils.toArray('.reveal').forEach((el, i)=>{
+        const delay = parseFloat(el.dataset.delay || 0) || 0;
+        gsap.to(el, {
+          opacity:1, y:0, duration:0.9, ease:'power3.out', delay: delay,
+          scrollTrigger:{trigger: el, start: 'top 85%', toggleActions: 'play none none reverse'}
+        });
+      });
+
+      // Founder side slide-in
+      gsap.utils.toArray(".from-left").forEach(el=>{
+        gsap.from(el,{x:-100, opacity:0, duration:1, ease:"power3.out", scrollTrigger:{trigger:el, start:"top 85%"} })
+      });
+      gsap.utils.toArray(".from-right").forEach(el=>{
+        gsap.from(el,{x:100, opacity:0, duration:1, ease:"power3.out", scrollTrigger:{trigger:el, start:"top 85%"} })
+      });
+
+      // Big text horizontal scroll
+      gsap.utils.toArray(".marquee h2").forEach((el, i) => {
+        gsap.to(el, {
+          xPercent: i % 2 === 0 ? -50 : 50,
+          ease: "none",
+          scrollTrigger: {trigger: el, scrub: true, start: "top bottom", end: "bottom top"}
+        });
+      });
+    })();
+
+   // Text block + slider loop
+const textBlock = document.getElementById("text-block");
+const slider = document.getElementById("slider");
+
+window.addEventListener("load", () => {
+  textBlock.classList.add("show");
+
+  // Always start from the first card
+  slider.scrollLeft = 0;
+
+  // Duplicate cards for smooth looping
+  slider.innerHTML += slider.innerHTML;
+
+  setTimeout(startSliderLoop, 1000);
+});
+
+function startSliderLoop() {
+  let scrollSpeed = 1.5;
+
+  function animate() {
+    slider.scrollLeft += scrollSpeed;
+
+    // Reset when first half (original cards) is scrolled
+    if (slider.scrollLeft >= slider.scrollWidth / 2) {
+      slider.scrollLeft = 0;
+    }const textBlock = document.getElementById("text-block");
+const slider = document.getElementById("slider");
+
+window.addEventListener("load", () => {
+  textBlock.classList.add("show");
+
+  // Always start from the first card
+  slider.scrollLeft = 0;
+
+  // Duplicate cards for smooth looping
+  slider.innerHTML += slider.innerHTML;
+
+  setTimeout(startSliderLoop, 1000);
+});
+
+function startSliderLoop() {
+  let scrollSpeed = 1.5;
+
+  function animate() {
+    slider.scrollLeft += scrollSpeed;
+
+    // Reset when first half (original cards) is scrolled
+    if (slider.scrollLeft >= slider.scrollWidth / 2) {
+      slider.scrollLeft = 0;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+
+    
+  </script>
+</body>
+</html>

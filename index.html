@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary Meta Tags -->
+  <title>Midis – Smarter Digital Marketing</title>
+  <link rel="icon" type="image/png" href="image/midis final 2.png">
+
+  <meta name="title" content="Midis – Smarter Digital Marketing">
+  <meta name="description"
+    content="At Midis, we blend performance with creativity to offer powerful digital marketing strategies—SEO, branding, and social media solutions that get results.">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.midis.in/">
+  <meta property="og:title" content="Midis – Smarter Digital Marketing">
+  <meta property="og:description"
+    content="At Midis, we blend performance with creativity to offer powerful digital marketing strategies—SEO, branding, and social media solutions that get results.">
+  <meta property="og:image" content="https://www.midis.in/assets/preview.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.midis.in/">
+  <meta property="twitter:title" content="Midis – Smarter Digital Marketing">
+  <meta property="twitter:description"
+    content="At Midis, we blend performance with creativity to offer powerful digital marketing strategies—SEO, branding, and social media solutions that get results.">
+  <meta property="twitter:image" content="https://www.midis.in/assets/preview.jpg">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+
+</head>
+
+<body>
+
+  <!-- preloader -->
+  <div id="main-container">
+
+    <div class="nav-container">
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="./index.html"><img src="./image/midis final logo-01.png" height="80px"></a>
+          </div>
+
+          <div class="menu-toggle" id="menuToggle">☰</div>
+
+
+          <div class="nav-links" id="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./services.html">Services</a>
+            <a href="aboutus.html">About</a>
+            <a href="contactus.html">Contact</a>
+            <a href="#" id="openPopup">Book a Meeting</a>
+
+            <button id="logoutBtn" class="btn" style="display:none;">Logout</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- popup-section -->
+    <div class="popup-overlay" id="popup">
+      <div class="popup-box">
+        <button class="close-btn2" id="closePopup">&times;</button>
+        <h2>Let’s Grow Together 🚀</h2>
+        <p>Want to take your brand to the next level? Get in touch with our experts today!</p>
+        <a href="./contactus.html" class="cta-btn">Explore Now</a>
+
+      </div>
+    </div>
+
+
+    <!-- Modal Popup -->
+    <div id="popup4" class="popup-overlay">
+      <div class="popup-content">
+        <button class="close-btn3" id="closePopup4">&times;</button>
+        <div class="left-section">
+          <h2>
+            <span class="highlight-orange">Accelerate Your Digital</span><br>
+            Growth Without Expanding<br>
+            <span class="highlight-orange">Your Team</span>
+          </h2>
+          <form id="bookCallForm">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <input type="tel" name="contactNumber" placeholder="Contact Number" required pattern="[0-9]{10,15}" />
+            <select name="serviceProposal" id="serviceDropdown" required>
+              <option value="" disabled selected>Select a Service</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Graphic Design">Graphic Design</option>
+              <option value="Content Creation">Content Creation</option>
+              <option value="Video Editing">Video Editing</option>
+              <option value="YouTube Channel Setup & Management">YouTube Channel Setup & Management</option>
+              <option value="SEO (Search Engine Optimisation)">SEO (Search Engine Optimisation)</option>
+              <option value="Email Marketing">Email Marketing</option>
+              <option value="Google Ads (PPC)">Google Ads (PPC)</option>
+              <option value="Meta Ads (Facebook & Instagram)">Meta Ads (Facebook & Instagram)</option>
+              <option value="LinkedIn Ads">LinkedIn Ads</option>
+            </select>
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+          <div id="thankYouMsg" class="thank-you-message" style="display: none;">
+            Thank you for booking a call! We'll be in touch shortly.
+          </div>
+        </div>
+        <div class="right-section"></div>
+      </div>
+    </div>
+
+    <!-- book a meeting -->
+    <div id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle" style="display: none;">
+      <button class="close-btn" aria-label="Close popup">×</button>
+
+      <div class="popup">
+        <!-- Left side -->
+        <div class="left">
+          <h2 id="popupTitle">Book a Free Strategy Meeting</h2>
+          <h3>Midis</h3>
+          <p>Digital Growth Expert</p>
+
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="Your Name" required />
+
+          <label for="contact">Your Contact</label>
+          <input type="text" id="contact" placeholder="Your Contact Number" required />
+
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+          <label for="serviceProposal">Select a Service</label>
+          <select id="serviceProposal" required class="selects">
+            <option value="" disabled selected>Select a Service *</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Graphic Design">Graphic Design</option>
+            <option value="Content Creation">Content Creation</option>
+            <option value="Video Editing">Video Editing</option>
+            <option value="YouTube Channel Setup & Management">YouTube Channel Setup & Management</option>
+            <option value="SEO (Search Engine Optimisation)">SEO (Search Engine Optimisation)</option>
+            <option value="Email Marketing">Email Marketing</option>
+            <option value="Google Ads (PPC)">Google Ads (PPC)</option>
+            <option value="Meta Ads (Facebook & Instagram)">Meta Ads (Facebook & Instagram)</option>
+            <option value="LinkedIn Ads">LinkedIn Ads</option>
+          </select>
+
+          <!-- Timezone Selection -->
+          <label for="timezone">Select Time Zone</label>
+          <select id="timezone" required>
+            <option value="">Select Time Zone</option>
+            <option value="IST">IST (Indian Standard Time)</option>
+            <option value="EST">EST (Eastern Standard Time)</option>
+            <option value="PST">PST (Pacific Standard Time)</option>
+          </select>
+
+          <button id="submitBooking" disabled>Confirm Booking</button>
+        </div>
+
+        <!-- Right side -->
+        <div class="right">
+          <div class="calendar-head">
+            <button class="nav-btn" id="prevMonthBtn" aria-label="Previous month">←</button>
+            <span id="monthYear">Month Year</span>
+            <button class="nav-btn" id="nextMonthBtn" aria-label="Next month">→</button>
+          </div>
+
+          <div class="calendar-grid" id="calendarDays">
+            <!-- Day labels and dates inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <div id="cookiePopup" class="cookie-popup">
+      <div class="cookie-content">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+        </p>
+        <button id="acceptCookie">Accept</button>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+      <div class="leftside">
+        <h3>#<span>
+            Top Rated</span> Digital Agency in <span>US ,Canada, INDIA.</span></h3>
+
+        <h2>Build Brands. Drive Revenue. <br />Scale Globally</h2>
+
+        <a href="./index.html"><img src="./image/midis final logo-01.png" height="80px"></a>
+
+        <p>From Idea to execution — we offer full-suite creative and digital<br> marketing services tailored for global
+          growth.</p>
+
+
+        <a href="./explore.html"><button type="button" class="btn">Explore Our Work</button>
+        </a>
+      </div>
+
+      <div class="right-image">
+        <div class="image-box1">
+          <div class="first">
+            <img src="./image/boys.avif" class="size">
+            <img src="./image/girl3.avif" class="size4">
+          </div>
+          <div class="sec">
+            <img src="./image/girl.avif" class="size2">
+            <img src="./image/boys2.avif" class="size5">
+          </div>
+          <div class="first3">
+            <img src="./image/girl2.avif" class="size3">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- cards-section -->
+    <div class="container2">
+      <section class="services-section">
+        <h2>Digital Services <img src="./image/man-with-seo-eocket2.webp" class="rocket"></h2>
+        <h4>The Drive Real Business Growth</h4>
+
+        <div class="cards">
+          <div class="card">
+            <div class="icon-circle">
+              <img src="./image/serch.png" alt="Web Dev Icon" />
+            </div>
+            <h4>Web Development</h4>
+            <p>We build responsive, lightning-fast websites that increase your business visibility and sales.</p>
+            <a href="./web.html"><button class="cta-btn">Explore</button></a>
+          </div>
+
+          <div class="card">
+            <div class="icon-circle">
+              <img src="./image/content.webp" alt="Design Icon" />
+            </div>
+            <h4>Graphic Design</h4>
+            <p>We design premium logos, and brand visuals that define your identity and elevate your impact.</p>
+            <a href="./graphic.html"><button class="cta-btn">Explore</button></a>
+          </div>
+
+          <div class="card">
+            <div class="icon-circle">
+              <img src="./image/sett.webp" alt="Content Icon" />
+            </div>
+            <h4>Content Creation</h4>
+            <p>We craft compelling, SEO-optimized content for blogs, and social media to boost engagement and
+              conversion.</p>
+            <a href="./content.html"><button class="cta-btn">Explore</button></a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="container3">
+      <section class="about-section" id="about">
+        <div class="about-text">
+          <h1>ABOUT US</h1>
+          <h2>
+            Midis Resources –<br />
+            Empowering Digital<br />
+            Growth for Startups &<br />
+            Businesses
+          </h2>
+          <p>
+            We are a results-driven digital agency offering end-to-end creative and technical services.
+            Whether you're launching a new startup or running an established business, we help you build
+            a powerful online presence, drive measurable growth, and expand your reach across global markets.
+          </p>
+          <button class="cta-btn openPopupBtn" data-service="Web Development">Explore now</button>
+        </div>
+        <div class="about-image">
+
+
+
+          <img src="./image/midis charcter.png" alt="About Midis Team" class="cutie">
+        </div>
+      </section>
+    </div>
+    <div class="container4">
+      <section class="toast-section">
+
+        <h1 class="main-heading">Why Choose Us?</h1>
+
+        <div class="card-container-why">
+          <!-- Card 1 -->
+          <div class="card-why">
+            <div class="icon-why">
+              <img src="./image/shield.webp">
+            </div>
+            <h2>Dedicated Support & Expertise</h2>
+            <p>Experts not only solve problems but also provide valuable insights, guiding better decision-making and
+              innovation.
+            </p>
+            <a href="./contactus.html" class="learn-more">Learn more →</a>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card-why active">
+            <div class="icon-why">
+              <img src="./image/serch.png">
+            </div>
+            <h2>Cutting-Edge Tools</h2>
+            <p>These innovations leverage advanced technologies like artificial intelligence, machine learning, and
+              automation .</p>
+            <a href="./contactus.html" class="learn-more active-link">Learn more →</a>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card-why">
+            <div class="icon-why">
+              <img src="./image/connection.webp">
+            </div>
+            <h2>Transparency & Communication</h2>
+            <p>Transparency ensures that information is shared openly, creating a sense of accountability and
+              inclusiveness .</p>
+            <a href="./contactus.html" class="learn-more">Learn more →</a>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="container6">
+      <section class="rank-sell-form-section">
+        <div class="rank-sell-container">
+          <!-- Left Content -->
+          <div class="rank-sell-left">
+            <img src="./image/book.jpg" alt="Rank Better, Sell More" />
+          </div>
+
+          <div class="right-form">
+            <h3><span class="orange-text">Book A Consultation</span></h3>
+            <p class="subtext">
+              Partner with a leading digital marketing agency that understands your goals and delivers proven results.
+            </p>
+
+            <form id="contactForm">
+              <input type="text" name="name" placeholder="Your Name *" required />
+              <input type="email" name="email" placeholder="Your Email *" required />
+              <input type="tel" name="phone" placeholder="Phone Number" />
+              <select name="serviceProposal" required>
+                <option value="" disabled selected>Select a Service *</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Graphic Design">Graphic Design</option>
+                <option value="Content Creation">Content Creation</option>
+                <option value="Video Editing">Video Editing</option>
+                <option value="YouTube Channel Setup & Management">YouTube Channel Setup & Management</option>
+                <option value="SEO (Search Engine Optimisation)">SEO (Search Engine Optimisation)</option>
+                <option value="Email Marketing">Email Marketing</option>
+                <option value="Google Ads (PPC)">Google Ads (PPC)</option>
+                <option value="Meta Ads (Facebook & Instagram)">Meta Ads (Facebook & Instagram)</option>
+                <option value="LinkedIn Ads">LinkedIn Ads</option>
+              </select>
+              <textarea name="message" placeholder="Your Message *" required></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+
+            <p id="formResponse"></p>
+          </div>
+      </section>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Our Top Service</h4>
+          <ul>
+            <li>
+              <a href="./web.html">Web Designing & Development</a>
+            </li>
+            <li><a href="./graphic.html">Graphic Design</a> </li>
+            <li> <a href="./content.html">Web Content Creation</a></li>
+            <li> <a href="./videoedit.html">Video Editing</a></li>
+
+            <li> <a href="./youtube.html">YouTube Channel Management</a></li>
+            <li> <a href="./seo.html">SEO</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="terms-conditions.html">Terms&Conditions</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="./team.html">Team</a></li>
+            <li> <a href="privacy-policy.html">Privacy Policy</li></a>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>🇺🇸 +1 (862)295-0117</li>
+            <li>🇮🇳 +91 9779320626</li>
+            <li>
+              1st Floor, E 279, Industrial Area,<br />
+              Sector 75, S.A.S Nagar, Punjab<br />
+              160055
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61577942184075" target="_blank"><i
+                class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/officialmidis/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/midisresources/" target="_blank"><i
+                class="fab fa-linkedin"></i></a>
+            <a href="https://www.youtube.com/@MidisOfficial" target="_blank"><i class="fab fa-youtube"></i></a>
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="footer-bottom">
+        <p> Hello@midis.in</p>
+      </div>
+    </footer>
+    </footer>
+
+    <!-- Welcome Popup (clickable to open chat) -->
+    <!-- <div id="welcomePopup" class="hidden" onclick="openChat()">
+  👋 Hi! How can we help?
+</div> -->
+
+    <!-- Chat Toggle Button -->
+    <button id="openChat">💬 Chat</button>
+
+    <!-- Chat Popup -->
+    <div id="chatPopup" class="hidden">
+      <div id="chatHeader">
+        Chat with us
+        <span id="closeChat" style="float:right;cursor:pointer;">&times;</span>
+      </div>
+      <div id="chatTyping"></div>
+      <div id="messages">
+        <div class="chat-bubble bot">
+          👋 Hi! How can we help?
+        </div>
+      </div>
+      <div id="inputArea">
+        <input type="text" id="userMessage" placeholder="Type your message..." />
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="script.js" defer></script>
+
+
+  <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+
+
+</body>
+
+</html>
