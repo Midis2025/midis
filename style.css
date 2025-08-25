@@ -248,6 +248,9 @@ body {
   gap: 6px;
   font-size: 14px;
 }
+span{
+   color: #ff8c42;
+}
 
 .calendar-grid span {
   font-weight: 600;
@@ -760,7 +763,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
    
   flex: 1;
   min-width: 280px;
-  
+   margin-top: -150px;
  
    
 
@@ -784,12 +787,13 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
 }
 
 .leftside h3 {
-  font-size: 25px;
+  font-size: 32px;
   margin-bottom: 10px;
+    font-weight: 700;
 }
 
 .leftside h2 {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
   
   line-height: 1.4;

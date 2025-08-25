@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graphic Design Services - Midis Digital</title>
+  <link rel="icon" type="image/png" href="./image/midis m final logo-03.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0e0e10;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: url('./image/Modern\ Workspace\ with\ Geometric\ Design.png') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+  color: white;
+    
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #f1f1f1;
+    }
+
+    .hero a {
+      padding: 14px 32px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: 0.4s;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+
+    .hero a:hover {
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(106,17,203,0.4);
+    }
+
+    @keyframes fadeIn { 
+      from {opacity:0; transform: translateY(20px);} 
+      to {opacity:1; transform: translateY(0);} 
+    }
+
+    /* SECTION */
+    .section {
+      max-width: 1300px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      text-align: center;
+      color: #6a11cb;
+      position: relative;
+    }
+
+    .section h2::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px) saturate(180%);
+      -webkit-backdrop-filter: blur(15px) saturate(180%);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .feature::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.25) 0%,
+        rgba(255,255,255,0.05) 40%,
+        transparent 70%
+      );
+      transform: rotate(25deg);
+      opacity: 0;
+      transition: 0.6s;
+    }
+
+    .feature:hover::before {
+      opacity: 1;
+      transform: rotate(25deg) translateY(-20%);
+    }
+
+    .feature i {
+      font-size: 2.5rem;
+      color: #2575fc;
+      margin-bottom: 20px;
+      transition: transform 0.4s;
+    }
+
+    .feature:hover {
+      transform: translateY(-12px) scale(1.03);
+      border-color: rgba(37,117,252,0.6);
+      box-shadow: 0 18px 40px rgba(37,117,252,0.3);
+    }
+
+    .feature:hover i {
+      transform: rotate(12deg) scale(1.2);
+    }
+
+    .feature h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .feature p {
+      color: #ccc;
+      font-size: 1rem;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 16px 40px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      border-radius: 50px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    }
+
+    .cta a:hover {
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
+      box-shadow: 0 8px 25px rgba(37,117,252,0.5);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero h1 { font-size: 2.8rem; }
+      .hero p { font-size: 1.05rem; }
+      .section { padding: 60px 20px; }
+      .section h2 { font-size: 2.2rem; }
+      .features { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .hero { height: 80vh; padding: 0 15px; }
+      .hero h1 { font-size: 2.3rem; }
+      .hero p { font-size: 1rem; }
+      .hero a { font-size: 0.95rem; padding: 12px 26px; }
+      .features { gap: 25px; }
+      .feature { padding: 30px 20px; }
+      .feature h3 { font-size: 1.15rem; }
+      .feature p { font-size: 0.95rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { height: 70vh; padding: 0 10px; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { font-size: 0.9rem; }
+      .hero a { font-size: 0.85rem; padding: 10px 20px; }
+      .section { padding: 40px 15px; }
+      .section h2 { font-size: 1.6rem; }
+      .features { grid-template-columns: 1fr; }
+      .feature { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Graphic Designing</h1>
+      <p>Captivating visuals that elevate your brand and grab attention instantly.</p>
+      <a href="#services">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <h2>What We Do?</h2>
+    <div class="features">
+      <div class="feature">
+        <i class="fa-solid fa-pen-nib"></i>
+        <h3>Logo Design</h3>
+        <p>Memorable logos tailored to reflect your brand identity and values.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-brands fa-instagram"></i>
+        <h3>Social Media Posts</h3>
+        <p>Engaging post designs optimized for Instagram, Facebook, and more.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-print"></i>
+        <h3>Marketing Materials</h3>
+        <p>From brochures to banners, we deliver eye-catching print designs.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-box"></i>
+        <h3>Packaging Design</h3>
+        <p>Attractive and informative packaging that stands out on shelves.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-bullhorn"></i>
+        <h3>Ad Creatives</h3>
+        <p>High-performing visuals for Google Ads, Meta Ads, and campaigns.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-book"></i>
+        <h3>Brand Guidelines</h3>
+        <p>Consistent branding rules for fonts, colors, and logo usage.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a href="./services.html">⬅ Back to Services</a>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Management Services</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      background: #000;
+      overflow-x: hidden;
+    }
+
+    /* Section with Background */
+    .hero {
+      height: 100vh;
+      background: url("A_webpage_screenshot_for_YouTube_Management_servic.png") no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Overlay for better text visibility */
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #ff0000, #ff7a00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      background: linear-gradient(90deg, #ff0000, #ff7a00);
+      border: none;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #ff7a00, #ff0000);
+    }
+
+    /* Services Section */
+    .services {
+      background: #111;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .services h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      color: #ff4a00;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 8px 25px rgba(255, 74, 0, 0.4);
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>YouTube Management Services</h1>
+      <p>Grow your channel with expert strategies, tailored content planning, and complete management solutions that help you gain subscribers, boost views, and monetize effectively.</p>
+      <button class="btn">Get Started</button>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>Channel Setup</h3>
+        <p>We optimize your channel with branding, SEO, and professional design.</p>
+      </div>
+      <div class="service-card">
+        <h3>Content Strategy</h3>
+        <p>Get custom content plans to grow your channel consistently.</p>
+      </div>
+      <div class="service-card">
+        <h3>SEO Optimization</h3>
+        <p>Boost your rankings with keyword-rich titles, tags, and descriptions.</p>
+      </div>
+      <div class="service-card">
+        <h3>Monetization</h3>
+        <p>We help you monetize your channel and maximize revenue streams.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
