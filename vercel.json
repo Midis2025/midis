@@ -30,7 +30,7 @@
     { "source": "/terms-conditions.html", "destination": "/terms-conditions", "permanent": true },
     { "source": "/team.html", "destination": "/Team", "permanent": true },
     { "source": "/Webdevlopment.html", "destination": "/Web-development", "permanent": true },
-    { "source": "/VideoEditing.html", "destination": "/VideoEditing", "permanent": true },
+    { "source": "/VideoEditing.html", "destination": "/Video-Editing", "permanent": true },
     { "source": "/WebDesigning.html", "destination": "/Web-Designing", "permanent": true },
     { "source": "/YouTubeManagement.html", "destination": "/YouTube-Management", "permanent": true },
     { "source": "/Search-engine-optimization.html", "destination": "/Search-engine-optimization", "permanent": true },
