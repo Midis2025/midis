@@ -1958,6 +1958,10 @@ button {
   font-size: 14px;
   margin-top: 20px;
 }
+.footer-bottom a{
+  color: white;
+  text-decoration: none;
+}
 
 /* Responsive */
 @media (max-width: 768px) {

@@ -389,6 +389,10 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
     font-size: 14px;
     margin-top: 20px;
   }
+  .footer-bottom a{
+    color: white;
+    text-decoration: none;
+  }
   .footer-col ul li a{
   color: white;
     text-decoration: underline;
@@ -696,3 +700,14 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
     color: black;
   }
 }
+  .divider{
+      width:100%; height:2px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin:0 auto clamp(32px,5vw,56px);
+      animation: glowline 4s linear infinite;
+    }
+    @keyframes glowline {
+      0% {opacity:.2; transform:scaleX(0.6);}
+      50% {opacity:1; transform:scaleX(1);}
+      100% {opacity:.2; transform:scaleX(0.6);}
+    }

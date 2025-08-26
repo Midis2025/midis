@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/midis.in", "destination": "/index.html" },
+    { "source": "/Home", "destination": "/index.html" },
     { "source": "/services", "destination": "/services.html" },
     { "source": "/aboutus", "destination": "/aboutus.html" },
     { "source": "/contactus", "destination": "/contactus.html" },
@@ -8,20 +8,20 @@
     { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
     { "source": "/terms-conditions", "destination": "/terms-conditions.html" },
     { "source": "/Team", "destination": "/team.html" },
-    { "source": "/Webdevlopment", "destination": "/Webdevlopment.html" },
-    { "source": "/VideoEditing", "destination": "/VideoEditing.html" },
-    { "source": "/WebDesigning", "destination": "/WebDesigning.html" },
-    { "source": "/YouTubeManagement", "destination": "/YouTubeManagement.html" },
+    { "source": "/Web-development", "destination": "/Webdevlopment.html" },
+    { "source": "/Video-Editing", "destination": "/VideoEditing.html" },
+    { "source": "/Web-Designing", "destination": "/WebDesigning.html" },
+    { "source": "/YouTube-Management", "destination": "/YouTubeManagement.html" },
     { "source": "/Search-engine-optimization", "destination": "/Search-engine-optimization.html" },
-    { "source": "/GraphicDesign", "destination": "/GraphicDesign.html" },
-    { "source": "/EmailMarketing", "destination": "/EmailMarketing.html" },
-    { "source": "/E-CommerceStrategy", "destination": "/E-CommerceStrategy.html" },
-    { "source": "/ContentWriting", "destination": "/ContentWriting.html" },
-        { "source": "/explore", "destination": "/explore.html" }
+    { "source": "/Graphic-Design", "destination": "/GraphicDesigning.html" },
+    { "source": "/Email-Marketing", "destination": "/EmailMarketing.html" },
+    { "source": "/E-Commerce-Strategy", "destination": "/E-CommerceStrategy.html" },
+    { "source": "/Content-Writing", "destination": "/ContentWriting.html" },
+        { "source": "/Explore", "destination": "/explore.html" }
 
   ],
   "redirects": [
-    { "source": "/index.html", "destination": "/midis.in", "permanent": true },
+    { "source": "/index.html", "destination": "/Home", "permanent": true },
     { "source": "/services.html", "destination": "/services", "permanent": true },
     { "source": "/aboutus.html", "destination": "/aboutus", "permanent": true },
     { "source": "/contactus.html", "destination": "/contactus", "permanent": true },
@@ -29,16 +29,16 @@
     { "source": "/privacy-policy.html", "destination": "/privacy-policy", "permanent": true },
     { "source": "/terms-conditions.html", "destination": "/terms-conditions", "permanent": true },
     { "source": "/team.html", "destination": "/Team", "permanent": true },
-    { "source": "/Webdevlopment.html", "destination": "/Webdevlopment", "permanent": true },
+    { "source": "/Webdevlopment.html", "destination": "/Web-devlopment", "permanent": true },
     { "source": "/VideoEditing.html", "destination": "/VideoEditing", "permanent": true },
-    { "source": "/WebDesigning.html", "destination": "/WebDesigning", "permanent": true },
-    { "source": "/YouTubeManagement.html", "destination": "/YouTubeManagement", "permanent": true },
+    { "source": "/WebDesigning.html", "destination": "/Web-Designing", "permanent": true },
+    { "source": "/YouTubeManagement.html", "destination": "/YouTube-Management", "permanent": true },
     { "source": "/Search-engine-optimization.html", "destination": "/Search-engine-optimization", "permanent": true },
-    { "source": "/GraphicDesign.html", "destination": "/GraphicDesign", "permanent": true },
-    { "source": "/EmailMarketing.html", "destination": "/EmailMarketing", "permanent": true },
-    { "source": "/E-CommerceStrategy.html", "destination": "/E-CommerceStrategy", "permanent": true },
-    { "source": "/ContentWriting.html", "destination": "/ContentWriting", "permanent": true },
-        { "source": "/explore.html", "destination": "/explore", "permanent": true }
+    { "source": "/GraphicDesign.html", "destination": "/Graphic-Designing.  ", "permanent": true },
+    { "source": "/EmailMarketing.html", "destination": "/Email-Marketing", "permanent": true },
+    { "source": "/E-CommerceStrategy.html", "destination": "/E-Commerce-Strategy", "permanent": true },
+    { "source": "/ContentWriting.html", "destination": "/Content-Writing", "permanent": true },
+        { "source": "/explore.html", "destination": "/Explore", "permanent": true }
 
   ]
 }

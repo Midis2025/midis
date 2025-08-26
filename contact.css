@@ -166,6 +166,7 @@ body {
     object-fit: cover;
   }
   .fab{
+    font-size: 20px;
     color:  #e65c00;
   }
   .increase{
@@ -299,6 +300,10 @@ body {
 .dog-wrapper img {
   height: 150px;
 }
+.rank-sell-container a{
+  color: black;
+  text-decoration: none;
+}
 
 /* Animation to move dog across the screen */
 @keyframes walkDogOnEdge {
@@ -364,6 +369,10 @@ body {
     font-size: 14px;
     margin-top: 20px;
   }
+  .footer-bottom a{
+  color: white;
+  text-decoration: none;
+}
 
   /* Responsive */
   @media (max-width: 768px) {
