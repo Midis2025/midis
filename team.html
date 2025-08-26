@@ -211,7 +211,6 @@ color: #ff6b00;
       transition: all 1s ease;
     }
     .section .text.show {opacity: 1; transform: translateY(0);}
-    
   .section .slider {
   flex: 1.2;
   display: flex;
@@ -303,7 +302,7 @@ color: #ff6b00;
     width: 100%;
     justify-content: center;
     gap: 16px;
-    
+    display: none;
   }
   .card {
     min-width: 220px;
@@ -328,26 +327,20 @@ color: #ff6b00;
 
   .section {padding: 40px 16px;}
   .section .text {font-size: 1.2rem;}
-   .section .slider {
-    width: 100%;
-    overflow-x: auto;
-    gap: 16px;
-    scroll-snap-type: x mandatory;   /* 👈 swipe karne par card center pe stop hoga */
-  }
-  .card {
-    flex: 0 0 auto;
-    min-width: 40%;   /* 👈 ek card screen ka 75% lega */
-    height: 300px;
-    scroll-snap-align: center;
-    border-radius: 12px;
-  }
+     .section .slider {
+      gap: 16px;
+      display: none;
+    }
+    .card {
+      min-width: 220px;
+      height: 320px;
+    }
   }
 
   .overlay .name {font-size: 1rem;}
   .overlay .role {font-size: 0.8rem;}
   
-  .big-scroll-text h2 {font-size: clamp(2rem, 8vw, 9rem);
-  }
+  .big-scroll-text h2 {font-size: clamp(2rem, 8vw, 9rem);}
 
 
 /* Small Phones (max-width: 480px) */
@@ -360,10 +353,12 @@ color: #ff6b00;
 
   .section .text {font-size: 1rem;}
   .card {
-    min-width: 100px;
+    min-width: 160px;
     height: 240px;
   }
- 
+  .slider{
+    display: none;
+  }
   .overlay {bottom: 12px; left: 12px;}
   .overlay .name {font-size: 0.9rem;}
   .overlay .role {font-size: 0.75rem;}
@@ -760,7 +755,21 @@ window.addEventListener("load", () => {
   setTimeout(startSliderLoop, 200);
 });
 
+function startSliderLoop() {
+  // Adjust speed depending on screen size (slower on iPhone/small devices)
+  let scrollSpeed = window.innerWidth < 768 ? 0.6 : 1.2;
 
+  function animate() {
+    slider.scrollLeft += scrollSpeed;
+
+    if (slider.scrollLeft >= slider.scrollWidth / 2) {
+      slider.scrollLeft = 0;
+    }
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
 
 
 </script>
