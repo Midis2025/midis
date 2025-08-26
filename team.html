@@ -211,6 +211,7 @@ color: #ff6b00;
       transition: all 1s ease;
     }
     .section .text.show {opacity: 1; transform: translateY(0);}
+    
   .section .slider {
   flex: 1.2;
   display: flex;
@@ -327,16 +328,19 @@ color: #ff6b00;
 
   .section {padding: 40px 16px;}
   .section .text {font-size: 1.2rem;}
-    .section .slider {
+   .section .slider {
     width: 100%;
     overflow-x: auto;
-    gap: 12px;
-    scroll-snap-type: x mandatory;  /* 👈 smooth card snapping */
+    gap: 16px;
+    scroll-snap-type: x mandatory;   /* 👈 swipe karne par card center pe stop hoga */
   }
-    .card {
-      min-width: 220px;
-      height: 320px;
-    }
+  .card {
+    flex: 0 0 auto;
+    min-width: 75%;   /* 👈 ek card screen ka 75% lega */
+    height: 300px;
+    scroll-snap-align: center;
+    border-radius: 12px;
+  }
   }
 
   .overlay .name {font-size: 1rem;}
@@ -757,8 +761,8 @@ window.addEventListener("load", () => {
 });
 
 function startSliderLoop() {
-  // Adjust speed depending on screen size (slower on iPhone/small devices)
-  let scrollSpeed = window.innerWidth < 768 ? 0.6 : 1.2;
+  // Ab phones aur desktop dono me fast
+  let scrollSpeed = window.innerWidth < 768 ? 2 : 3;  
 
   function animate() {
     slider.scrollLeft += scrollSpeed;
