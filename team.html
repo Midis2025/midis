@@ -336,7 +336,7 @@ color: #ff6b00;
   }
   .card {
     flex: 0 0 auto;
-    min-width: 75%;   /* 👈 ek card screen ka 75% lega */
+    min-width: 40%;   /* 👈 ek card screen ka 75% lega */
     height: 300px;
     scroll-snap-align: center;
     border-radius: 12px;
@@ -360,7 +360,7 @@ color: #ff6b00;
 
   .section .text {font-size: 1rem;}
   .card {
-    min-width: 160px;
+    min-width: 100px;
     height: 240px;
   }
  
@@ -760,21 +760,7 @@ window.addEventListener("load", () => {
   setTimeout(startSliderLoop, 200);
 });
 
-function startSliderLoop() {
-  // Ab phones aur desktop dono me fast
-  let scrollSpeed = window.innerWidth < 768 ? 2 : 3;  
 
-  function animate() {
-    slider.scrollLeft += scrollSpeed;
-
-    if (slider.scrollLeft >= slider.scrollWidth / 2) {
-      slider.scrollLeft = 0;
-    }
-
-    requestAnimationFrame(animate);
-  }
-  animate();
-}
 
 
 </script>
