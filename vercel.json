@@ -1,8 +1,24 @@
 {
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
-    { "source": "/about-us", "destination": "/aboutus.html" },
     { "source": "/services", "destination": "/services.html" },
-    { "source": "/contact-us", "destination": "/contactus.html" }
+    { "source": "/aboutus", "destination": "/aboutus.html" },
+    { "source": "/contactus", "destination": "/contactus.html" },
+    { "source": "/blogs", "destination": "/blogs.html" },
+    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
+    { "source": "/terms-conditions", "destination": "/terms-conditions.html" },
+    { "source": "/signup", "destination": "/signup.html" },
+    { "source": "/login", "destination": "/login.html" }
+  ],
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/services.html", "destination": "/services", "permanent": true },
+    { "source": "/aboutus.html", "destination": "/aboutus", "permanent": true },
+    { "source": "/contactus.html", "destination": "/contactus", "permanent": true },
+    { "source": "/blogs.html", "destination": "/blogs", "permanent": true },
+    { "source": "/privacy-policy.html", "destination": "/privacy-policy", "permanent": true },
+    { "source": "/terms-conditions.html", "destination": "/terms-conditions", "permanent": true },
+    { "source": "/signup.html", "destination": "/signup", "permanent": true },
+    { "source": "/login.html", "destination": "/login", "permanent": true }
   ]
 }
