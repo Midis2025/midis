@@ -302,7 +302,7 @@ color: #ff6b00;
     width: 100%;
     justify-content: center;
     gap: 16px;
-    display: none;
+    
   }
   .card {
     min-width: 220px;
@@ -327,10 +327,12 @@ color: #ff6b00;
 
   .section {padding: 40px 16px;}
   .section .text {font-size: 1.2rem;}
-     .section .slider {
-      gap: 16px;
-      display: none;
-    }
+    .section .slider {
+    width: 100%;
+    overflow-x: auto;
+    gap: 12px;
+    scroll-snap-type: x mandatory;  /* 👈 smooth card snapping */
+  }
     .card {
       min-width: 220px;
       height: 320px;
@@ -340,7 +342,8 @@ color: #ff6b00;
   .overlay .name {font-size: 1rem;}
   .overlay .role {font-size: 0.8rem;}
   
-  .big-scroll-text h2 {font-size: clamp(2rem, 8vw, 9rem);}
+  .big-scroll-text h2 {font-size: clamp(2rem, 8vw, 9rem);
+  }
 
 
 /* Small Phones (max-width: 480px) */
@@ -356,9 +359,7 @@ color: #ff6b00;
     min-width: 160px;
     height: 240px;
   }
-  .slider{
-    display: none;
-  }
+ 
   .overlay {bottom: 12px; left: 12px;}
   .overlay .name {font-size: 0.9rem;}
   .overlay .role {font-size: 0.75rem;}
