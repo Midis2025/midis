@@ -1012,6 +1012,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   .leftside {
     width: 100%;
     padding: 0 20px;
+    padding-top: 120px;
   }
 
 }
