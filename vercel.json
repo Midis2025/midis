@@ -9,14 +9,16 @@
     { "source": "/terms-conditions", "destination": "/terms-conditions.html" },
     { "source": "/Team", "destination": "/team.html" },
     { "source": "/Webdevlopment", "destination": "/Webdevlopment.html" },
-    { "source": "/VideoEditing", "destination": "/VideoEditng.html" },
+    { "source": "/VideoEditing", "destination": "/VideoEditing.html" },
     { "source": "/WebDesigning", "destination": "/WebDesigning.html" },
     { "source": "/YouTubeManagement", "destination": "/YouTubeManagement.html" },
     { "source": "/Search-engine-optimization", "destination": "/Search-engine-optimization.html" },
     { "source": "/GraphicDesign", "destination": "/GraphicDesign.html" },
     { "source": "/EmailMarketing", "destination": "/EmailMarketing.html" },
     { "source": "/E-CommerceStrategy", "destination": "/E-CommerceStrategy.html" },
-    { "source": "/ContentWriting", "destination": "/ContentWriting.html" }
+    { "source": "/ContentWriting", "destination": "/ContentWriting.html" },
+        { "source": "/explore", "destination": "/explore.html" }
+
   ],
   "redirects": [
     { "source": "/index.html", "destination": "/midis.in", "permanent": true },
@@ -28,13 +30,15 @@
     { "source": "/terms-conditions.html", "destination": "/terms-conditions", "permanent": true },
     { "source": "/team.html", "destination": "/Team", "permanent": true },
     { "source": "/Webdevlopment.html", "destination": "/Webdevlopment", "permanent": true },
-    { "source": "/VideoEditng.html", "destination": "/VideoEditing", "permanent": true },
+    { "source": "/VideoEditing.html", "destination": "/VideoEditing", "permanent": true },
     { "source": "/WebDesigning.html", "destination": "/WebDesigning", "permanent": true },
     { "source": "/YouTubeManagement.html", "destination": "/YouTubeManagement", "permanent": true },
     { "source": "/Search-engine-optimization.html", "destination": "/Search-engine-optimization", "permanent": true },
     { "source": "/GraphicDesign.html", "destination": "/GraphicDesign", "permanent": true },
     { "source": "/EmailMarketing.html", "destination": "/EmailMarketing", "permanent": true },
     { "source": "/E-CommerceStrategy.html", "destination": "/E-CommerceStrategy", "permanent": true },
-    { "source": "/ContentWriting.html", "destination": "/ContentWriting", "permanent": true }
+    { "source": "/ContentWriting.html", "destination": "/ContentWriting", "permanent": true },
+        { "source": "/explore.html", "destination": "/explore", "permanent": true }
+
   ]
 }
