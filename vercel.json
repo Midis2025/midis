@@ -1,24 +1,40 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
+    { "source": "/midis.in", "destination": "/index.html" },
     { "source": "/services", "destination": "/services.html" },
     { "source": "/aboutus", "destination": "/aboutus.html" },
     { "source": "/contactus", "destination": "/contactus.html" },
     { "source": "/blogs", "destination": "/blogs.html" },
     { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
     { "source": "/terms-conditions", "destination": "/terms-conditions.html" },
-    { "source": "/signup", "destination": "/signup.html" },
-    { "source": "/login", "destination": "/login.html" }
+    { "source": "/Team", "destination": "/team.html" },
+    { "source": "/Webdevlopment", "destination": "/Webdevlopment.html" },
+    { "source": "/VideoEditing", "destination": "/VideoEditng.html" },
+    { "source": "/WebDesigning", "destination": "/WebDesigning.html" },
+    { "source": "/YouTubeManagement", "destination": "/YouTubeManagement.html" },
+    { "source": "/Search-engine-optimization", "destination": "/Search-engine-optimization.html" },
+    { "source": "/GraphicDesign", "destination": "/GraphicDesign.html" },
+    { "source": "/EmailMarketing", "destination": "/EmailMarketing.html" },
+    { "source": "/E-CommerceStrategy", "destination": "/E-CommerceStrategy.html" },
+    { "source": "/ContentWriting", "destination": "/ContentWriting.html" }
   ],
   "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/index.html", "destination": "/midis.in", "permanent": true },
     { "source": "/services.html", "destination": "/services", "permanent": true },
     { "source": "/aboutus.html", "destination": "/aboutus", "permanent": true },
     { "source": "/contactus.html", "destination": "/contactus", "permanent": true },
     { "source": "/blogs.html", "destination": "/blogs", "permanent": true },
     { "source": "/privacy-policy.html", "destination": "/privacy-policy", "permanent": true },
     { "source": "/terms-conditions.html", "destination": "/terms-conditions", "permanent": true },
-    { "source": "/signup.html", "destination": "/signup", "permanent": true },
-    { "source": "/login.html", "destination": "/login", "permanent": true }
+    { "source": "/team.html", "destination": "/Team", "permanent": true },
+    { "source": "/Webdevlopment.html", "destination": "/Webdevlopment", "permanent": true },
+    { "source": "/VideoEditng.html", "destination": "/VideoEditing", "permanent": true },
+    { "source": "/WebDesigning.html", "destination": "/WebDesigning", "permanent": true },
+    { "source": "/YouTubeManagement.html", "destination": "/YouTubeManagement", "permanent": true },
+    { "source": "/Search-engine-optimization.html", "destination": "/Search-engine-optimization", "permanent": true },
+    { "source": "/GraphicDesign.html", "destination": "/GraphicDesign", "permanent": true },
+    { "source": "/EmailMarketing.html", "destination": "/EmailMarketing", "permanent": true },
+    { "source": "/E-CommerceStrategy.html", "destination": "/E-CommerceStrategy", "permanent": true },
+    { "source": "/ContentWriting.html", "destination": "/ContentWriting", "permanent": true }
   ]
 }
