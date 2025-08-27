@@ -215,23 +215,31 @@ color: #ff6b00;
   .section .slider {
   flex: 1.2;
   display: flex;
-  overflow-x: auto;               /* 👈 FIX */
+  overflow-x: auto;
   gap: 20px;
-  scroll-behavior: smooth;        /* smooth scroll */
-  -webkit-overflow-scrolling: touch; /* iPhone ke liye */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  min-width: 0;   /* 👈 Prevent Safari flex-basis bug */
+  scrollbar-width: none;   /* Firefox hide */
+
 }
 .section .slider::-webkit-scrollbar {
-  display: none; /* Mobile me scrollbar hide */
+  display: none;          /* Safari/Chrome hide */
 }
-   .card {
-  flex: 0 0 auto;   /* 👈 FIX */
-  min-width: 260px;
+
+
+
+  .card {
+  flex: 0 0 auto;   /* no shrink */
+  width: 260px;     /* fixed width */
+  max-width: 80vw;  /* responsive */
   height: 380px;
   border-radius: 8px;
   background: #111;
   overflow: hidden;
   position: relative;
 }
+
     .card img {
       width: 100%;
       height: 100%;
@@ -328,26 +336,20 @@ color: #ff6b00;
 
   .section {padding: 40px 16px;}
   .section .text {font-size: 1.2rem;}
-   .section .slider {
-    width: 100%;
-    overflow-x: auto;
-    gap: 16px;
-    scroll-snap-type: x mandatory;   /* 👈 swipe karne par card center pe stop hoga */
-  }
-  .card {
-    flex: 0 0 auto;
-    min-width: 75%;   /* 👈 ek card screen ka 75% lega */
-    height: 300px;
-    scroll-snap-align: center;
-    border-radius: 12px;
-  }
+     .section .slider {
+      gap: 16px;
+     
+    }
+    .card {
+      min-width: 220px;
+      height: 320px;
+    }
   }
 
   .overlay .name {font-size: 1rem;}
   .overlay .role {font-size: 0.8rem;}
   
-  .big-scroll-text h2 {font-size: clamp(2rem, 8vw, 9rem);
-  }
+  .big-scroll-text h2 {font-size: clamp(2rem, 8vw, 9rem);}
 
 
 /* Small Phones (max-width: 480px) */
@@ -363,7 +365,9 @@ color: #ff6b00;
     min-width: 160px;
     height: 240px;
   }
- 
+  .slider{
+    
+  }
   .overlay {bottom: 12px; left: 12px;}
   .overlay .name {font-size: 0.9rem;}
   .overlay .role {font-size: 0.75rem;}
@@ -554,7 +558,7 @@ Driven by innovation and a community-first approach, Sagar Bakshi continues to p
     <div class="founder-row reveal" data-delay="0.15">
       <div class="founder-text from-left">
         <h3 class="name">Gaurav Sharma</h3>
-        <p class="role">Director & Co-founder</p>
+        <p class="role">Founder & CEO</p>
         <p class="bio">Michael Clark, Co-founder & Director of Midis, is a forward-thinking entrepreneur dedicated to driving digital innovation for businesses worldwide. With a strong background in technology and strategic growth, Michael plays a key role in shaping Midis into a trusted partner for brands seeking impactful digital transformation.
 
 At Midis, Michael leads initiatives that combine creative design, advanced marketing strategies, and powerful web development to deliver measurable results. His focus on innovation and client success ensures that every Midis project not only meets expectations but sets new benchmarks in digital excellence.
@@ -760,7 +764,20 @@ window.addEventListener("load", () => {
   setTimeout(startSliderLoop, 200);
 });
 
+function startSliderLoop() {
+  // Adjust speed depending on screen size (slower on iPhone/small devices)
+  let scrollSpeed = window.innerWidth < 768 ? 0.6 : 1.2;
 
+  function animate() {
+    slider.scrollLeft += scrollSpeed;
+if (slider.scrollLeft >= (slider.scrollWidth / 2) - 2) {
+  slider.scrollLeft = 0;
+}
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
 
 
 </script>

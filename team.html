@@ -211,26 +211,35 @@ color: #ff6b00;
       transition: all 1s ease;
     }
     .section .text.show {opacity: 1; transform: translateY(0);}
+    
   .section .slider {
   flex: 1.2;
   display: flex;
-  overflow-x: auto;               /* 👈 FIX */
+  overflow-x: auto;
   gap: 20px;
-  scroll-behavior: smooth;        /* smooth scroll */
-  -webkit-overflow-scrolling: touch; /* iPhone ke liye */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  min-width: 0;   /* 👈 Prevent Safari flex-basis bug */
+  scrollbar-width: none;   /* Firefox hide */
+
 }
 .section .slider::-webkit-scrollbar {
-  display: none; /* Mobile me scrollbar hide */
+  display: none;          /* Safari/Chrome hide */
 }
-   .card {
-  flex: 0 0 auto;   /* 👈 FIX */
-  min-width: 260px;
+
+
+
+  .card {
+  flex: 0 0 auto;   /* no shrink */
+  width: 260px;     /* fixed width */
+  max-width: 80vw;  /* responsive */
   height: 380px;
   border-radius: 8px;
   background: #111;
   overflow: hidden;
   position: relative;
 }
+
     .card img {
       width: 100%;
       height: 100%;
@@ -302,7 +311,7 @@ color: #ff6b00;
     width: 100%;
     justify-content: center;
     gap: 16px;
-    display: none;
+    
   }
   .card {
     min-width: 220px;
@@ -329,7 +338,7 @@ color: #ff6b00;
   .section .text {font-size: 1.2rem;}
      .section .slider {
       gap: 16px;
-      display: none;
+     
     }
     .card {
       min-width: 220px;
@@ -357,7 +366,7 @@ color: #ff6b00;
     height: 240px;
   }
   .slider{
-    display: none;
+    
   }
   .overlay {bottom: 12px; left: 12px;}
   .overlay .name {font-size: 0.9rem;}
@@ -761,10 +770,9 @@ function startSliderLoop() {
 
   function animate() {
     slider.scrollLeft += scrollSpeed;
-
-    if (slider.scrollLeft >= slider.scrollWidth / 2) {
-      slider.scrollLeft = 0;
-    }
+if (slider.scrollLeft >= (slider.scrollWidth / 2) - 2) {
+  slider.scrollLeft = 0;
+}
 
     requestAnimationFrame(animate);
   }
