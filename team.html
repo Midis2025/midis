@@ -244,7 +244,7 @@ color: #ff6b00;
     }
      .slider-container {
       position: relative;
-      width: 71%;
+      width: 72%;
       margin: auto;
       overflow: hidden;
       padding: 20px;
@@ -252,25 +252,23 @@ color: #ff6b00;
 
   .slider {
   display: flex;
-
+gap: 30px;
   transition: transform 0.5s ease-in-out;
 }
 
 
 
-    .card {
-      background: #fff;
-      color: #000;
-      min-width: 280px;
-      max-width: 280px;
-      margin: 0 15px;
-      border-radius: 20px;
-      padding: 20px;
-      text-align: center;
-      flex-shrink: 0;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      height: 300px;
-    }
+   .card {
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  flex: 0 0 calc(33.33% - 20px); /* 3 cards across */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  height: 300px;
+}
+
 
     .card img {
       width: 120px;
@@ -316,21 +314,21 @@ color: #ff6b00;
 
     /* RESPONSIVE DESIGN */
     @media (max-width: 1024px) {
-      .team-section h2 { font-size: 32px; }
-      .team-section p { font-size: 16px; }
+      .img-text h2 { font-size: 32px; }
+        .img-text p { font-size: 16px; }
       .card { min-width: 240px; max-width: 240px; }
     }
 
     @media (max-width: 768px) {
       .img-text h2 { font-size: 28px; }
-      .team-section p { font-size: 15px; }
+      .img-text p { font-size: 15px; }
       .card { min-width: 220px; max-width: 220px; margin: 0 10px; }
     }
 
     @media (max-width: 576px) {
       .team-section { padding: 30px 10px; }
       .img-text h2 { font-size: 24px; }
-      .team-section p { font-size: 14px; }
+      .img-text p { font-size: 14px; }
       .card {
         min-width: 85%;
         max-width: 85%;
@@ -395,6 +393,11 @@ color: #ff6b00;
       gap: 16px;
      
     }
+    .card {
+    flex: 0 0 85%;
+    margin: 0 auto;
+  }
+
    
   }
 
