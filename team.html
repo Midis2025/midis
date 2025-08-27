@@ -196,9 +196,7 @@ color: #ff6b00;
 
     /* ---------- Team Cards (slider) ---------- */
     .section {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
+      
       padding: 80px 40px;
       gap: 40px;
     }
@@ -212,33 +210,36 @@ color: #ff6b00;
     }
     .section .text.show {opacity: 1; transform: translateY(0);}
     
-  .section .slider {
-  flex: 1.2;
-  display: flex;
-  overflow-x: auto;
-  gap: 20px;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  min-width: 0;   /* 👈 Prevent Safari flex-basis bug */
-  scrollbar-width: none;   /* Firefox hide */
+  
+/* ========== SLIDER ========== */
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
 
-}
-.section .slider::-webkit-scrollbar {
-  display: none;          /* Safari/Chrome hide */
-}
+    .slider {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s ease;
+      will-change: transform;
+    }
 
+    .card {
+      flex: 0 0 auto;
+      min-width: clamp(200px, 30vw, 280px);
+      height: clamp(280px, 40vw, 380px);
+      border-radius: 12px;
+      background: #111;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-
-  .card {
-  flex: 0 0 auto;   /* no shrink */
-  width: 260px;     /* fixed width */
-  max-width: 80vw;  /* responsive */
-  height: 380px;
-  border-radius: 8px;
-  background: #111;
-  overflow: hidden;
-  position: relative;
-}
+    .card:hover {
+      transform: translateY(-8px);
+    }
 
     .card img {
       width: 100%;
@@ -247,17 +248,65 @@ color: #ff6b00;
       filter: grayscale(100%) contrast(1.2);
       transition: all 0.5s ease;
     }
-    .card:hover img {filter: grayscale(0%) contrast(1); transform: scale(1.05);}
+
+    .card:hover img {
+      filter: grayscale(0%) contrast(1);
+      transform: scale(1.05);
+    }
+
     .overlay {
       position: absolute;
-      bottom: 20px;
-      left: 20px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
       color: #fff;
+      padding: 30px 20px 20px;
       z-index: 2;
     }
-    .overlay .name {font-size: 1.2rem; font-weight: 600;}
-    .overlay .role {font-size: 0.95rem; color: #ccc;}
 
+    .overlay .name {
+      font-size: clamp(16px, 3vw, 20px);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .overlay .role {
+      font-size: clamp(12px, 2.5vw, 16px);
+      color: #ccc;
+    }
+
+    /* Slider Controls */
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .slider-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider-btn:hover {
+      background: #ff8c42;
+      transform: scale(1.1);
+    }
+
+    .slider-btn:active {
+      transform: scale(0.95);
+    }
     /* ---------- Big Scrolling Text Add-on ---------- */
     .big-scroll-text {
       position: relative;
@@ -286,6 +335,9 @@ color: #ff6b00;
     .big-scroll-text .reverse h2 {
       -webkit-text-stroke: 1px #fff;
     }
+    .section h2{
+      text-align: center;
+    }
     
     /* ---------- Responsive Fixes ---------- */
 
@@ -307,6 +359,7 @@ color: #ff6b00;
     font-size: 1.4rem;
     text-align: center;
   }
+
   .section .slider {
     width: 100%;
     justify-content: center;
@@ -584,45 +637,79 @@ With expertise in branding, digital advertising, and eCommerce solutions.
          <h2 class="img-text">OUR TEAM</h2>
          <p>At Midis, we believe that great ideas don’t just happen — they’re brought to life by passionate, creative, and dedicated individuals. Our team is more than just professionals; we’re collaborators, problem-solvers, and visionaries who deeply care about the impact we create for our clients.</p>
     </div>
-    <div class="slider" id="slider">
-      <div class="card">
-        <img src="./image/Alin.jpg" alt="">
-        <div class="overlay"><div class="name">Alin</div><div class="role">Shopify Developer</div></div>
-      </div>
-      <div class="card">
-          <img src="./image/mem9.jpg" alt="">
-        <div class="overlay"><div class="name">Swayam Gandhi</div><div class="role">Backend Developer</div></div>
-      </div>
-       <div class="card">
-          <img src="./image/Mehul (2).png" alt="">
-         <div class="overlay"><div class="name">Mehul</div><div class="role">Content Creator</div></div>
-      </div>
-       <div class="card">
-          <img src="./image/shiviiii.png" alt="">
-         <div class="overlay"><div class="name">Shivani dixit</div><div class="role">Front-end Developer</div></div>
-      </div>
-       <div class="card">
-          <img src="./image/IMG20250624091652 (1).jpg" alt="">
-         <div class="overlay"><div class="name">Anchal Pal</div><div class="role">front-end Developer</div></div>
-      </div>
-      <div class="card">
-        <img src="./image/member4.jpg" alt="">
-        <div class="overlay"><div class="name">Rahul Gehlot</div><div class="role"> Graphic Designer</div></div>
-      </div>
-      <div class="card">
-          <img src="./image/member6.jpg" alt="">
-         <div class="overlay"><div class="name">Navkirat Bhogal</div><div class="role">SEO</div></div>
-      </div>
+      <div class="slider-container">
+      <div class="slider" id="slider">
         <div class="card">
-          <img src="./image/member3.jpg" alt="">
-         <div class="overlay"><div class="name">Chanda</div><div class="role">Graphic Designer</div></div>
-      </div>
-       
-       <div class="card">
-          <img src="./image/member2.jpg" alt="">
-         <div class="overlay"><div class="name">Ojaswini Saini</div><div class="role">Graphic designer</div></div>
+          <img src="./image/Alin.jpg" alt="Alin - Shopify Developer">
+          <div class="overlay">
+            <div class="name">Alin</div>
+            <div class="role">Shopify Developer</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./image/mem9.jpg" alt="Swayam Gandhi - Backend Developer">
+          <div class="overlay">
+            <div class="name">Swayam Gandhi</div>
+            <div class="role">Backend Developer</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="image/Mehul (2).png" alt="Mehul - Content Creator">
+          <div class="overlay">
+            <div class="name">Mehul</div>
+            <div class="role">Content Creator</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./image/shiviiii.png" alt="Shivani Dixit - Frontend Developer">
+          <div class="overlay">
+            <div class="name">Shivani Dixit</div>
+            <div class="role">Frontend Developer</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./image/IMG20250624091652 (1).jpg" alt="Anchal Pal - Frontend Developer">
+          <div class="overlay">
+            <div class="name">Anchal Pal</div>
+            <div class="role">Frontend Developer</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./image/member4.jpg" alt="Rahul Gehlot - Graphic Designer">
+          <div class="overlay">
+            <div class="name">Rahul Gehlot</div>
+            <div class="role">Graphic Designer</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./image/member6.jpg" alt="Navkirat Bhogal - SEO">
+          <div class="overlay">
+            <div class="name">Navkirat Bhogal</div>
+            <div class="role">SEO</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./image/member8.jpg" alt="Chanda - Graphic Designer">
+          <div class="overlay">
+            <div class="name">Chanda</div>
+            <div class="role">Graphic Designer</div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./image/member2.jpg" alt="Ojaswini Saini - Graphic Designer">
+          <div class="overlay">
+            <div class="name">Ojaswini Saini</div>
+            <div class="role">Graphic Designer</div>
+          </div>
+        </div>
       </div>
     </div>
+    
+    <div class="slider-controls">
+      <button class="slider-btn" id="prevBtn" aria-label="Previous">❮</button>
+      <button class="slider-btn" id="nextBtn" aria-label="Next">❯</button>
+    </div>
+   
   </section>
    <!-- Footer Section -->
   <footer class="site-footer">
@@ -748,36 +835,273 @@ With expertise in branding, digital advertising, and eCommerce solutions.
 // Infinite Slider
 // ======================
 const textBlock = document.getElementById("text-block");
-const slider = document.getElementById("slider");
+
 
 window.addEventListener("load", () => {
   // Fade-in text
   textBlock.classList.add("show");
 
-  // Duplicate cards for seamless infinite effect
-  slider.innerHTML += slider.innerHTML;
+ 
+})
 
-  // Reset scroll
-  slider.scrollLeft = 0;
+ // Enhanced Team Slider
+    class TeamSlider {
+      constructor() {
+        this.slider = document.getElementById('slider');
+        this.prevBtn = document.getElementById('prevBtn');
+        this.nextBtn = document.getElementById('nextBtn');
+        this.textBlock = document.getElementById('text-block');
+        this.cards = this.slider.querySelectorAll('.card');
+        
+        this.currentIndex = 0;
+        this.cardWidth = 0;
+        this.maxIndex = 0;
+        this.isAnimating = false;
+        this.autoPlayInterval = null;
+        this.isPaused = false;
+        
+        this.init();
+      }
+      
+      init() {
+        this.calculateDimensions();
+        this.setupEventListeners();
+        this.duplicateCards();
+        this.showTextBlock();
+        this.startAutoPlay();
+        
+        // Recalculate on resize
+        window.addEventListener('resize', this.debounce(() => {
+          this.calculateDimensions();
+        }, 250));
+      }
+      
+      calculateDimensions() {
+        if (this.cards.length === 0) return;
+        
+        const firstCard = this.cards[0];
+        const style = window.getComputedStyle(firstCard);
+        const gap = 20; // From CSS
+        
+        this.cardWidth = firstCard.offsetWidth + gap;
+        this.maxIndex = Math.max(0, this.cards.length - this.getVisibleCards());
+        
+        // Reset position if needed
+        if (this.currentIndex > this.maxIndex) {
+          this.currentIndex = this.maxIndex;
+        }
+        
+        this.updateSliderPosition(false);
+      }
+      
+      getVisibleCards() {
+        const containerWidth = this.slider.parentElement.offsetWidth;
+        return Math.floor(containerWidth / this.cardWidth) || 1;
+      }
+      
+      setupEventListeners() {
+        this.prevBtn.addEventListener('click', () => this.prevSlide());
+        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        
+        // Pause auto-play on hover
+        this.slider.addEventListener('mouseenter', () => this.pauseAutoPlay());
+        this.slider.addEventListener('mouseleave', () => this.resumeAutoPlay());
+        
+        // Touch/swipe support
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+        
+        this.slider.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          isDragging = true;
+          this.pauseAutoPlay();
+        }, { passive: true });
+        
+        this.slider.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          
+          const deltaX = Math.abs(e.touches[0].clientX - startX);
+          const deltaY = Math.abs(e.touches[0].clientY - startY);
+          
+          // Prevent vertical scrolling if horizontal swipe is detected
+          if (deltaX > deltaY && deltaX > 10) {
+            e.preventDefault();
+          }
+        }, { passive: false });
+        
+        this.slider.addEventListener('touchend', (e) => {
+          if (!isDragging) return;
+          
+          const endX = e.changedTouches[0].clientX;
+          const deltaX = startX - endX;
+          
+          if (Math.abs(deltaX) > 50) { // Minimum swipe distance
+            if (deltaX > 0) {
+              this.nextSlide();
+            } else {
+              this.prevSlide();
+            }
+          }
+          
+          isDragging = false;
+          this.resumeAutoPlay();
+        }, { passive: true });
+      }
+      
+      duplicateCards() {
+        // Only duplicate if we have fewer cards than needed for smooth infinite scroll
+        const visibleCards = this.getVisibleCards();
+        if (this.cards.length < visibleCards * 2) {
+          const originalHTML = this.slider.innerHTML;
+          this.slider.innerHTML += originalHTML;
+          this.cards = this.slider.querySelectorAll('.card');
+        }
+      }
+      
+      showTextBlock() {
+        setTimeout(() => {
+          this.textBlock.classList.add('show');
+        }, 100);
+      }
+      
+      updateSliderPosition(animate = true) {
+        if (this.isAnimating && animate) return;
+        
+        const translateX = -this.currentIndex * this.cardWidth;
+        
+        if (animate) {
+          this.isAnimating = true;
+          this.slider.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          
+          setTimeout(() => {
+            this.isAnimating = false;
+          }, 500);
+        } else {
+          this.slider.style.transition = 'none';
+        }
+        
+        this.slider.style.transform = `translateX(${translateX}px)`;
+        
+        // Update button states
+        this.updateButtonStates();
+      }
+      
+      updateButtonStates() {
+        this.prevBtn.disabled = this.currentIndex <= 0;
+        this.nextBtn.disabled = this.currentIndex >= this.maxIndex;
+        
+        this.prevBtn.style.opacity = this.prevBtn.disabled ? '0.5' : '1';
+        this.nextBtn.style.opacity = this.nextBtn.disabled ? '0.5' : '1';
+      }
+      
+      prevSlide() {
+        if (this.isAnimating || this.currentIndex <= 0) return;
+        
+        this.currentIndex = Math.max(0, this.currentIndex - 1);
+        this.updateSliderPosition();
+      }
+      
+      nextSlide() {
+        if (this.isAnimating || this.currentIndex >= this.maxIndex) return;
+        
+        this.currentIndex = Math.min(this.maxIndex, this.currentIndex + 1);
+        this.updateSliderPosition();
+      }
+      
+      startAutoPlay() {
+        this.autoPlayInterval = setInterval(() => {
+          if (!this.isPaused && !this.isAnimating) {
+            if (this.currentIndex >= this.maxIndex) {
+              this.currentIndex = 0;
+            } else {
+              this.currentIndex++;
+            }
+            this.updateSliderPosition();
+          }
+        }, 4000); // Auto-advance every 4 seconds
+      }
+      
+      pauseAutoPlay() {
+        this.isPaused = true;
+      }
+      
+      resumeAutoPlay() {
+        this.isPaused = false;
+      }
+      
+      debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+    }
 
-  // Start animation loop
-  setTimeout(startSliderLoop, 200);
-});
+    // Initialize slider when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      new TeamSlider();
+    });
 
-function startSliderLoop() {
-  // Adjust speed depending on screen size (slower on iPhone/small devices)
-  let scrollSpeed = window.innerWidth < 768 ? 0.6 : 1.2;
+    // Intersection Observer for performance
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
 
-  function animate() {
-    slider.scrollLeft += scrollSpeed;
-if (slider.scrollLeft >= (slider.scrollWidth / 2) - 2) {
-  slider.scrollLeft = 0;
-}
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
 
-    requestAnimationFrame(animate);
-  }
-  animate();
-}
+    // Observe all cards for lazy loading effects
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => observer.observe(card));
+    });
+
+    // Optimize images loading
+    const images = document.querySelectorAll('img[src]');
+    images.forEach(img => {
+      img.addEventListener('load', () => {
+        img.style.opacity = '1';
+      });
+      
+      img.addEventListener('error', () => {
+        img.style.opacity = '0.5';
+        console.warn('Failed to load image:', img.src);
+      });
+    });
+
+    // Add loading states
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+  
+  
+    
+   
+    
+
+
+
+
+
+
+
+
+
+
 
 
 </script>
