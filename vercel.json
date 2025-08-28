@@ -17,7 +17,7 @@
     { "source": "/Email-Marketing", "destination": "/EmailMarketing.html" },
     { "source": "/E-Commerce-Strategy", "destination": "/E-CommerceStrategy.html" },
     { "source": "/Content-Writing", "destination": "/ContentWriting.html" },
-        { "source": "/Explore", "destination": "/explore.html" }
+        { "source": "/Explore-our-work", "destination": "/explore.html" }
 
   ],
   "redirects": [
@@ -38,7 +38,7 @@
     { "source": "/EmailMarketing.html", "destination": "/Email-Marketing", "permanent": true },
     { "source": "/E-CommerceStrategy.html", "destination": "/E-Commerce-Strategy", "permanent": true },
     { "source": "/ContentWriting.html", "destination": "/Content-Writing", "permanent": true },
-        { "source": "/explore.html", "destination": "/Explore", "permanent": true }
+        { "source": "/explore.html", "destination": "/Explore-our-work", "permanent": true }
 
   ]
 }
