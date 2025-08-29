@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Explore Our Work</title>
+  <style>
+    @font-face {
+      font-family: 'Quivert';
+      src: url('./fonts/Quivert-Regular.woff2') format('woff2'),
+           url('./fonts/Quivert-Regular.woff') format('woff'),
+           url('./fonts/Quivert-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quivert', serif;
+      background: #111;
+      color: white;
+    }
+
+    .container {
+      background: #FF7518;
+      padding: 100px 20px 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 72px;
+      position: relative;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-align: center;
+      padding-bottom: 10px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      height: 5px;
+      width: 100px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px white;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        width: 100px;
+        opacity: 0.6;
+      }
+      50% {
+        width: 140px;
+        opacity: 1;
+      }
+    }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(900px, 1fr));
+  gap: 30px;
+  padding: 60px 40px;
+  justify-items: center;  /* har card ko center align karega */
+  background: linear-gradient(to bottom, #111, #1a1a1a);
+}
+
+.glass-card {
+  width: 100%;
+
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;   /* card ko hamesha center me rakhega */
+}
+
+
+    .glass-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 50px rgba(255, 255, 255, 0.3);
+    }
+
+    .glass-card img {
+      width: 100%;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 42px;
+      }
+
+      h1::after {
+        width: 70px;
+      }
+
+      .gallery {
+        padding: 40px 20px;
+      }
+    }
+        @media (max-width: 428px) {
+      h1 {
+        font-size: 42px;
+      }
+
+      h1::after {
+        width: 70px;
+      }
+
+      .gallery {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Heading Section -->
+  <div class="container">
+    <h1>Explore Our Work</h1>
+  </div>
+
+  <!-- Image Gallery Section -->
+  <div class="gallery">
+    <div class="glass-card">
+      <img src="./Portfoilio (1)/1.png" alt="Work 1">
+    </div>
+    <div class="glass-card">
+      <img src="./Portfoilio (1)/2.png" alt="Work 2">
+    </div>
+    <div class="glass-card">
+      <img src="./Portfoilio (1)/3.png" alt="Work 3">
+    </div>
+    <div class="glass-card">
+      <img src="./Portfoilio (1)/4.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/5.png" alt="Work 4">
+    </div> 
+    <div class="glass-card">
+      <img src="./Portfoilio (1)/6.png" alt="Work 4">
+    </div> 
+    <div class="glass-card">
+      <img src="./Portfoilio (1)/7.png" alt="Work 4">
+    </div> 
+    <div class="glass-card">
+      <img src="./Portfoilio (1)/8.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/9.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/10.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/11.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/12.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/13.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/14.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/15.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/16.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/17.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/18.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/19.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/20.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/21.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/22.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/23.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/24.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/25.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/26.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/27.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/28.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/29.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/30.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/31.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/32.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/33.png" alt="Work 4">
+    </div>
+    
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/34.png" alt="Work 4">
+    </div> <div class="glass-card">
+      <img src="./Portfoilio (1)/35.png" alt="Work 4">
+    </div> <div class="glass-card">
+      <img src="./Portfoilio (1)/36.png" alt="Work 4">
+    </div> <div class="glass-card">
+      <img src="./Portfoilio (1)/37.png" alt="Work 4">
+    </div> <div class="glass-card">
+      <img src="./Portfoilio (1)/38.png" alt="Work 4">
+    </div> <div class="glass-card">
+      <img src="./Portfoilio (1)/39.png" alt="Work 4">
+    </div> <div class="glass-card">
+      <img src="./Portfoilio (1)/40.png" alt="Work 4">
+    </div> <div class="glass-card">
+      <img src="./Portfoilio (1)/41.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/42.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/43.png" alt="Work 4">
+    </div>
+     <div class="glass-card">
+      <img src="./Portfoilio (1)/44.png" alt="Work 4">
+    </div>
+
+  </div>
+
+</body>
+</html>
