@@ -804,7 +804,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 // WhatsApp Number (change to your boss's number in international format)
-    const whatsappNumber = "+919991666026";
+    const whatsappNumber = "+919779320626";
 
     // Redirect directly to WhatsApp when clicking the icon
     document.getElementById("whatsappIcon").addEventListener("click", function () {
