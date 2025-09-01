@@ -10,12 +10,15 @@
       --white: #ffffff;
       --shadow: rgba(0, 0, 0, 0.2);
       --main-black:black;
+       --accent: #FF7518;
+  --accent-dark: #FF7518;
+  --light: #fff8f1;
     }
  
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #111;
+
   color: white;
   overflow-x: hidden;
 }
@@ -1533,7 +1536,10 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
 }
  /* why-choose-section */
  .container4{
-  margin: 37px;
+background-color: black;
+padding-top: 50px;
+padding-bottom: 40px;
+  
  }
  .toast-section {
   max-width: 1200px;
@@ -1554,6 +1560,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  margin: 20px;
 }
 
 .card-why {
@@ -1603,6 +1610,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
 @media (max-width: 768px) {
   .card-container {
     flex-direction: column;
+    
   }
 }
  /*-banner */
@@ -1768,14 +1776,14 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   padding: 20px;
 }
 
-.right-form h3 {
+.right-form h1 {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 10px;
   text-align: center;
 }
 
-.right-form h3 span {
+.right-form h1 span {
   color: #FF7518;
 }
 
@@ -1973,7 +1981,7 @@ button {
   }
 }
 /* chat-bot-button */
-#openChat {
+/* #openChat {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -2144,7 +2152,7 @@ button {
   background-color: #f1f1f1;
   border-radius: 20px;
   max-width: 80%;
-  align-self: flex-start; /* Make it appear like a bot message */
+  align-self: flex-start; /* Make it appear like a bot message 
 }
 
 .name-input {
@@ -2170,7 +2178,104 @@ button {
 
 .name-submit-btn:hover {
   background-color: #45a049;
+} */
+
+/* Floating WhatsApp Icon */
+#whatsappIcon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;         /* Fixed width */
+  height: 55px;        /* Fixed height */
+  background: #25D366;
+  color: white;
+  font-size: 24px;
+  display: flex;       /* Center icon */
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;  /* Makes it a perfect circle */
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
 }
+
+  #whatsappIcon:hover {
+    background: #20b954;
+  }
+
+  /* Chat Popup */
+  #chatPopup {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+  }
+
+  #chatPopup.hidden {
+    display: none;
+  }
+
+  #chatHeader {
+    background: #25D366;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  #messages {
+    padding: 10px;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+
+  .chat-bubble {
+    padding: 8px 12px;
+    margin: 6px 0;
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 80%;
+  }
+
+  .chat-bubble.bot {
+    background: #f1f0f0;
+    color: #000;
+    align-self: flex-start;
+  }
+
+  .chat-bubble.user {
+    background: #25D366;
+    color: #fff;
+    align-self: flex-end;
+    text-align: right;
+  }
+
+  #inputArea {
+    display: flex;
+    border-top: 1px solid #ddd;
+  }
+
+  #userMessage {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    outline: none;
+  }
+
+  #sendBtn {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+
+
 
 /* crausle */
     .container8 {
@@ -2376,3 +2481,4 @@ button {
     margin: 0;
   }
 }
+/* workflow */

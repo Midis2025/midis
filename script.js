@@ -501,253 +501,253 @@ fetch('/api/hello')
 
 // chatbot
 // 🌐 Socket.IO initialization — supports both localhost and production
-const isLocal = window.location.hostname === 'localhost';
-const socket = io(isLocal ? 'http://localhost:5000' : window.location.origin);
+// const isLocal = window.location.hostname === 'localhost';
+// const socket = io(isLocal ? 'http://localhost:5000' : window.location.origin);
 
-let userId = localStorage.getItem('userId');
-let userName = localStorage.getItem('userName');
+// let userId = localStorage.getItem('userId');
+// let userName = localStorage.getItem('userName');
 
-if (!userId) {
-  userId = 'user_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
-  localStorage.setItem('userId', userId);
-}
+// if (!userId) {
+//   userId = 'user_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
+//   localStorage.setItem('userId', userId);
+// }
 
-const chatPopupBtn = document.getElementById('openChat');
-const chatPopup = document.getElementById('chatPopup');
-const sendBtn = document.getElementById('sendBtn');
-const userMessageInput = document.getElementById('userMessage');
-const messagesBox = document.getElementById('messages');
-const chatStatus = document.getElementById('chatStatus');
-const chatTyping = document.getElementById('chatTyping');
-const welcomePopup = document.getElementById('welcomePopup');
-const closeChat = document.getElementById('closeChat');
+// const chatPopupBtn = document.getElementById('openChat');
+// const chatPopup = document.getElementById('chatPopup');
+// const sendBtn = document.getElementById('sendBtn');
+// const userMessageInput = document.getElementById('userMessage');
+// const messagesBox = document.getElementById('messages');
+// const chatStatus = document.getElementById('chatStatus');
+// const chatTyping = document.getElementById('chatTyping');
+// const welcomePopup = document.getElementById('welcomePopup');
+// const closeChat = document.getElementById('closeChat');
 
-if (chatPopup) chatPopup.style.display = 'none';
+// if (chatPopup) chatPopup.style.display = 'none';
 
-// 👋 Show welcome popup outside when chat is closed
-function showWelcomePopup() {
-  if (chatPopup.style.display === 'none') {
-    welcomePopup.classList.remove('hidden');
-  }
-}
+// // 👋 Show welcome popup outside when chat is closed
+// function showWelcomePopup() {
+//   if (chatPopup.style.display === 'none') {
+//     welcomePopup.classList.remove('hidden');
+//   }
+// }
 
-// 👋 Hide welcome popup immediately when chat opens
-function hideWelcomePopup() {
-  welcomePopup.classList.add('hidden');
-}
+// // 👋 Hide welcome popup immediately when chat opens
+// function hideWelcomePopup() {
+//   welcomePopup.classList.add('hidden');
+// }
 
-// 🔥 Open chat from welcome popup click
-welcomePopup?.addEventListener('click', () => {
-  openChat();
-});
+// // 🔥 Open chat from welcome popup click
+// welcomePopup?.addEventListener('click', () => {
+//   openChat();
+// });
 
-// 👋 Toggle Chat from chat button
-chatPopupBtn?.addEventListener('click', () => {
-  const isVisible = chatPopup.style.display === 'flex';
-  if (isVisible) {
-    chatPopup.style.display = 'none';
-    setTimeout(showWelcomePopup, 1000);
-  } else {
-    openChat();
-  }
-});
+// // 👋 Toggle Chat from chat button
+// chatPopupBtn?.addEventListener('click', () => {
+//   const isVisible = chatPopup.style.display === 'flex';
+//   if (isVisible) {
+//     chatPopup.style.display = 'none';
+//     setTimeout(showWelcomePopup, 1000);
+//   } else {
+//     openChat();
+//   }
+// });
 
-// ❌ Close chat button logic
-closeChat?.addEventListener('click', () => {
-  chatPopup.style.display = 'none';
-  setTimeout(showWelcomePopup, 1000);
-});
+// // ❌ Close chat button logic
+// closeChat?.addEventListener('click', () => {
+//   chatPopup.style.display = 'none';
+//   setTimeout(showWelcomePopup, 1000);
+// });
 
-// ✅ Open chat function
-function openChat() {
-  chatPopup.style.display = 'flex';
-  socket.emit('userJoin', { userId, userName });
-  hideWelcomePopup();
-}
+// // ✅ Open chat function
+// function openChat() {
+//   chatPopup.style.display = 'flex';
+//   socket.emit('userJoin', { userId, userName });
+//   hideWelcomePopup();
+// }
 
-// ✉️ Send message
-sendBtn?.addEventListener('click', sendUserMessage);
-userMessageInput?.addEventListener('keypress', (e) => {
-  socket.emit('userTyping', { userId, userName });
-  if (e.key === 'Enter') {
-    sendUserMessage();
-    e.preventDefault();
-  }
-});
+// // ✉️ Send message
+// sendBtn?.addEventListener('click', sendUserMessage);
+// userMessageInput?.addEventListener('keypress', (e) => {
+//   socket.emit('userTyping', { userId, userName });
+//   if (e.key === 'Enter') {
+//     sendUserMessage();
+//     e.preventDefault();
+//   }
+// });
 
-function sendUserMessage() {
-  const message = userMessageInput.value.trim();
-  if (!message) return;
+// function sendUserMessage() {
+//   const message = userMessageInput.value.trim();
+//   if (!message) return;
 
-  if (!userName) {
-    // 🚨 Ask for name first
-    appendMessage('bot', "👋 Hi! Before we start, what’s your name?");
-    showNameInput(message); // Pass first message to send later
-    userMessageInput.value = '';
-    return;
-  }
+//   if (!userName) {
+//     // 🚨 Ask for name first
+//     appendMessage('bot', "👋 Hi! Before we start, what’s your name?");
+//     showNameInput(message); // Pass first message to send later
+//     userMessageInput.value = '';
+//     return;
+//   }
 
-  // Send message as usual
-  socket.emit('userMessage', { userId, userName, message });
-  appendMessage('user', message);
-  userMessageInput.value = '';
-  chatTyping.innerText = '';
-  removeQuickReplies();
-}
+//   // Send message as usual
+//   socket.emit('userMessage', { userId, userName, message });
+//   appendMessage('user', message);
+//   userMessageInput.value = '';
+//   chatTyping.innerText = '';
+//   removeQuickReplies();
+// }
 
-// 📝 Show name input in chat
-function showNameInput(pendingMessage) {
-  const nameInputContainer = document.createElement('div');
-  nameInputContainer.classList.add('name-input-container');
+// // 📝 Show name input in chat
+// function showNameInput(pendingMessage) {
+//   const nameInputContainer = document.createElement('div');
+//   nameInputContainer.classList.add('name-input-container');
 
-  nameInputContainer.innerHTML = `
-    <input type="text" id="nameInputField" placeholder="Enter your name..." class="name-input" />
-    <button id="nameSubmitBtn" class="name-submit-btn">Submit</button>
-  `;
+//   nameInputContainer.innerHTML = `
+//     <input type="text" id="nameInputField" placeholder="Enter your name..." class="name-input" />
+//     <button id="nameSubmitBtn" class="name-submit-btn">Submit</button>
+//   `;
 
-  messagesBox.appendChild(nameInputContainer);
-  messagesBox.scrollTop = messagesBox.scrollHeight;
+//   messagesBox.appendChild(nameInputContainer);
+//   messagesBox.scrollTop = messagesBox.scrollHeight;
 
-  const nameInputField = document.getElementById('nameInputField');
-  const nameSubmitBtn = document.getElementById('nameSubmitBtn');
+//   const nameInputField = document.getElementById('nameInputField');
+//   const nameSubmitBtn = document.getElementById('nameSubmitBtn');
 
-  nameInputField.focus();
+//   nameInputField.focus();
 
-  // Submit on button click
-  nameSubmitBtn.addEventListener('click', () => submitName(nameInputField.value.trim(), pendingMessage));
-  // Submit on Enter key
-  nameInputField.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      submitName(nameInputField.value.trim(), pendingMessage);
-      e.preventDefault();
-    }
-  });
-}
+//   // Submit on button click
+//   nameSubmitBtn.addEventListener('click', () => submitName(nameInputField.value.trim(), pendingMessage));
+//   // Submit on Enter key
+//   nameInputField.addEventListener('keypress', (e) => {
+//     if (e.key === 'Enter') {
+//       submitName(nameInputField.value.trim(), pendingMessage);
+//       e.preventDefault();
+//     }
+//   });
+// }
 
-// 📥 Handle name submission
-function submitName(enteredName, pendingMessage) {
-  if (!enteredName) {
-    alert("Please enter a valid name.");
-    return;
-  }
+// // 📥 Handle name submission
+// function submitName(enteredName, pendingMessage) {
+//   if (!enteredName) {
+//     alert("Please enter a valid name.");
+//     return;
+//   }
 
-  userName = enteredName;
-  localStorage.setItem('userName', userName);
-  socket.emit('userJoin', { userId, userName });
+//   userName = enteredName;
+//   localStorage.setItem('userName', userName);
+//   socket.emit('userJoin', { userId, userName });
 
-  appendMessage('user', userName); // Show name as user message
-  removeNameInput();
+//   appendMessage('user', userName); // Show name as user message
+//   removeNameInput();
 
-  // Send pending first message
-  if (pendingMessage) {
-    socket.emit('userMessage', { userId, userName, message: pendingMessage });
-    appendMessage('user', pendingMessage);
-  }
-}
+//   // Send pending first message
+//   if (pendingMessage) {
+//     socket.emit('userMessage', { userId, userName, message: pendingMessage });
+//     appendMessage('user', pendingMessage);
+//   }
+// }
 
-// 🧹 Remove name input from chat
-function removeNameInput() {
-  const nameInputContainer = document.querySelector('.name-input-container');
-  if (nameInputContainer) nameInputContainer.remove();
-}
+// // 🧹 Remove name input from chat
+// function removeNameInput() {
+//   const nameInputContainer = document.querySelector('.name-input-container');
+//   if (nameInputContainer) nameInputContainer.remove();
+// }
 
-// 🧠 Bot Replies (support quick replies)
-socket.on('botReply', (data) => {
-  if (typeof data === 'string') {
-    appendMessage('bot', data);
-  } else {
-    appendMessage('bot', data.message);
-    if (data.quickReplies && Array.isArray(data.quickReplies)) {
-      showQuickReplies(data.quickReplies);
-    }
-  }
-});
+// // 🧠 Bot Replies (support quick replies)
+// socket.on('botReply', (data) => {
+//   if (typeof data === 'string') {
+//     appendMessage('bot', data);
+//   } else {
+//     appendMessage('bot', data.message);
+//     if (data.quickReplies && Array.isArray(data.quickReplies)) {
+//       showQuickReplies(data.quickReplies);
+//     }
+//   }
+// });
 
-socket.on('info', (msg) => appendMessage('system', msg));
+// socket.on('info', (msg) => appendMessage('system', msg));
 
-socket.on('adminReply', ({ userId: fromId, message }) => {
-  if (fromId === userId) {
-    appendMessage('admin', message);
-    chatTyping.innerText = '';
-  }
-});
+// socket.on('adminReply', ({ userId: fromId, message }) => {
+//   if (fromId === userId) {
+//     appendMessage('admin', message);
+//     chatTyping.innerText = '';
+//   }
+// });
 
-// 🔴 Admin status
-socket.on('adminStatus', (status) => {
-  if (chatStatus) {
-    chatStatus.innerText = status === 'online' ? '🟢 Admin is online' : '🔴 Admin is offline';
-  }
-});
+// // 🔴 Admin status
+// socket.on('adminStatus', (status) => {
+//   if (chatStatus) {
+//     chatStatus.innerText = status === 'online' ? '🟢 Admin is online' : '🔴 Admin is offline';
+//   }
+// });
 
-// ✍️ Typing indicator
-socket.on('adminTyping', () => {
-  chatTyping.innerText = 'Admin is typing...';
-  clearTimeout(window.typingTimeout);
-  window.typingTimeout = setTimeout(() => {
-    chatTyping.innerText = '';
-  }, 2000);
-});
+// // ✍️ Typing indicator
+// socket.on('adminTyping', () => {
+//   chatTyping.innerText = 'Admin is typing...';
+//   clearTimeout(window.typingTimeout);
+//   window.typingTimeout = setTimeout(() => {
+//     chatTyping.innerText = '';
+//   }, 2000);
+// });
 
-// 💬 Append message with styles
-function appendMessage(sender, message) {
-  const bubble = document.createElement('div');
-  const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+// // 💬 Append message with styles
+// function appendMessage(sender, message) {
+//   const bubble = document.createElement('div');
+//   const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-  bubble.classList.add('chat-bubble');
-  if (sender === 'user') bubble.classList.add('user');
-  else if (sender === 'admin') bubble.classList.add('admin');
-  else if (sender === 'system') bubble.classList.add('system');
-  else bubble.classList.add('bot');
+//   bubble.classList.add('chat-bubble');
+//   if (sender === 'user') bubble.classList.add('user');
+//   else if (sender === 'admin') bubble.classList.add('admin');
+//   else if (sender === 'system') bubble.classList.add('system');
+//   else bubble.classList.add('bot');
 
-  bubble.innerHTML = `
-    <div class="message-text">${message}</div>
-    <div class="time">${time}</div>
-  `;
+//   bubble.innerHTML = `
+//     <div class="message-text">${message}</div>
+//     <div class="time">${time}</div>
+//   `;
 
-  messagesBox.appendChild(bubble);
-  messagesBox.scrollTop = messagesBox.scrollHeight;
-}
+//   messagesBox.appendChild(bubble);
+//   messagesBox.scrollTop = messagesBox.scrollHeight;
+// }
 
-// ➕ Show Quick Reply Buttons
-function showQuickReplies(quickReplies) {
-  removeQuickReplies();
+// // ➕ Show Quick Reply Buttons
+// function showQuickReplies(quickReplies) {
+//   removeQuickReplies();
 
-  const container = document.createElement('div');
-  container.classList.add('quick-replies');
+//   const container = document.createElement('div');
+//   container.classList.add('quick-replies');
 
-  quickReplies.forEach(reply => {
-    const btn = document.createElement('button');
-    btn.classList.add('quick-reply-btn');
+//   quickReplies.forEach(reply => {
+//     const btn = document.createElement('button');
+//     btn.classList.add('quick-reply-btn');
 
-    const label = typeof reply === 'string' ? reply : reply.label;
-    btn.innerText = label;
+//     const label = typeof reply === 'string' ? reply : reply.label;
+//     btn.innerText = label;
 
-    btn.onclick = () => {
-      if (typeof reply === 'object' && reply.url) {
-        window.open(reply.url, '_blank');
-      } else {
-        socket.emit('userMessage', { userId, userName, message: label });
-        appendMessage('user', label);
-      }
-      container.remove();
-      userMessageInput.focus();
-    };
+//     btn.onclick = () => {
+//       if (typeof reply === 'object' && reply.url) {
+//         window.open(reply.url, '_blank');
+//       } else {
+//         socket.emit('userMessage', { userId, userName, message: label });
+//         appendMessage('user', label);
+//       }
+//       container.remove();
+//       userMessageInput.focus();
+//     };
 
-    container.appendChild(btn);
-  });
+//     container.appendChild(btn);
+//   });
 
-  messagesBox.appendChild(container);
-  messagesBox.scrollTop = messagesBox.scrollHeight;
-}
+//   messagesBox.appendChild(container);
+//   messagesBox.scrollTop = messagesBox.scrollHeight;
+// }
 
-// 🧹 Remove quick replies
-function removeQuickReplies() {
-  const existing = document.querySelector('.quick-replies');
-  if (existing) existing.remove();
-}
+// // 🧹 Remove quick replies
+// function removeQuickReplies() {
+//   const existing = document.querySelector('.quick-replies');
+//   if (existing) existing.remove();
+// }
 
-// Show welcome popup after 2 seconds initially
-setTimeout(showWelcomePopup, 2000);
+// // Show welcome popup after 2 seconds initially
+// setTimeout(showWelcomePopup, 2000);
 
 
 
@@ -803,3 +803,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+// WhatsApp Number (change to your boss's number in international format)
+  const whatsappNumber = "+919991666026";
+
+  // Toggle Chat Popup
+  document.getElementById("whatsappIcon").addEventListener("click", function () {
+    document.getElementById("chatPopup").classList.remove("hidden");
+  });
+
+  document.getElementById("closeChat").addEventListener("click", function () {
+    document.getElementById("chatPopup").classList.add("hidden");
+  });
+
+  // Send message to WhatsApp
+  document.getElementById("sendBtn").addEventListener("click", function () {
+    let msg = document.getElementById("userMessage").value.trim();
+    if (msg) {
+      let url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg);
+      window.open(url, "_blank");
+
+      // Show message in chat window
+      let messagesDiv = document.getElementById("messages");
+      let userBubble = document.createElement("div");
+      userBubble.className = "chat-bubble user";
+      userBubble.textContent = msg;
+      messagesDiv.appendChild(userBubble);
+
+      document.getElementById("userMessage").value = "";
+    }
+  });
+  

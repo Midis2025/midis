@@ -278,7 +278,7 @@ background: linear-gradient(to right, var(--main-red), var(--main-orange));
   min-width: 280px;
 }
 
-.text-area h3 {
+.text-area h2 {
   font-size: 2.8rem;
   color: #0e1e40;
   margin-bottom: 40px;

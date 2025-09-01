@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step-by-Step Marketing Process</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --accent: #FF7518;
+  --accent-dark: #FF7518;
+  --light: #fff8f1;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--accent); /* 🔥 Orange background */
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 70px;
+  color: white; /* White text for better contrast */
+}
+
+/* Layout */
+.process {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* Left Icons Column */
+.icons {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.icons::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: white; /* 🔥 Line color white */
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+}
+
+.icon-box {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  /* 🔥 Only soft neutral shadow */
+  box-shadow: inset 2px 2px 8px rgba(255,255,255,0.6),
+              inset -2px -2px 8px rgba(0,0,0,0.1),
+              0 8px 18px rgba(0,0,0,0.2);
+}
+
+.icon-box i {
+  font-size: 55px;
+  color: white; /* White icons by default */
+  transition: all 0.3s ease;
+}
+
+.icon-box.active {
+  background: #fff; /* Pure white box */
+  box-shadow: 0 0 20px rgba(255,255,255,0.6); /* White glow only */
+  transform: scale(1.15);
+}
+
+.icon-box.active i {
+  color: var(--accent); /* Orange icon on active */
+}
+
+/* Right side content */
+.details {
+  flex: 1;
+}
+
+.step-detail {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 50px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  opacity: 0.6;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+.step-detail.active {
+  opacity: 1;
+  transform: translateY(0);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+}
+
+.step-detail h3 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+.step-detail p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 15px;
+}
+.step-detail ul {
+  padding-left: 20px;
+}
+.step-detail ul li {
+  margin: 6px 0;
+}
+
+@media(max-width: 900px) {
+  .process { flex-direction: column; }
+  .icons { flex-direction: row; position: static; justify-content: center; }
+  .icons::before { display: none; }
+  .icon-box { margin: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="title">Our Step-by-Step Marketing Process</div>
+
+  <div class="process">
+    <!-- Left Icons -->
+    <div class="icons">
+      <div class="icon-box active" data-step="1"><i class="fas fa-bullhorn"></i></div>
+      <div class="icon-box" data-step="2"><i class="fas fa-rocket"></i></div>
+      <div class="icon-box" data-step="3"><i class="fas fa-code"></i></div>
+      <div class="icon-box" data-step="4"><i class="fas fa-share-alt"></i></div>
+    </div>
+
+    <!-- Right Descriptions -->
+    <div class="details">
+      <div class="step-detail active" id="step-1">
+        <h3>01. Research & Analysis</h3>
+        <p>We start with deep competitor research and keyword analysis to discover high-value opportunities.</p>
+        <ul>
+          <li>Competitor benchmarking</li>
+          <li>Target audience profiling</li>
+          <li>Keyword gap analysis</li>
+        </ul>
+      </div>
+      <div class="step-detail" id="step-2">
+        <h3>02. Strategy & Planning</h3>
+        <p>We build a tailored SEO and digital marketing roadmap aligned with your business goals.</p>
+        <ul>
+          <li>Content & keyword strategy</li>
+          <li>Multi-channel marketing plan</li>
+          <li>Timeline & milestones</li>
+        </ul>
+      </div>
+      <div class="step-detail" id="step-3">
+        <h3>03. Execution & Optimization</h3>
+        <p>Our experts implement SEO, content, and technical improvements to maximize performance.</p>
+        <ul>
+          <li>On-page SEO</li>
+          <li>Technical site optimization</li>
+          <li>Conversion tracking setup</li>
+        </ul>
+      </div>
+      <div class="step-detail" id="step-4">
+        <h3>04. Growth & Scaling</h3>
+        <p>We focus on long-term success, scaling strategies, and ensuring sustainable growth.</p>
+        <ul>
+          <li>Ongoing SEO improvements</li>
+          <li>Content expansion</li>
+          <li>Performance reporting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const steps = document.querySelectorAll(".step-detail");
+const icons = document.querySelectorAll(".icon-box");
+
+function onScroll() {
+  let scrollPos = window.scrollY + window.innerHeight / 2;
+
+  steps.forEach((step, i) => {
+    let stepTop = step.offsetTop;
+    let stepBottom = stepTop + step.offsetHeight;
+
+    if (scrollPos >= stepTop && scrollPos < stepBottom) {
+      icons.forEach(icon => icon.classList.remove("active"));
+      steps.forEach(s => s.classList.remove("active"));
+
+      icons[i].classList.add("active");
+      step.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", onScroll);
+onScroll();
+</script>
+
+</body>
+</html>
