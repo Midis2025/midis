@@ -804,32 +804,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 // WhatsApp Number (change to your boss's number in international format)
-  const whatsappNumber = "+919991666026";
+    const whatsappNumber = "+919991666026";
 
-  // Toggle Chat Popup
-  document.getElementById("whatsappIcon").addEventListener("click", function () {
-    document.getElementById("chatPopup").classList.remove("hidden");
-  });
-
-  document.getElementById("closeChat").addEventListener("click", function () {
-    document.getElementById("chatPopup").classList.add("hidden");
-  });
-
-  // Send message to WhatsApp
-  document.getElementById("sendBtn").addEventListener("click", function () {
-    let msg = document.getElementById("userMessage").value.trim();
-    if (msg) {
-      let url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg);
+    // Redirect directly to WhatsApp when clicking the icon
+    document.getElementById("whatsappIcon").addEventListener("click", function () {
+      let url = "https://wa.me/" + whatsappNumber;
       window.open(url, "_blank");
-
-      // Show message in chat window
-      let messagesDiv = document.getElementById("messages");
-      let userBubble = document.createElement("div");
-      userBubble.className = "chat-bubble user";
-      userBubble.textContent = msg;
-      messagesDiv.appendChild(userBubble);
-
-      document.getElementById("userMessage").value = "";
-    }
-  });
-  
+    });
