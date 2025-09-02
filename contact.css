@@ -165,6 +165,9 @@ body {
     border-radius: 12px;
     object-fit: cover;
   }
+  .rank-sell-left li{
+    list-style: none;
+  }
   .fab{
     font-size: 20px;
     color:  #e65c00;
