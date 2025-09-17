@@ -7,18 +7,154 @@
   <link rel="icon" type="image/png" href="./image/midis m final logo-03.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; font-family: 'Inter', sans-serif; background: #fdf9ff; color: #1a1a1a; }
-    header { background: linear-gradient(135deg, #6a1b9a, #ff6f00); padding: 60px 20px 30px; text-align: center; color: white; }
-    header h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0; }
-    header p { font-size: clamp(1rem, 2vw, 1.2rem); margin-top: 10px; max-width: 800px; margin-inline: auto; }
-    .blog-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-    .blog-container img { width: 100%; height: auto; border-radius: 12px; margin-bottom: 20px; }
-    .blog-container h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 10px; color: #6a1b9a; }
-    .blog-meta { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
-    .blog-container p { font-size: clamp(1rem, 1.8vw, 1.1rem); line-height: 1.7; margin-bottom: 15px; white-space: pre-line; }
-    .back-link { display: block; text-align: center; margin: 40px 0; }
-    .back-link a { display: inline-block; padding: 12px 25px; background: linear-gradient(to right, #6a1b9a, #ff6f00); border-radius: 50px; color: white; font-weight: bold; text-decoration: none; transition: 0.3s ease; }
-    .back-link a:hover { background: linear-gradient(to right, #ff6f00, #6a1b9a); }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fdf9ff;
+      color: #1a1a1a;
+    }
+
+    header {
+      background: linear-gradient(135deg, #6a1b9a, #ff6f00);
+      padding: 60px 20px 30px;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0;
+    }
+
+    header p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      margin-top: 10px;
+      max-width: 800px;
+      margin-inline: auto;
+    }
+
+    /* Blog layout */
+    .blog-layout {
+      display: flex;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* TOC Sidebar */
+    .toc {
+      width: 250px;
+      position: sticky;
+      top: 20px;
+      height: max-content;
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .toc h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      border-bottom: 2px solid #6a1b9a;
+      padding-bottom: 5px;
+    }
+
+    .toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc li {
+      margin: 8px 0;
+      font-size: 0.95rem;
+    }
+
+    .toc li a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.2s;
+    }
+
+    .toc li a:hover {
+      color: #6a1b9a;
+    }
+
+    /* Blog content */
+    .blog-container {
+      flex: 1;
+      max-width: 900px;
+    }
+
+    .blog-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .blog-container h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 10px;
+      color: #6a1b9a;
+    }
+
+    .blog-meta {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .blog-content {
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      line-height: 1.7;
+    }
+
+    .blog-content h2,
+    .blog-content h3 {
+      margin-top: 25px;
+      color: #333;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-link a {
+      display: inline-block;
+      padding: 12px 25px;
+      background: linear-gradient(to right, #6a1b9a, #ff6f00);
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .back-link a:hover {
+      background: linear-gradient(to right, #ff6f00, #6a1b9a);
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .blog-layout {
+        flex-direction: column;
+      }
+      .toc {
+        width: 100%;
+        position: relative;
+      }
+    }
   </style>
 </head>
 <body>
@@ -28,8 +164,15 @@
   <p>Read the full article below</p>
 </header>
 
-<div class="blog-container" id="blog-container">
-  <!-- Blog content will be injected here -->
+<div class="blog-layout">
+  <!-- Table of Contents -->
+  <aside id="toc" class="toc">
+    <h3>Table of Contents</h3>
+    <ul id="toc-list"></ul>
+  </aside>
+
+  <!-- Blog Content -->
+  <div class="blog-container" id="blog-container"></div>
 </div>
 
 <div class="back-link">
@@ -80,12 +223,41 @@ async function loadBlog() {
       <img src="${imageUrl}" alt="${attributes.Title}">
       <h2>${attributes.Title}</h2>
       <div class="blog-meta">Published on: ${publishedDate}</div>
-      <p>${attributes.Content}</p>
+      <div class="blog-content" id="blog-content">${attributes.Content}</div>
     `;
+
+    // Generate TOC
+    generateTOC();
+
   } catch (err) {
     console.error("Error fetching blog:", err);
     document.getElementById('blog-container').innerHTML = "<p>Failed to load blog.</p>";
   }
+}
+
+function generateTOC() {
+  const content = document.getElementById("blog-content");
+  const tocList = document.getElementById("toc-list");
+
+  if (!content || !tocList) return;
+
+  tocList.innerHTML = ""; // clear old TOC
+  const headings = content.querySelectorAll("h2, h3");
+
+  headings.forEach((heading, index) => {
+    if (!heading.id) {
+      heading.id = "heading-" + index;
+    }
+
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="#${heading.id}">${heading.innerText}</a>`;
+
+    if (heading.tagName === "H3") {
+      li.style.marginLeft = "20px";
+    }
+
+    tocList.appendChild(li);
+  });
 }
 
 loadBlog();
