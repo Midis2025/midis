@@ -15,6 +15,34 @@
       color: #1a1a1a;
     }
 
+    /* Loader styling */
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #ddd;
+      border-top: 4px solid #0073e6;
+      /* primary color */
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
     header {
       background: linear-gradient(135deg, #6a1b9a, #ff6f00);
       padding: 60px 20px 30px;
@@ -185,29 +213,37 @@
 
   <script>
     let currentPage = 1;
-    const blogsPerPage = 6; // adjust as needed
+    const blogsPerPage = 6;
 
     async function loadBlogs(page = 1) {
+      const container = document.getElementById("blogs-container");
+
       try {
+        // Show loader
+        container.innerHTML = `
+      <div class="loader">
+        <div class="spinner"></div>
+      </div>
+    `;
+
         const res = await fetch(
           `https://devoted-captain-c1ad6bbc4b.strapiapp.com/api/blogs?populate=*&pagination[page]=${page}&pagination[pageSize]=${blogsPerPage}`
         );
         const data = await res.json();
+
         const blogs = data.data;
         const pagination = data.meta.pagination;
 
-        const container = document.getElementById("blogs-container");
+        // Replace loader with blogs
         container.innerHTML = "";
 
         blogs.forEach(blog => {
           const attributes = blog;
-
           const title = attributes.Title || "No Title";
           const excerpt =
             attributes.Excerpt ||
             (attributes.Content ? attributes.Content.slice(0, 100) + "..." : "");
 
-          // ✅ Correct image URL handling
           let imageUrl =
             "https://devoted-captain-c1ad6bbc4b.strapiapp.com/uploads/default_blog_image.jpg";
           if (attributes.Image) {
@@ -231,24 +267,25 @@
           const card = document.createElement("div");
           card.className = "blog-card";
           card.innerHTML = `
-        <a href="single-blog.html?id=${attributes.id}">
+        <a href="single-blog.html?id=${attributes.id}" target="_blank" rel="noopener noreferrer">
           <img src="${imageUrl}" alt="${title}" />
         </a>
         <div class="blog-content">
-          <a href="single-blog.html?id=${attributes.id}"><h3>${title}</h3></a>
+          <a href="single-blog.html?id=${attributes.id}" target="_blank" rel="noopener noreferrer">
+            <h3>${title}</h3>
+          </a>
           <p>${excerpt}</p>
-          <a href="single-blog.html?id=${attributes.id}">Read More →</a>
-        </div>
-      `;
+          <a href="single-blog.html?id=${attributes.id}" target="_blank" rel="noopener noreferrer">
+            Read More →
+          </a>
+        </div>`;
           container.appendChild(card);
         });
 
-        // ✅ Render pagination controls
         renderPagination(pagination);
       } catch (err) {
         console.error("Error fetching blogs:", err);
-        document.getElementById("blogs-container").innerHTML =
-          "<p>Failed to load blogs.</p>";
+        container.innerHTML = "<p>⚠️ Failed to load blogs. Please try again.</p>";
       }
     }
 
@@ -258,7 +295,6 @@
 
       const { page, pageCount } = pagination;
 
-      // Prev button
       const prevBtn = document.createElement("button");
       prevBtn.innerText = "« Prev";
       prevBtn.disabled = page === 1;
@@ -270,7 +306,6 @@
       };
       paginationContainer.appendChild(prevBtn);
 
-      // Page numbers
       for (let i = 1; i <= pageCount; i++) {
         const pageBtn = document.createElement("button");
         pageBtn.innerText = i;
@@ -282,7 +317,6 @@
         paginationContainer.appendChild(pageBtn);
       }
 
-      // Next button
       const nextBtn = document.createElement("button");
       nextBtn.innerText = "Next »";
       nextBtn.disabled = page === pageCount;
