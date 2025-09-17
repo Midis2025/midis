@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Experts in SEO, PPC & Branding | About Us  | Midis </title>
+  <title>Experts in SEO, PPC & Branding | About Us | Midis </title>
   <link rel="icon" type="image/png" href="./image/midis m final logo-03.png">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -26,12 +26,14 @@
 
 
         <div class="nav-links" id="nav-links">
-          <a href="/">Home</a>
-<a href="/services">Services</a>
-<a href="/aboutus">About</a>
-<a href="/contactus">Contact</a>
+          <a href="/services">Services</a>
+          <a href="/aboutus">About</a>
+          <a href="/blogs">Blogs</a>
+          <a href="/explore.html">Case Study</a>
+          <a href="/contactus">Contact</a>
 
-  <a href="#" id="openPopup">Book a Meeting</a>
+
+          <a href="#" id="openPopup">Book a Meeting</a>
 
           <button id="logoutBtn" class="btn" style="display:none;">Logout</button>
         </div>
@@ -41,62 +43,62 @@
 
   <!-- Popup Overlay -->
   <div id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle" style="display:none;">
-  <button class="close-btn" aria-label="Close popup">×</button>
+    <button class="close-btn" aria-label="Close popup">×</button>
 
-  <div class="popup">
-    <!-- Left side -->
-    <div class="left">
-      <h2 id="popupTitle">Book a Free Strategy Meeting</h2>
-      <p>Digital Growth Expert</p>
+    <div class="popup">
+      <!-- Left side -->
+      <div class="left">
+        <h2 id="popupTitle">Book a Free Strategy Meeting</h2>
+        <p>Digital Growth Expert</p>
 
-      <label for="name">Your Name</label>
-      <input type="text" id="name" placeholder="Your Name" required />
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Your Name" required />
 
-      <label for="contact">Your Contact</label>
-      <input type="text" id="contact" placeholder="Your Contact Number" required />
+        <label for="contact">Your Contact</label>
+        <input type="text" id="contact" placeholder="Your Contact Number" required />
 
-      <label for="email">Your Email</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
 
-      <label for="serviceProposal">Select Service</label>
-      <select id="serviceProposal" required class="selects">
-        <option value="" disabled selected>Select a Service *</option>
-        <option value="Web Development">Web Development</option>
-        <option value="Graphic Design">Graphic Design</option>
-        <option value="Content Creation">Content Creation</option>
-        <option value="Video Editing">Video Editing</option>
-        <option value="YouTube Channel Setup & Management">YouTube Channel Setup & Management</option>
-        <option value="SEO (Search Engine Optimisation)">SEO (Search Engine Optimisation)</option>
-        <option value="Email Marketing">Email Marketing</option>
-        <option value="Google Ads (PPC)">Google Ads (PPC)</option>
-        <option value="Meta Ads (Facebook & Instagram)">Meta Ads (Facebook & Instagram)</option>
-        <option value="LinkedIn Ads">LinkedIn Ads</option>
-      </select>
+        <label for="serviceProposal">Select Service</label>
+        <select id="serviceProposal" required class="selects">
+          <option value="" disabled selected>Select a Service *</option>
+          <option value="Web Development">Web Development</option>
+          <option value="Graphic Design">Graphic Design</option>
+          <option value="Content Creation">Content Creation</option>
+          <option value="Video Editing">Video Editing</option>
+          <option value="YouTube Channel Setup & Management">YouTube Channel Setup & Management</option>
+          <option value="SEO (Search Engine Optimisation)">SEO (Search Engine Optimisation)</option>
+          <option value="Email Marketing">Email Marketing</option>
+          <option value="Google Ads (PPC)">Google Ads (PPC)</option>
+          <option value="Meta Ads (Facebook & Instagram)">Meta Ads (Facebook & Instagram)</option>
+          <option value="LinkedIn Ads">LinkedIn Ads</option>
+        </select>
 
-      <label for="timezone">Select Time Zone</label>
-      <select id="timezone" required>
-        <option value="">Select Time Zone</option>
-        <option value="IST">IST (Indian Standard Time)</option>
-        <option value="EST">EST (Eastern Standard Time)</option>
-        <option value="PST">PST (Pacific Standard Time)</option>
-      </select>
+        <label for="timezone">Select Time Zone</label>
+        <select id="timezone" required>
+          <option value="">Select Time Zone</option>
+          <option value="IST">IST (Indian Standard Time)</option>
+          <option value="EST">EST (Eastern Standard Time)</option>
+          <option value="PST">PST (Pacific Standard Time)</option>
+        </select>
 
-      <button id="submitBooking" disabled>Confirm Booking</button>
-    </div>
-
-    <!-- Right side -->
-    <div class="right">
-      <div class="calendar-head">
-        <button class="nav-btn" id="prevMonthBtn" aria-label="Previous month">←</button>
-        <span id="monthYear">Month Year</span>
-        <button class="nav-btn" id="nextMonthBtn" aria-label="Next month">→</button>
+        <button id="submitBooking" disabled>Confirm Booking</button>
       </div>
 
-      <div class="calendar-grid" id="calendarDays"></div>
-      <div class="time-slots" id="slots"></div>
+      <!-- Right side -->
+      <div class="right">
+        <div class="calendar-head">
+          <button class="nav-btn" id="prevMonthBtn" aria-label="Previous month">←</button>
+          <span id="monthYear">Month Year</span>
+          <button class="nav-btn" id="nextMonthBtn" aria-label="Next month">→</button>
+        </div>
+
+        <div class="calendar-grid" id="calendarDays"></div>
+        <div class="time-slots" id="slots"></div>
+      </div>
     </div>
   </div>
-</div>
 
 
   <!-- Hero Section -->
@@ -267,18 +269,18 @@
       <div class="footer-col">
         <h4>Our Top Service</h4>
         <ul>
-            <li>
-              <a href="./Webdevlopment.html">Web Development</a>
-             
-            </li>
-            <li> <a href="./WebDesigning.html">Web Designing</a></li>
-            <li><a href="./GraphicDesign.html">Graphic Design</a> </li>
-            <li> <a href="./ContentWriting.html">Web Content Creation</a></li>
-            <li> <a href="./VideoEditing.html">Video Editing</a></li>
+          <li>
+            <a href="./Webdevlopment.html">Web Development</a>
 
-            <li> <a href="./YouTubeManagement.html">YouTube Channel Management</a></li>
-       <li> <a href="./Search-engine-optimization.html">Search Engine optimization</a></li>
-          </ul>
+          </li>
+          <li> <a href="./WebDesigning.html">Web Designing</a></li>
+          <li><a href="./GraphicDesign.html">Graphic Design</a> </li>
+          <li> <a href="./ContentWriting.html">Web Content Creation</a></li>
+          <li> <a href="./VideoEditing.html">Video Editing</a></li>
+
+          <li> <a href="./YouTubeManagement.html">YouTube Channel Management</a></li>
+          <li> <a href="./Search-engine-optimization.html">Search Engine optimization</a></li>
+        </ul>
       </div>
 
       <div class="footer-col">
@@ -288,7 +290,7 @@
           <li><a href="services.html">Services</a></li>
           <li><a href="terms-conditions.html">Terms & Conditions</a></li>
           <li><a href="aboutus.html">About Us</a></li>
-            <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
           <li><a href="./team.html">Team</a></li>
           <li> <a href="privacy-policy.html">Privacy Policy</li></a>
         </ul>
@@ -296,12 +298,12 @@
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-           <li>
-    🇺🇸 <a href="tel:+18622950117">+1 (862) 295-0117</a>
-  </li>
-  <li>
-    🇮🇳 <a href="tel:+919779320626">+91 97793 20626</a>
-  </li>
+          <li>
+            🇺🇸 <a href="tel:+18622950117">+1 (862) 295-0117</a>
+          </li>
+          <li>
+            🇮🇳 <a href="tel:+919779320626">+91 97793 20626</a>
+          </li>
           <li>1st Floor, E 279, Industrial Area,<br>Sector 75, S.A.S Nagar, Punjab<br>160055</li>
         </ul>
       </div>
@@ -309,7 +311,7 @@
         <h4>Follow Us</h4>
         <div class="social-links">
           <a href="https://www.facebook.com/profile.php?id=61579354660327" target="_blank"><i
-                class="fab fa-facebook"></i></a>
+              class="fab fa-facebook"></i></a>
           <a href="https://www.instagram.com/officialmidis/" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://www.linkedin.com/company/midisresources/" target="_blank"><i class="fab fa-linkedin"></i></a>
           <a href="https://www.youtube.com/@MidisOfficial" target="_blank"><i class="fab fa-youtube"></i></a>
@@ -320,10 +322,10 @@
     <div class="footer-map">
 
     </div>
-     <div class="footer-bottom">
-      
-        <a href="mailto:Hello@midis.in"> Hello@midis.in</a>
-      </div>
+    <div class="footer-bottom">
+
+      <a href="mailto:Hello@midis.in"> Hello@midis.in</a>
+    </div>
   </footer>
 
 
