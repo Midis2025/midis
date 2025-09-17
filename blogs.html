@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,78 +8,229 @@
   <link rel="icon" type="image/png" href="./image/midis m final logo-03.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; font-family: 'Inter', sans-serif; background: #fdf9ff; color: #1a1a1a; }
-    header { background: linear-gradient(135deg, #6a1b9a, #ff6f00); padding: 60px 20px 30px; text-align: center; color: white; }
-    header h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0; }
-    header p { font-size: clamp(1rem, 2vw, 1.2rem); margin-top: 10px; max-width: 800px; margin-inline: auto; }
-    .hero { width: 100%; height: 300px; background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2'); background-position: center; background-size: cover; border-radius: 0 0 20px 20px; }
-    .section { max-width: 1200px; margin: auto; padding: 40px 20px; }
-    .section h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 30px; color: #6a1b9a; text-align: center; }
-    .blogs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-    .blog-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); transition: transform 0.3s; display: flex; flex-direction: column; }
-    .blog-card:hover { transform: translateY(-8px); }
-    .blog-card img { width: 100%; height: 200px; object-fit: cover; }
-    .blog-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .blog-content h3 { color: #ff6f00; margin-bottom: 10px; font-size: clamp(1.1rem, 2vw, 1.3rem); }
-    .blog-content p { color: #444; font-size: clamp(0.9rem, 1.8vw, 1rem); margin-bottom: 15px; flex: 1; }
-    .blog-content a { text-decoration: none; color: #6a1b9a; font-weight: 600; transition: color 0.3s; align-self: flex-start; }
-    .blog-content a:hover { color: #ff6f00; }
-    .cta { text-align: center; padding: 30px 20px; margin-bottom: 20px; }
-    .cta a { display: inline-block; padding: 14px 30px; background: linear-gradient(to right, #6a1b9a, #ff6f00); border-radius: 50px; color: white; font-size: 1rem; font-weight: bold; text-decoration: none; transition: 0.3s ease; }
-    .cta a:hover { background: linear-gradient(to right, #ff6f00, #6a1b9a); }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fdf9ff;
+      color: #1a1a1a;
+    }
+
+    header {
+      background: linear-gradient(135deg, #6a1b9a, #ff6f00);
+      padding: 60px 20px 30px;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0;
+    }
+
+    header p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      margin-top: 10px;
+      max-width: 800px;
+      margin-inline: auto;
+    }
+
+    .hero {
+      width: 100%;
+      height: 300px;
+      background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2');
+      background-position: center;
+      background-size: cover;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .section h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 30px;
+      color: #6a1b9a;
+      text-align: center;
+    }
+
+    .blogs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .blog-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-content h3 {
+      color: #ff6f00;
+      margin-bottom: 10px;
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+    }
+
+    .blog-content p {
+      color: #444;
+      font-size: clamp(0.9rem, 1.8vw, 1rem);
+      margin-bottom: 15px;
+      flex: 1;
+    }
+
+    .blog-content a {
+      text-decoration: none;
+      color: #6a1b9a;
+      font-weight: 600;
+      transition: color 0.3s;
+      align-self: flex-start;
+    }
+
+    .blog-content a:hover {
+      color: #ff6f00;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 30px 20px;
+      margin-bottom: 20px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 14px 30px;
+      background: linear-gradient(to right, #6a1b9a, #ff6f00);
+      border-radius: 50px;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: linear-gradient(to right, #ff6f00, #6a1b9a);
+    }
+
+    /* Basic Pagination Styles */
+    .pagination {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .pagination button {
+      margin: 0 5px;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      background: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .pagination button.active {
+      background: #ae8a4c;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .pagination button:disabled {
+      background: #eee;
+      cursor: not-allowed;
+    }
   </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Our Blog</h1>
-  <p>Stay updated with the latest insights, strategies, and trends in digital growth.</p>
-</header>
+  <header>
+    <h1>Our Blog</h1>
+    <p>Stay updated with the latest insights, strategies, and trends in digital growth.</p>
+  </header>
 
-<div class="hero"></div>
+  <div class="hero"></div>
 
-<section class="section">
-  <h2>Latest Articles</h2>
-  <div id="blogs-container" class="blogs"></div>
-</section>
+  <section class="section">
+    <h2>Latest Articles</h2>
+    <div id="blogs-container" class="blogs"></div>
+    <div id="pagination" class="pagination"></div> <!-- ✅ Added pagination container -->
+  </section>
 
-<section class="cta">
-  <a href="./index.html">⬅ Back to Home</a>
-</section>
+  <section class="cta">
+    <a href="./index.html">⬅ Back to Home</a>
+  </section>
 
-<script>
-async function loadBlogs() {
-  try {
-    const res = await fetch("https://devoted-captain-c1ad6bbc4b.strapiapp.com/api/blogs?populate=*");
-    const data = await res.json();
-    const blogs = data.data;
+  <script>
+    let currentPage = 1;
+    const blogsPerPage = 6; // adjust as needed
 
-    const container = document.getElementById("blogs-container");
-    container.innerHTML = "";
+    async function loadBlogs(page = 1) {
+      try {
+        const res = await fetch(
+          `https://devoted-captain-c1ad6bbc4b.strapiapp.com/api/blogs?populate=*&pagination[page]=${page}&pagination[pageSize]=${blogsPerPage}`
+        );
+        const data = await res.json();
+        const blogs = data.data;
+        const pagination = data.meta.pagination;
 
-    blogs.forEach(blog => {
-      const attributes = blog;
+        const container = document.getElementById("blogs-container");
+        container.innerHTML = "";
 
-      const title = attributes.Title || "No Title";
-      const excerpt = attributes.Excerpt || (attributes.Content ? attributes.Content.slice(0, 100) + "..." : "");
+        blogs.forEach(blog => {
+          const attributes = blog;
 
-      // Correct image URL handling
-      let imageUrl = "https://devoted-captain-c1ad6bbc4b.strapiapp.com/uploads/default_blog_image.jpg"; // fallback
-      if (attributes.Image) {
-        if (attributes.Image.formats && attributes.Image.formats.small && attributes.Image.formats.small.url) {
-          imageUrl = attributes.Image.formats.small.url.startsWith("http")
-            ? attributes.Image.formats.small.url
-            : "https://devoted-captain-c1ad6bbc4b.strapiapp.com" + attributes.Image.formats.small.url;
-        } else if (attributes.Image.url) {
-          imageUrl = attributes.Image.url.startsWith("http")
-            ? attributes.Image.url
-            : "https://devoted-captain-c1ad6bbc4b.strapiapp.com" + attributes.Image.url;
-        }
-      }
+          const title = attributes.Title || "No Title";
+          const excerpt =
+            attributes.Excerpt ||
+            (attributes.Content ? attributes.Content.slice(0, 100) + "..." : "");
 
-      const card = document.createElement("div");
-      card.className = "blog-card";
-      card.innerHTML = `
+          // ✅ Correct image URL handling
+          let imageUrl =
+            "https://devoted-captain-c1ad6bbc4b.strapiapp.com/uploads/default_blog_image.jpg";
+          if (attributes.Image) {
+            if (
+              attributes.Image.formats &&
+              attributes.Image.formats.small &&
+              attributes.Image.formats.small.url
+            ) {
+              imageUrl = attributes.Image.formats.small.url.startsWith("http")
+                ? attributes.Image.formats.small.url
+                : "https://devoted-captain-c1ad6bbc4b.strapiapp.com" +
+                attributes.Image.formats.small.url;
+            } else if (attributes.Image.url) {
+              imageUrl = attributes.Image.url.startsWith("http")
+                ? attributes.Image.url
+                : "https://devoted-captain-c1ad6bbc4b.strapiapp.com" +
+                attributes.Image.url;
+            }
+          }
+
+          const card = document.createElement("div");
+          card.className = "blog-card";
+          card.innerHTML = `
         <a href="single-blog.html?id=${attributes.id}">
           <img src="${imageUrl}" alt="${title}" />
         </a>
@@ -88,16 +240,66 @@ async function loadBlogs() {
           <a href="single-blog.html?id=${attributes.id}">Read More →</a>
         </div>
       `;
-      container.appendChild(card);
-    });
-  } catch (err) {
-    console.error("Error fetching blogs:", err);
-    document.getElementById("blogs-container").innerHTML = "<p>Failed to load blogs.</p>";
-  }
-}
+          container.appendChild(card);
+        });
 
-loadBlogs();
-</script>
+        // ✅ Render pagination controls
+        renderPagination(pagination);
+      } catch (err) {
+        console.error("Error fetching blogs:", err);
+        document.getElementById("blogs-container").innerHTML =
+          "<p>Failed to load blogs.</p>";
+      }
+    }
+
+    function renderPagination(pagination) {
+      const paginationContainer = document.getElementById("pagination");
+      paginationContainer.innerHTML = "";
+
+      const { page, pageCount } = pagination;
+
+      // Prev button
+      const prevBtn = document.createElement("button");
+      prevBtn.innerText = "« Prev";
+      prevBtn.disabled = page === 1;
+      prevBtn.onclick = () => {
+        if (page > 1) {
+          currentPage = page - 1;
+          loadBlogs(currentPage);
+        }
+      };
+      paginationContainer.appendChild(prevBtn);
+
+      // Page numbers
+      for (let i = 1; i <= pageCount; i++) {
+        const pageBtn = document.createElement("button");
+        pageBtn.innerText = i;
+        if (i === page) pageBtn.classList.add("active");
+        pageBtn.onclick = () => {
+          currentPage = i;
+          loadBlogs(currentPage);
+        };
+        paginationContainer.appendChild(pageBtn);
+      }
+
+      // Next button
+      const nextBtn = document.createElement("button");
+      nextBtn.innerText = "Next »";
+      nextBtn.disabled = page === pageCount;
+      nextBtn.onclick = () => {
+        if (page < pageCount) {
+          currentPage = page + 1;
+          loadBlogs(currentPage);
+        }
+      };
+      paginationContainer.appendChild(nextBtn);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadBlogs();
+    });
+  </script>
 
 </body>
+
 </html>
