@@ -1,0 +1,23 @@
+{
+  "name": "midis",
+  "version": "1.0.0",
+  "description": "Midis static frontend",
+  "main": "aboutus.js",
+  "scripts": {
+    "build": "node vercel-build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Midis2025/midis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Midis2025/midis/issues"
+  },
+  "homepage": "https://github.com/Midis2025/midis#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}

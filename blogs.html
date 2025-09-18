@@ -202,137 +202,128 @@
   <div class="hero"></div>
 
   <section class="section">
-    <h2>Latest Articles</h2>
-    <div id="blogs-container" class="blogs"></div>
-    <div id="pagination" class="pagination"></div> <!-- ✅ Added pagination container -->
-  </section>
+  <h2>Latest Articles</h2>
+  <div id="blogs-container" class="blogs"></div>
+  <div id="pagination" class="pagination"></div>
+</section>
 
-  <section class="cta">
-    <a href="./index.html">⬅ Back to Home</a>
-  </section>
+<section class="cta">
+  <a href="./index.html">⬅ Back to Home</a>
+</section>
 
-  <script>
-    let currentPage = 1;
-    const blogsPerPage = 6;
+<script>
+let currentPage = 1;
+const blogsPerPage = 6;
 
-    async function loadBlogs(page = 1) {
-      const container = document.getElementById("blogs-container");
+async function loadBlogs(page = 1) {
+  const container = document.getElementById("blogs-container");
 
-      try {
-        // Show loader
-        container.innerHTML = `
+  try {
+    // Show loader
+    container.innerHTML = `
       <div class="loader">
         <div class="spinner"></div>
       </div>
     `;
 
-        const res = await fetch(
-          `https://devoted-captain-c1ad6bbc4b.strapiapp.com/api/blogs?populate=*&pagination[page]=${page}&pagination[pageSize]=${blogsPerPage}`
-        );
-        const data = await res.json();
+    const res = await fetch("./blogs.json");
+    const data = await res.json();
 
-        const blogs = data.data;
-        const pagination = data.meta.pagination;
+    const blogs = data.data || [];
+    const totalBlogs = blogs.length;
+    const pageCount = Math.ceil(totalBlogs / blogsPerPage);
 
-        // Replace loader with blogs
-        container.innerHTML = "";
+    const start = (page - 1) * blogsPerPage;
+    const end = start + blogsPerPage;
+    const paginatedBlogs = blogs.slice(start, end);
 
-        blogs.forEach(blog => {
-          const attributes = blog;
-          const title = attributes.Title || "No Title";
-          const excerpt =
-            attributes.Excerpt ||
-            (attributes.Content ? attributes.Content.slice(0, 100) + "..." : "");
+    container.innerHTML = "";
 
-          let imageUrl =
-            "https://devoted-captain-c1ad6bbc4b.strapiapp.com/uploads/default_blog_image.jpg";
-          if (attributes.Image) {
-            if (
-              attributes.Image.formats &&
-              attributes.Image.formats.small &&
-              attributes.Image.formats.small.url
-            ) {
-              imageUrl = attributes.Image.formats.small.url.startsWith("http")
-                ? attributes.Image.formats.small.url
-                : "https://devoted-captain-c1ad6bbc4b.strapiapp.com" +
-                attributes.Image.formats.small.url;
-            } else if (attributes.Image.url) {
-              imageUrl = attributes.Image.url.startsWith("http")
-                ? attributes.Image.url
-                : "https://devoted-captain-c1ad6bbc4b.strapiapp.com" +
-                attributes.Image.url;
-            }
-          }
+    paginatedBlogs.forEach(blog => {
+      const { Title, Slug, Excerpt, Content, Image } = blog;
 
-          const card = document.createElement("div");
-          card.className = "blog-card";
-          card.innerHTML = `
-        <a href="single-blog.html?id=${attributes.id}" target="_blank" rel="noopener noreferrer">
-          <img src="${imageUrl}" alt="${title}" />
+      const title = Title || "No Title";
+      const excerpt = Excerpt || (Content ? Content.slice(0, 100) + "..." : "");
+
+      // Determine blog image
+      let imgUrl = "";
+      if (Image?.formats?.medium?.url) {
+        imgUrl = Image.formats.medium.url;
+      } else if (Image?.url) {
+        imgUrl = Image.url;
+      }
+
+      // No need to prepend domain; URLs from Strapi JSON are absolute
+
+      const card = document.createElement("div");
+      card.className = "blog-card";
+      card.innerHTML = `
+        <a href="single-blog.html?slug=${Slug}" target="_blank" rel="noopener noreferrer">
+          <img src="${imgUrl}" alt="${title}" />
         </a>
         <div class="blog-content">
-          <a href="single-blog.html?id=${attributes.id}" target="_blank" rel="noopener noreferrer">
+          <a href="single-blog.html?slug=${Slug}" target="_blank" rel="noopener noreferrer">
             <h3>${title}</h3>
           </a>
           <p>${excerpt}</p>
-          <a href="single-blog.html?id=${attributes.id}" target="_blank" rel="noopener noreferrer">
+          <a href="single-blog.html?slug=${Slug}" target="_blank" rel="noopener noreferrer">
             Read More →
           </a>
         </div>`;
-          container.appendChild(card);
-        });
-
-        renderPagination(pagination);
-      } catch (err) {
-        console.error("Error fetching blogs:", err);
-        container.innerHTML = "<p>⚠️ Failed to load blogs. Please try again.</p>";
-      }
-    }
-
-    function renderPagination(pagination) {
-      const paginationContainer = document.getElementById("pagination");
-      paginationContainer.innerHTML = "";
-
-      const { page, pageCount } = pagination;
-
-      const prevBtn = document.createElement("button");
-      prevBtn.innerText = "« Prev";
-      prevBtn.disabled = page === 1;
-      prevBtn.onclick = () => {
-        if (page > 1) {
-          currentPage = page - 1;
-          loadBlogs(currentPage);
-        }
-      };
-      paginationContainer.appendChild(prevBtn);
-
-      for (let i = 1; i <= pageCount; i++) {
-        const pageBtn = document.createElement("button");
-        pageBtn.innerText = i;
-        if (i === page) pageBtn.classList.add("active");
-        pageBtn.onclick = () => {
-          currentPage = i;
-          loadBlogs(currentPage);
-        };
-        paginationContainer.appendChild(pageBtn);
-      }
-
-      const nextBtn = document.createElement("button");
-      nextBtn.innerText = "Next »";
-      nextBtn.disabled = page === pageCount;
-      nextBtn.onclick = () => {
-        if (page < pageCount) {
-          currentPage = page + 1;
-          loadBlogs(currentPage);
-        }
-      };
-      paginationContainer.appendChild(nextBtn);
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      loadBlogs();
+      container.appendChild(card);
     });
-  </script>
+
+    renderPagination({ page, pageCount });
+  } catch (err) {
+    console.error("Error loading blogs:", err);
+    container.innerHTML = "<p>⚠️ Failed to load blogs. Please try again.</p>";
+  }
+}
+
+function renderPagination({ page, pageCount }) {
+  const paginationContainer = document.getElementById("pagination");
+  paginationContainer.innerHTML = "";
+
+  const prevBtn = document.createElement("button");
+  prevBtn.innerText = "« Prev";
+  prevBtn.disabled = page === 1;
+  prevBtn.onclick = () => {
+    if (page > 1) {
+      currentPage = page - 1;
+      loadBlogs(currentPage);
+    }
+  };
+  paginationContainer.appendChild(prevBtn);
+
+  for (let i = 1; i <= pageCount; i++) {
+    const pageBtn = document.createElement("button");
+    pageBtn.innerText = i;
+    if (i === page) pageBtn.classList.add("active");
+    pageBtn.onclick = () => {
+      currentPage = i;
+      loadBlogs(currentPage);
+    };
+    paginationContainer.appendChild(pageBtn);
+  }
+
+  const nextBtn = document.createElement("button");
+  nextBtn.innerText = "Next »";
+  nextBtn.disabled = page === pageCount;
+  nextBtn.onclick = () => {
+    if (page < pageCount) {
+      currentPage = page + 1;
+      loadBlogs(currentPage);
+    }
+  };
+  paginationContainer.appendChild(nextBtn);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadBlogs();
+});
+</script>
+
+
 
 </body>
 
