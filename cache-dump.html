@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cache Dump - Exact Data Structure</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #f5f5f5; }
+        pre { background: white; padding: 15px; border-radius: 5px; overflow-x: auto; border: 2px solid #ddd; }
+        button { padding: 10px 20px; background: #6a1b9a; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 10px 0; }
+        .warning { color: #d32f2f; font-weight: bold; }
+        h2 { color: #6a1b9a; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Complete Cache Dump</h1>
+    
+    <button onclick="dumpCache()">Dump All Cached Blogs (Full JSON)</button>
+    <button onclick="dumpIdsOnly()">Show Only IDs</button>
+    <button onclick="testURLs()">Test Generated URLs</button>
+    <button onclick="location.reload()">Refresh Page</button>
+    
+    <h2>Output:</h2>
+    <pre id="output"></pre>
+
+    <script>
+        function dumpCache() {
+            const output = document.getElementById('output');
+            const cache = localStorage.getItem('midis_blogs_cache');
+            
+            if (!cache) {
+                output.innerHTML = '<span class="warning">❌ NO CACHE FOUND - Load blogs.html first</span>';
+                return;
+            }
+
+            try {
+                const data = JSON.parse(cache);
+                output.innerHTML = JSON.stringify(data, null, 2);
+            } catch (e) {
+                output.innerHTML = '<span class="warning">❌ Cache is corrupted: ' + e.message + '</span>';
+            }
+        }
+
+        function dumpIdsOnly() {
+            const output = document.getElementById('output');
+            const cache = localStorage.getItem('midis_blogs_cache');
+            
+            if (!cache) {
+                output.innerHTML = '<span class="warning">❌ NO CACHE FOUND</span>';
+                return;
+            }
+
+            try {
+                const data = JSON.parse(cache);
+                let result = 'BLOG IDs AND TITLES:\n\n';
+                
+                data.blogs.forEach((blog, i) => {
+                    result += `Blog ${i + 1}:\n`;
+                    result += `  id: ${blog.id}\n`;
+                    result += `  documentId: ${blog.documentId}\n`;
+                    result += `  title: ${blog.Title}\n`;
+                    result += `  URL would be: single-blog.html?id=${blog.documentId || blog.id}\n\n`;
+                });
+
+                // Check for duplicates
+                const ids = data.blogs.map(b => b.id);
+                const docIds = data.blogs.map(b => b.documentId);
+                const uniqueIds = new Set(ids);
+                const uniqueDocIds = new Set(docIds);
+
+                result += '\n--- ANALYSIS ---\n';
+                result += `Total blogs: ${data.blogs.length}\n`;
+                result += `Unique numeric IDs: ${uniqueIds.size}\n`;
+                result += `Unique documentIds: ${uniqueDocIds.size}\n`;
+
+                if (uniqueDocIds.size === 1) {
+                    result += '\n⚠️ WARNING: All documentIds are the SAME!\n';
+                    result += `Value: ${Array.from(uniqueDocIds)[0]}\n`;
+                } else if (uniqueDocIds.size !== data.blogs.length) {
+                    result += '\n⚠️ WARNING: Duplicate documentIds found!\n';
+                }
+
+                output.innerHTML = result.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            } catch (e) {
+                output.innerHTML = '<span class="warning">❌ Error: ' + e.message + '</span>';
+            }
+        }
+
+        function testURLs() {
+            const output = document.getElementById('output');
+            const cache = localStorage.getItem('midis_blogs_cache');
+            
+            if (!cache) {
+                output.innerHTML = '<span class="warning">❌ NO CACHE FOUND</span>';
+                return;
+            }
+
+            try {
+                const data = JSON.parse(cache);
+                let result = 'GENERATED URLS:\n\n';
+                
+                const urls = [];
+                data.blogs.forEach((blog, i) => {
+                    const blogId = blog.documentId || blog.id;
+                    const url = `single-blog.html?id=${blogId}`;
+                    urls.push(url);
+                    result += `${i + 1}. ${url}\n`;
+                });
+
+                const uniqueUrls = new Set(urls);
+                result += `\n--- ANALYSIS ---\n`;
+                result += `Total URLs: ${urls.length}\n`;
+                result += `Unique URLs: ${uniqueUrls.size}\n`;
+
+                if (uniqueUrls.size === 1) {
+                    result += '\n🔴 PROBLEM FOUND!\n';
+                    result += 'All URLs are identical:\n';
+                    result += `${urls[0]}\n`;
+                    result += '\nThis means all blogs link to the same blog!\n';
+                } else if (uniqueUrls.size !== urls.length) {
+                    result += '\n⚠️ WARNING: Duplicate URLs detected!\n';
+                } else {
+                    result += '\n✅ All URLs are unique - should work correctly!\n';
+                }
+
+                output.innerHTML = result.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            } catch (e) {
+                output.innerHTML = '<span class="warning">❌ Error: ' + e.message + '</span>';
+            }
+        }
+    </script>
+</body>
+</html>

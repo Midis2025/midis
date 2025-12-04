@@ -222,83 +222,198 @@
 
   <script>
     let currentPage = 1;
+    let totalPages = 1;
     const blogsPerPage = 6;
     const API_BASE = 'https://devoted-captain-c1ad6bbc4b.strapiapp.com';
+    const CACHE_KEY = 'midis_blogs_cache';
+    const CACHE_EXPIRY = 'midis_blogs_expiry';
+    const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
 
     // Configure axios defaults for better performance
     axios.defaults.timeout = 10000;
     axios.defaults.baseURL = API_BASE;
 
+    // ✅ Cache Management Functions
+    function getCachedBlogs() {
+      try {
+        const cached = localStorage.getItem(CACHE_KEY);
+        const expiry = localStorage.getItem(CACHE_EXPIRY);
+        
+        if (cached && expiry) {
+          const now = Date.now();
+          if (now < parseInt(expiry)) {
+            console.log('✅ Using cached blogs');
+            return JSON.parse(cached);
+          } else {
+            console.log('⏰ Cache expired, clearing');
+            localStorage.removeItem(CACHE_KEY);
+            localStorage.removeItem(CACHE_EXPIRY);
+          }
+        }
+      } catch (error) {
+        console.error('Error reading cache:', error);
+      }
+      return null;
+    }
+
+    function setCachedBlogs(blogsData) {
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify(blogsData));
+        localStorage.setItem(CACHE_EXPIRY, (Date.now() + CACHE_DURATION).toString());
+        console.log('💾 Blogs cached successfully for 7 days');
+      } catch (error) {
+        console.error('Error saving to cache:', error);
+      }
+    }
+
     async function loadBlogs(page = 1) {
       const container = document.getElementById("blogs-container");
 
       try {
-        // Clear container immediately
-        container.innerHTML = "";
+        // Show loading state
+        container.innerHTML = '<div class="no-blogs">Loading blogs...</div>';
 
-        // Make the API call with axios
-        const response = await axios.get('/api/blogs', {
-          params: {
-            populate: '*',
-            'pagination[page]': page,
-            'pagination[pageSize]': blogsPerPage
+        let allBlogs = null;
+        let pagination = null;
+
+        // Try to use cached data first
+        const cachedData = getCachedBlogs();
+        if (cachedData) {
+          allBlogs = cachedData.blogs;
+          pagination = cachedData.pagination;
+          console.log('📖 Loaded from cache');
+        } else {
+          // Fetch from API if no cache
+          console.log('🌐 Fetching from API');
+          const response = await axios.get('/api/blogs', {
+            params: {
+              populate: '*',
+              'pagination[pageSize]': 1000, // Fetch all blogs at once to cache
+              sort: 'createdAt:desc'
+            }
+          });
+
+          const { data: blogs, meta } = response.data;
+          allBlogs = blogs;
+          pagination = meta.pagination;
+          
+          // Debug: Log first blog to see structure
+          if (blogs.length > 0) {
+            console.log('📝 First blog object structure:', JSON.stringify(blogs[0], null, 2).substring(0, 500));
+            console.log('All blog IDs:', blogs.map((b, i) => `${i}: id=${b.id}, docId=${b.documentId}`).join(' | '));
           }
-        });
 
-        const { data: blogs, meta: { pagination } } = response.data;
+          // Cache the complete data
+          setCachedBlogs({ blogs: allBlogs, pagination: pagination });
+        }
 
         // Check if no blogs found
-        if (!blogs || blogs.length === 0) {
+        if (!allBlogs || allBlogs.length === 0) {
           container.innerHTML = '<div class="no-blogs">No blogs found.</div>';
           return;
         }
 
-        // Create blog cards with staggered animation
-        blogs.forEach((blog, index) => {
-          setTimeout(() => {
-            const attributes = blog;
-            const title = attributes.Title || "No Title";
-            const excerpt = attributes.Excerpt || 
-              (attributes.Content ? attributes.Content.slice(0, 120) + "..." : "");
+        // Calculate pagination
+        const totalBlogs = allBlogs.length;
+        const totalPages = Math.ceil(totalBlogs / blogsPerPage);
+        const startIndex = (page - 1) * blogsPerPage;
+        const endIndex = startIndex + blogsPerPage;
+        const blogsToDisplay = allBlogs.slice(startIndex, endIndex);
 
-            // Optimize image URL logic
-            let imageUrl = `${API_BASE}/uploads/default_blog_image.jpg`;
-            
-            if (attributes.Image?.formats?.small?.url) {
-              imageUrl = attributes.Image.formats.small.url.startsWith("http") 
-                ? attributes.Image.formats.small.url 
-                : API_BASE + attributes.Image.formats.small.url;
-            } else if (attributes.Image?.url) {
-              imageUrl = attributes.Image.url.startsWith("http") 
-                ? attributes.Image.url 
-                : API_BASE + attributes.Image.url;
-            }
+        // Clear container
+        container.innerHTML = '';
 
-            const card = document.createElement("div");
-            card.className = "blog-card";
-            card.style.animationDelay = `${index * 0.1}s`;
-            card.innerHTML = `
-              <a href="single-blog.html?id=${attributes.id}" target="_blank" rel="noopener noreferrer">
-                <img src="${imageUrl}" alt="${title}" loading="lazy" />
+        // Create blog cards with animation
+        blogsToDisplay.forEach((blog, index) => {
+          const title = blog.Title || "No Title";
+          const excerpt = blog.Excerpt || 
+            (blog.Content ? blog.Content.slice(0, 120) + "..." : "");
+
+          // Optimize image URL logic
+          let imageUrl = `${API_BASE}/uploads/default_blog_image.jpg`;
+          
+          if (blog.Image?.formats?.small?.url) {
+            imageUrl = blog.Image.formats.small.url.startsWith("http") 
+              ? blog.Image.formats.small.url 
+              : API_BASE + blog.Image.formats.small.url;
+          } else if (blog.Image?.url) {
+            imageUrl = blog.Image.url.startsWith("http") 
+              ? blog.Image.url 
+              : API_BASE + blog.Image.url;
+          }
+
+          const card = document.createElement("div");
+          card.className = "blog-card";
+          card.style.animationDelay = `${index * 0.1}s`;
+          
+          // IMPORTANT: Use documentId as primary (Strapi v4 standard)
+          // Fallback to id only if documentId doesn't exist
+          const blogId = blog.documentId || blog.id;
+          
+          // Debug: Verify we have unique IDs
+          if (!blogId) {
+            console.error(`⚠️ Blog ${index} has NO ID:`, blog);
+          }
+          console.log(`Blog Card ${index}: documentId="${blog.documentId}", id=${blog.id}, using="${blogId}", Title="${title}"`);
+          
+          card.innerHTML = `
+            <a href="single-blog.html?id=${blogId}">
+              <img src="${imageUrl}" alt="${title}" loading="lazy" />
+            </a>
+            <div class="blog-content">
+              <a href="single-blog.html?id=${blogId}">
+                <h3>${title}</h3>
               </a>
-              <div class="blog-content">
-                <a href="single-blog.html?id=${attributes.id}" target="_blank" rel="noopener noreferrer">
-                  <h3>${title}</h3>
-                </a>
-                <p>${excerpt}</p>
-                <a href="single-blog.html?id=${attributes.id}" target="_blank" rel="noopener noreferrer">
-                  Read More →
-                </a>
-              </div>`;
-            container.appendChild(card);
-          }, index * 50); // Staggered appearance
+              <p>${excerpt}</p>
+              <a href="single-blog.html?id=${blogId}">
+                Read More →
+              </a>
+            </div>`;
+          container.appendChild(card);
         });
 
-        // Update pagination
-        renderPagination(pagination);
+        // Update pagination with custom data
+        renderPagination({ page, pageCount: totalPages, totalBlogs });
 
       } catch (error) {
         console.error("Error fetching blogs:", error);
+        
+        // Try fallback to cache even on error
+        const cachedData = getCachedBlogs();
+        if (cachedData) {
+          console.log('⚠️ API error, showing cached data');
+          const startIndex = (page - 1) * blogsPerPage;
+          const endIndex = startIndex + blogsPerPage;
+          const blogsToDisplay = cachedData.blogs.slice(startIndex, endIndex);
+          
+          container.innerHTML = '';
+          blogsToDisplay.forEach((blog, index) => {
+            const title = blog.Title || "No Title";
+            const excerpt = blog.Excerpt || (blog.Content ? blog.Content.slice(0, 120) + "..." : "");
+            let imageUrl = `${API_BASE}/uploads/default_blog_image.jpg`;
+            if (blog.Image?.formats?.small?.url) {
+              imageUrl = blog.Image.formats.small.url.startsWith("http") 
+                ? blog.Image.formats.small.url 
+                : API_BASE + blog.Image.formats.small.url;
+            }
+            const card = document.createElement("div");
+            card.className = "blog-card";
+            const blogId = blog.documentId || blog.id;
+            card.innerHTML = `
+              <a href="single-blog.html?id=${blogId}">
+                <img src="${imageUrl}" alt="${title}" loading="lazy" />
+              </a>
+              <div class="blog-content">
+                <a href="single-blog.html?id=${blogId}"><h3>${title}</h3></a>
+                <p>${excerpt}</p>
+                <a href="single-blog.html?id=${blogId}">Read More →</a>
+              </div>`;
+            container.appendChild(card);
+          });
+          const totalPages = Math.ceil(cachedData.blogs.length / blogsPerPage);
+          renderPagination({ page, pageCount: totalPages });
+          return;
+        }
         
         let errorMessage = "Failed to load blogs. Please try again.";
         if (error.code === 'ECONNABORTED') {
@@ -316,6 +431,7 @@
       paginationContainer.innerHTML = "";
 
       const { page, pageCount } = pagination;
+      totalPages = pageCount;
 
       if (pageCount <= 1) return; // Don't show pagination if only one page
 
@@ -327,6 +443,7 @@
         if (page > 1) {
           currentPage = page - 1;
           loadBlogs(currentPage);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       };
       paginationContainer.appendChild(prevBtn);
@@ -347,6 +464,7 @@
         firstBtn.onclick = () => {
           currentPage = 1;
           loadBlogs(currentPage);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         };
         paginationContainer.appendChild(firstBtn);
 
@@ -366,6 +484,7 @@
         pageBtn.onclick = () => {
           currentPage = i;
           loadBlogs(currentPage);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         };
         paginationContainer.appendChild(pageBtn);
       }
@@ -384,6 +503,7 @@
         lastBtn.onclick = () => {
           currentPage = pageCount;
           loadBlogs(currentPage);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         };
         paginationContainer.appendChild(lastBtn);
       }
@@ -396,6 +516,7 @@
         if (page < pageCount) {
           currentPage = page + 1;
           loadBlogs(currentPage);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       };
       paginationContainer.appendChild(nextBtn);
@@ -411,8 +532,7 @@
       if (e.key === 'ArrowLeft' && currentPage > 1) {
         currentPage--;
         loadBlogs(currentPage);
-      } else if (e.key === 'ArrowRight') {
-        // We don't know the max page here, so this would need the pagination data
+      } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
         currentPage++;
         loadBlogs(currentPage);
       }

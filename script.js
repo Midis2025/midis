@@ -20,6 +20,92 @@ document.addEventListener("DOMContentLoaded", function () {
   observer.observe(aboutSection);
 });
 
+// 🎯 Why Choose Us Section - Scroll Animation
+document.addEventListener("DOMContentLoaded", function () {
+  const whyChooseSection = document.querySelector(".toast-section");
+  const mainHeading = document.querySelector(".main-heading");
+  const cards = document.querySelectorAll(".card-why");
+
+  if (!whyChooseSection || cards.length === 0) return;
+
+  const sectionObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Animate the main heading
+          if (mainHeading) {
+            mainHeading.style.animation = "slideInUp 0.8s ease-out forwards";
+          }
+
+          // Animate each card with different animation types
+          cards.forEach((card, index) => {
+            if (index === 0) {
+              card.classList.add("animate-slide-left");
+            } else if (index === 1) {
+              card.classList.add("animate-scale");
+            } else {
+              card.classList.add("animate-slide-right");
+            }
+          });
+
+          // Only observe once
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2, // Trigger when 20% of section is visible
+      rootMargin: "0px 0px -100px 0px" // Trigger a bit before it comes into view
+    }
+  );
+
+  sectionObserver.observe(whyChooseSection);
+});
+
+// 📚 Book A Consultation Section - Scroll Animation
+document.addEventListener("DOMContentLoaded", function () {
+  const consultationSection = document.querySelector(".rank-sell-form-section");
+  const leftSide = document.querySelector(".rank-sell-left");
+  const rightForm = document.querySelector(".right-form");
+
+  if (!consultationSection) return;
+
+  const consultationObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Reset animation by removing and re-adding
+          if (leftSide) {
+            leftSide.style.animation = "slideInLeft 1s ease-out forwards";
+            leftSide.style.animationDelay = "0.2s";
+          }
+
+          if (rightForm) {
+            rightForm.style.animation = "slideInRight 1s ease-out forwards";
+            rightForm.style.animationDelay = "0.4s";
+          }
+
+          // Animate form inputs
+          const inputs = consultationSection.querySelectorAll("input, select, textarea, button");
+          inputs.forEach((input, index) => {
+            input.style.animation = "fadeInUp 0.6s ease-out forwards";
+            input.style.animationDelay = (0.5 + index * 0.1) + "s";
+          });
+
+          // Only observe once
+          consultationObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15, // Trigger when 15% of section is visible
+      rootMargin: "0px 0px -50px 0px"
+    }
+  );
+
+  consultationObserver.observe(consultationSection);
+});
+
 
 
 

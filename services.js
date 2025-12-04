@@ -4,23 +4,37 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("nav-links").classList.toggle("active");
     });
 
-    // Card Animation on Scroll
+    // 🎯 Service Cards - Scroll Animation with Intersection Observer
+    const servicesGrid = document.querySelector('.services-grid');
     const cards = document.querySelectorAll('.service-card');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-          observer.unobserve(entry.target); // Stop observing once animated
-        }
-      });
-    }, {
-      threshold: 0.15 // Adjust how early animation triggers
-    });
+    if (servicesGrid && cards.length > 0) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Apply different animations to cards based on position
+            const index = Array.from(cards).indexOf(entry.target);
+            
+            if (index % 3 === 0) {
+              entry.target.classList.add('animate-slide-left');
+            } else if (index % 3 === 1) {
+              entry.target.classList.add('animate-scale');
+            } else {
+              entry.target.classList.add('animate-slide-right');
+            }
 
-    cards.forEach((card) => {
-      observer.observe(card);
-    });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+      });
+
+      cards.forEach((card) => {
+        observer.observe(card);
+      });
+    }
   });
 
 

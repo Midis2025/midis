@@ -239,51 +239,15 @@ const CACHE_KEY = 'midis_blogs_cache';
 const SINGLE_BLOG_CACHE = 'midis_single_blog_';
 const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
 
-// Debug URL params
-console.log('🔗 Full URL:', window.location.href);
-console.log('🔗 Search params:', window.location.search);
-console.log('🔗 Extracted blogId:', blogId);
-
 // ✅ Cache Management Functions
-// ✅ PRODUCTION-GRADE CACHE VERIFICATION
-function idMatches(blog, requestedId) {
-  if (!blog || !requestedId) return false;
-  
-  // Multiple ID comparison methods for maximum safety
-  return (
-    blog.documentId === requestedId ||                    // Exact match documentId
-    blog.documentId == requestedId ||                     // Loose match documentId
-    blog.id === parseInt(requestedId) ||                 // Numeric id match
-    blog.id == requestedId ||                            // Loose numeric match
-    String(blog.id) === String(requestedId) ||           // String comparison of numeric id
-    blog.documentId?.toString() === requestedId?.toString()  // String version of documentId
-  );
-}
-
 function getCachedBlog(id) {
   try {
-    if (!id) {
-      console.warn('⚠️ getCachedBlog called with empty ID');
-      return null;
-    }
-    
     const cached = localStorage.getItem(SINGLE_BLOG_CACHE + id);
     const expiry = localStorage.getItem(SINGLE_BLOG_CACHE + id + '_expiry');
     
     if (cached && expiry && Date.now() < parseInt(expiry)) {
-      const blog = JSON.parse(cached);
-      
-      // CRITICAL: Verify cached blog ID matches requested ID
-      if (idMatches(blog, id)) {
-        console.log('✅ Using cached single blog with VERIFIED ID match');
-        return blog;
-      } else {
-        console.warn('⚠️ Cached blog ID mismatch! Expected:', id, 'Got:', blog.documentId || blog.id);
-        // Clear mismatched cache
-        localStorage.removeItem(SINGLE_BLOG_CACHE + id);
-        localStorage.removeItem(SINGLE_BLOG_CACHE + id + '_expiry');
-        return null;
-      }
+      console.log('✅ Using cached single blog');
+      return JSON.parse(cached);
     }
   } catch (error) {
     console.error('Error reading blog cache:', error);
@@ -293,22 +257,9 @@ function getCachedBlog(id) {
 
 function setCachedBlog(id, blogData) {
   try {
-    if (!id || !blogData) {
-      console.warn('⚠️ setCachedBlog called with empty ID or data');
-      return;
-    }
-    
-    // CRITICAL: Verify blog data has matching ID before caching
-    if (!idMatches(blogData, id)) {
-      console.error('❌ SAFETY CHECK FAILED: Blog ID does not match cache key!');
-      console.error('  Cache key ID:', id);
-      console.error('  Blog data ID:', blogData.documentId || blogData.id);
-      return; // Don't cache mismatched data
-    }
-    
     localStorage.setItem(SINGLE_BLOG_CACHE + id, JSON.stringify(blogData));
     localStorage.setItem(SINGLE_BLOG_CACHE + id + '_expiry', (Date.now() + CACHE_DURATION).toString());
-    console.log('💾 Single blog cached for 7 days with ID verification');
+    console.log('💾 Single blog cached for 7 days');
   } catch (error) {
     console.error('Error saving blog to cache:', error);
   }
@@ -316,34 +267,10 @@ function setCachedBlog(id, blogData) {
 
 function getBlogFromAllBlogsCache(id) {
   try {
-    if (!id) {
-      console.warn('⚠️ getBlogFromAllBlogsCache called with empty ID');
-      return null;
-    }
-    
     const cached = localStorage.getItem(CACHE_KEY);
     if (cached) {
       const { blogs } = JSON.parse(cached);
-      
-      console.log(`🔎 Searching cache for blog with ID: "${id}"`);
-      console.log(`📊 Total blogs in cache: ${blogs.length}`);
-      
-      // Search by both documentId and id to ensure we find the right blog
-      const found = blogs.find(b => idMatches(b, id));
-      
-      if (found) {
-        console.log(`✅ Found blog in cache! Title: "${found.Title}"`);
-        
-        // CRITICAL: Double-check ID match before returning
-        if (idMatches(found, id)) {
-          return found;
-        } else {
-          console.error('❌ SAFETY CHECK FAILED: Found blog but ID does not match!');
-          return null;
-        }
-      } else {
-        console.log(`❌ Blog NOT found in cache! Searched for: "${id}"`);
-      }
+      return blogs.find(b => b.id == id);
     }
   } catch (error) {
     console.error('Error reading all blogs cache:', error);
@@ -353,95 +280,42 @@ function getBlogFromAllBlogsCache(id) {
 
 async function loadBlog() {
   if (!blogId) {
-    console.error('❌ No blog ID found in URL');
     document.getElementById('blog-container').innerHTML = "<p>Blog not found.</p>";
     return;
   }
 
-  console.log('📍 Loading blog with ID:', blogId);
   document.getElementById('blog-container').innerHTML = "<p>Loading blog...</p>";
 
   try {
     let blog = null;
 
-    // Try single blog cache first - WITH ID VERIFICATION
-    const cachedBlog = getCachedBlog(blogId);
-    if (cachedBlog && idMatches(cachedBlog, blogId)) {
-      blog = cachedBlog;
-      console.log('✅ Blog found in single blog cache with VERIFIED ID match');
-    }
+    // Try single blog cache first
+    blog = getCachedBlog(blogId);
     
     if (!blog) {
       // Try all blogs cache
       blog = getBlogFromAllBlogsCache(blogId);
-      if (blog && idMatches(blog, blogId)) {
-        console.log('📖 Blog found in all-blogs cache with VERIFIED ID match');
-      } else if (blog) {
-        console.error('❌ SAFETY: Blog found in cache but ID does not match! Fetching from API instead.');
-        blog = null;
+      if (blog) console.log('📖 Blog found in all-blogs cache');
+    }
+
+    if (!blog) {
+      // Fetch from API
+      console.log('🌐 Fetching blog from API');
+      const res = await fetch(`${baseURL}/api/blogs?filters[id][$eq]=${blogId}&populate=*`);
+      const data = await res.json();
+      blog = data.data[0];
+
+      if (blog) {
+        setCachedBlog(blogId, blog);
       }
     }
 
     if (!blog) {
-      // Fetch from API - try both documentId and id filters
-      console.log('🌐 Fetching blog from API with ID:', blogId);
-      
-      // First try with documentId filter
-      let res = await fetch(`${baseURL}/api/blogs?filters[documentId][$eq]=${blogId}&populate=*`);
-      let data = await res.json();
-      console.log('🔹 documentId filter response:', data.data?.length, 'results');
-      
-      // If no result, try with numeric id filter
-      if (!data.data || data.data.length === 0) {
-        console.log('No result with documentId, trying numeric id filter...');
-        res = await fetch(`${baseURL}/api/blogs?filters[id][$eq]=${blogId}&populate=*`);
-        data = await res.json();
-        console.log('🔹 numeric id filter response:', data.data?.length, 'results');
-      }
-      
-      if (data.data && data.data.length > 0) {
-        blog = data.data[0];
-        
-        // CRITICAL: Verify API returned correct blog before using
-        if (idMatches(blog, blogId)) {
-          console.log(`✅ Got blog from API with VERIFIED ID match: Title="${blog.Title}"`);
-          setCachedBlog(blogId, blog);
-        } else {
-          console.error('❌ API returned wrong blog! ID mismatch.');
-          console.error('  Expected ID:', blogId);
-          console.error('  Got ID:', blog.documentId || blog.id);
-          blog = null; // Discard mismatched blog
-        }
-      } else {
-        console.log('❌ No blog found from API');
-      }
-    }
-
-    if (!blog) {
-      console.error('❌ Blog not found in any source');
       document.getElementById('blog-container').innerHTML = "<p>Blog not found.</p>";
       return;
     }
 
-    // CRITICAL SAFETY CHECK: Verify blog ID matches requested ID before displaying
-    if (!idMatches(blog, blogId)) {
-      console.error('🔴 CRITICAL ERROR: Blog ID does not match requested ID!');
-      console.error('  Requested ID:', blogId);
-      console.error('  Blog ID:', blog.documentId || blog.id);
-      console.error('  Blog Title:', blog.Title);
-      document.getElementById('blog-container').innerHTML = "<p>Error: Blog ID mismatch. Please go back and try again.</p>";
-      return;
-    }
-
-    console.log('✅ SAFETY CHECK PASSED: Blog ID matches requested ID');
-    console.log('📖 DISPLAYING BLOG:', {
-      title: blog.Title,
-      id: blog.id,
-      documentId: blog.documentId,
-      requestedId: blogId
-    });
-
-    // Prepare image URL
+    // Correct image handling
     let imageUrl = baseURL + "/uploads/default_blog_image.jpg";
     if (blog.Image) {
       if (blog.Image.formats && blog.Image.formats.small && blog.Image.formats.small.url) {
