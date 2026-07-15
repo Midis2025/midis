@@ -15,7 +15,7 @@ const BlogDetail = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+            
   useEffect(() => {
     if (!id) return;
     const fetchPost = async () => {
