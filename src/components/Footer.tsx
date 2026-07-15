@@ -13,34 +13,6 @@ export const Footer = () => {
     const ctx = gsap.context(() => {
 
       /* =========================
-         TOP CTA TEXT
-      ========================= */
-      gsap.from(".footer-title", {
-        y: 120,
-        opacity: 0,
-        duration: 1.4,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: ".footer-title",
-          start: "top 85%",
-        },
-      });
-
-      /* =========================
-         CTA BUTTON
-      ========================= */
-      gsap.from(".footer-btn", {
-        x: 80,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".footer-btn",
-          start: "top 90%",
-        },
-      });
-
-      /* =========================
          FOOTER COLUMNS
       ========================= */
       gsap.from(".footer-col", {

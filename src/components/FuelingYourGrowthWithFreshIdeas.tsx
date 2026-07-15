@@ -94,12 +94,12 @@ const FuelingYourGrowthWithFreshIdeas: React.FC = () => {
           "
         >
           <img
-            src="/MIDIS/afshin-t2y-9iMwtLr1WvI-unsplash.jpg"
+            src="/MIDIS/afshin-t2y-9iMwtLr1WvI-unsplash.webp"
             alt="Growth Idea 1"
             className="w-full h-[50vh] sm:h-[60vh] object-cover md:absolute md:top-0 md:left-0 md:h-full md:w-full"
           />
           <img
-            src="/MIDIS/3b51c993abf75b4afd5f93cc6602eea6.jpg"
+            src="/MIDIS/3b51c993abf75b4afd5f93cc6602eea6.webp"
             alt="Growth Idea 2"
             className="hidden md:block w-full h-[50vh] sm:h-[60vh] object-cover mb-1 md:mb-0 md:absolute md:top-0 md:left-0 md:h-full md:w-full"
           />

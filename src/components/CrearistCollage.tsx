@@ -221,7 +221,7 @@ export default function CrearistCollage() {
       <div className="md:hidden w-full px-0 mb-12">
         <div ref={imgMotionMobileRef} className="w-full h-[50vh] overflow-hidden">
           <img
-           src="/MIDIS/f7061bc55a7cf09a527cfce4804a6977.jpg"
+           src="/MIDIS/f7061bc55a7cf09a527cfce4804a6977.webp"
             alt="Motion Portrait"
             className="w-full h-full object-cover"
           />
@@ -237,7 +237,7 @@ export default function CrearistCollage() {
           className="absolute left-[18%] top-[25%] w-[21vw] aspect-[3/4.4] overflow-hidden shadow-2xl z-20"
         >
           <img
-            src="/MIDIS/f7061bc55a7cf09a527cfce4804a6977.jpg"
+            src="/MIDIS/f7061bc55a7cf09a527cfce4804a6977.webp"
             alt="Main Portrait"
             className="w-full h-full object-cover"
           />
@@ -249,7 +249,7 @@ export default function CrearistCollage() {
           className="absolute left-[30%] top-[15%] w-[13vw] aspect-square z-30 pointer-events-none"
         >
           <img
-            src="/MIDIS/Blog-6-2.png"
+            src="/MIDIS/Blog-6-2.webp"
             alt="Gold Asset"
             className="w-full h-full object-contain"
           />
@@ -273,7 +273,7 @@ export default function CrearistCollage() {
           className="absolute left-[47%] top-[10%] w-[25vw] h-[35vw] overflow-hidden z-10"
         >
           <img
-               src="/MIDIS/72dc388e327d089bca87f77834fa5c46 (1).jpg"
+               src="/MIDIS/72dc388e327d089bca87f77834fa5c46 (1).webp"
             alt="Motion Portrait"
             className="w-full h-full object-cover"
           />
@@ -351,7 +351,7 @@ export default function CrearistCollage() {
       >
         <div ref={imgStack2Ref} className="block w-full h-[50vh] md:w-1/2 md:h-full overflow-hidden">
           <img
-            src="/MIDIS/71c06f41f9f6c6715b4de3690ed53236 copy.jpg"
+            src="/MIDIS/71c06f41f9f6c6715b4de3690ed53236 copy.webp"
             alt="Stack 2"
             className="w-full h-full object-cover"
           />

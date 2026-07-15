@@ -19,12 +19,12 @@ const items: ReasonItem[] = [
   {
     number: "02.",
     title: "CREATIVE MASTERY &\nBRAND STRATEGY",
-    image: "/MIDIS/BRANDING.jpg",
+    image: "/MIDIS/BRANDING.webp",
   },
   {
     number: "03.",
     title: "TECHNICAL SEO &\nPERFORMANCE",
-    image: "/MIDIS/SEOOOOOOO.jpg",
+    image: "/MIDIS/SEOOOOOOO.webp",
   },
   {
     number: "04.",

@@ -69,42 +69,42 @@ export const TeamSection: React.FC = () => {
 
   const teamMembers = [
     {
-      img: "/GRAPHIC DESIGNER (1)/7.jpg",
+      img: "/GRAPHIC DESIGNER (1)/7.webp",
       name: "ALIN MISHRA",
       role: "SHOPIFY DEVELOPER",
     },
     {
-      img: "/GRAPHIC DESIGNER (1)/9.jpg",
+      img: "/GRAPHIC DESIGNER (1)/9.webp",
       name: "SHIVANI",
       role: "FRONTEND DEVELOPER",
     },
     {
-      img: "/GRAPHIC DESIGNER (1)/8.jpg",
+      img: "/GRAPHIC DESIGNER (1)/8.webp",
       name: "OJASWINI SAINI",
       role: "GRAPHIC DESIGNER",
     },
     {
-      img: "/GRAPHIC DESIGNER (1)/4.jpg",
+      img: "/GRAPHIC DESIGNER (1)/4.webp",
       name: "SWAYAM GANDHI",
       role: "BACKEND DEVELOPER",
     },
     {
-      img: "/GRAPHIC DESIGNER (1)/3.jpg",
+      img: "/GRAPHIC DESIGNER (1)/3.webp",
       name: "RAHUL GEHLOT",
       role: "GRAPHIC DESIGNER",
     },
     {
-      img: "/GRAPHIC DESIGNER (1)/5.jpg",
+      img: "/GRAPHIC DESIGNER (1)/5.webp",
       name: "NAVKIRAT BHOGAL",
       role: "SEO EXPERT",
     },
     {
-      img: "/GRAPHIC DESIGNER (1)/chanda.png",
+      img: "/GRAPHIC DESIGNER (1)/chanda.webp",
       name: "CHANDA ANGRAL",
       role: "GRAPHIC DESIGNER",
     },
     {
-      img: "/GRAPHIC DESIGNER (1)/6.jpg",
+      img: "/GRAPHIC DESIGNER (1)/6.webp",
       name: "ALOK YADAV",
       role: "VIDEO EDITOR",
     },

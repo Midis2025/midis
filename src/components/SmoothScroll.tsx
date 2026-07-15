@@ -22,6 +22,9 @@ export const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
             touchMultiplier: 2,
         });
 
+        // Store lenis on window so navigation / other components can pause it
+        (window as any).lenis = lenis;
+
         // 2. Connect Lenis to GSAP ScrollTrigger
         lenis.on("scroll", ScrollTrigger.update);
 
@@ -34,6 +37,7 @@ export const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
         // 3. Cleanup on unmount
         return () => {
             lenis.destroy();
+            delete (window as any).lenis;
             gsap.ticker.remove((time) => {
                 lenis.raf(time * 1000);
             });

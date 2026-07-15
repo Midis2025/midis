@@ -53,6 +53,7 @@
   }
 
   html {
+    position: relative;
     /* scroll-behavior: smooth; -- Removed to avoid conflict with Lenis */
   }
 
@@ -78,6 +79,7 @@
   }
 
   body {
+    position: relative;
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
   }

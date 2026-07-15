@@ -14,7 +14,7 @@ const IMAGE_COUNT = 52; // update if images are added/removed
 const encodedFolder = encodeURI(FOLDER_NAME);
 const projects = Array.from({ length: IMAGE_COUNT }, (_, idx) => ({
     title: `Project ${idx + 1}`,
-    image: `/${encodedFolder}/${idx + 1}.jpg`,
+    image: `/${encodedFolder}/${idx + 1}.webp`,
 }));
 
 const ProjectCard = ({ project }: { project: typeof projects[0] }) => {

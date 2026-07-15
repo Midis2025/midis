@@ -95,7 +95,7 @@ const HeroSection: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/MIDIS/ales-nesetril-Im7lZjxeLhg-unsplash.jpg')",
+            backgroundImage: "url('/MIDIS/ales-nesetril-Im7lZjxeLhg-unsplash.webp')",
           }}
         />
         {/* Gradient overlay for first image */}
@@ -112,7 +112,7 @@ const HeroSection: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/MIDIS/ales-nesetril-Im7lZjxeLhg-unsplash.jpg')",
+            backgroundImage: "url('/MIDIS/ales-nesetril-Im7lZjxeLhg-unsplash.webp')",
           }}
         />
         {/* Black filter overlay on second image */}
