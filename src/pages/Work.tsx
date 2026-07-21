@@ -10,11 +10,11 @@ import { Footer } from "@/components/Footer";
 // parentheses; the files are numbered sequentially starting at 1. Adjust
 // IMAGE_COUNT if more images are added later.
 const FOLDER_NAME = "New folder (8)";
-const IMAGE_COUNT = 52; // update if images are added/removed
+const IMAGE_COUNT = 59; // update if images are added/removed
 const encodedFolder = encodeURI(FOLDER_NAME);
 const projects = Array.from({ length: IMAGE_COUNT }, (_, idx) => ({
     title: `Project ${idx + 1}`,
-    image: `/${encodedFolder}/${idx + 1}.webp`,
+    image: `/${encodedFolder}/${String(idx + 1).padStart(2, '0')}.webp`,
 }));
 
 const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
