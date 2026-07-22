@@ -49,7 +49,7 @@ const services = [
 
 export const ServicesSection = () => {
   return (
-    <section className="bg-[#0B0B0B] antialiased text-white relative overflow-hidden py-24">
+    <section className="bg-[#0B0B0B] antialiased text-white relative overflow-hidden py-20 md:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 w-full">
         <div className="flex flex-col gap-24">
           {services.map((service) => (
@@ -60,8 +60,8 @@ export const ServicesSection = () => {
               <div className="py-2">
                 {/* 1. TITLE & NUMBER HEADER */}
                 <div className="relative w-full flex justify-between items-end pb-8">
-                  <div className="relative">
-                    <span className="absolute -top-1 -left-4 md:-top-3 md:-left-10 text-[10px] md:text-[16px] font-bold tracking-tight text-white/40">
+                  <div className="flex flex-col">
+                    <span className="text-[12px] md:text-[16px] font-bold tracking-tight text-white/40 mb-2 md:mb-3">
                       {service.number}
                     </span>
                     <h3 className="font-black tracking-tighter uppercase text-[clamp(2.5rem,10vw,8rem)] leading-[0.8] mb-0 select-none text-white">

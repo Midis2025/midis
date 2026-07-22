@@ -66,16 +66,20 @@ export const Navigation = () => {
       <nav
         className={`fixed top-0 left-0 w-full z-50
         transition-transform duration-300 ease-in-out
-        ${(hideNav && !isMobileMenuOpen) ? "-translate-y-full" : "translate-y-0"}`}
+        ${(hideNav && !isMobileMenuOpen) ? "-translate-y-full" : "translate-y-0"}
+        ${isOnLight
+          ? "lg:bg-black/90 lg:md:bg-black/80 lg:backdrop-blur-md lg:border-b lg:border-black/10"
+          : "lg:bg-black/40 lg:md:bg-black/20 lg:backdrop-blur-md lg:border-b lg:border-white/10"
+        }`}
       >
 
         <div className={`
           relative mx-auto flex items-center justify-between transition-all duration-500
-          lg:max-w-[1400px] lg:px-6 2xl:px-0 lg:py-6 lg:mt-0 lg:rounded-none lg:border-none
+          w-full max-w-[1400px] xl:max-w-[1600px] 2xl:max-w-[1800px] px-6 lg:px-8 xl:px-12 2xl:px-16 lg:py-6 lg:mt-0 lg:rounded-none lg:border-none lg:shadow-none
           mx-4 mt-4 px-4 py-3 rounded-full shadow-lg
           ${isOnLight
-            ? "bg-black/90 md:bg-black/80 backdrop-blur-md border border-black/10"
-            : "bg-black/40 md:bg-black/20 backdrop-blur-md border border-white/10"
+            ? "bg-black/90 md:bg-black/80 backdrop-blur-md border border-black/10 lg:bg-transparent lg:backdrop-blur-none lg:border-none"
+            : "bg-black/40 md:bg-black/20 backdrop-blur-md border border-white/10 lg:bg-transparent lg:backdrop-blur-none lg:border-none"
           }
         `}>
           {/* ================= LOGO (LEFT) ================= */}

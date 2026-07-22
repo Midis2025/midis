@@ -88,7 +88,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen overflow-hidden bg-neutral-900"
+      className="relative w-full h-[85svh] min-h-[550px] md:h-screen overflow-hidden bg-neutral-900"
     >
       {/* FIRST IMAGE (Base) */}
       <div className="absolute inset-0">
@@ -127,11 +127,11 @@ const HeroSection: React.FC = () => {
       {/* MAIN CONTENT */}
       <div className="relative z-10 h-full flex flex-col">
         {/* CENTER HERO TEXT */}
-        <div className="flex-1 flex items-center justify-center px-8">
+        <div className="flex-1 flex items-center justify-center px-8 pt-20 md:pt-24">
           <div className="text-center w-full mx-auto">
             <div className={`transition-all duration-1000 ease-out ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
               <h1
-                className="leading-none uppercase flex flex-col items-center justify-center pt-24 md:pt-40 lg:pt-44"
+                className="leading-none uppercase flex flex-col items-center justify-center"
                 style={{
                   fontFamily: "Anton, sans-serif",
                   fontWeight: 800,
@@ -153,7 +153,7 @@ const HeroSection: React.FC = () => {
             </div>
             <p
               className={`
-                mt-6 md:mt-8 text-base md:text-xl lg:text-2xl text-white/90 font-light tracking-widest uppercase
+                mt-3 md:mt-8 text-base md:text-xl lg:text-2xl text-white/90 font-light tracking-widest uppercase
                 transition-all duration-1000 delay-500
                 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
               `}
@@ -164,7 +164,7 @@ const HeroSection: React.FC = () => {
             {/* CTA BUTTONS */}
             <div
               className={`
-                mt-8 md:mt-10 flex flex-wrap gap-4 justify-center
+                mt-4 md:mt-10 flex flex-wrap gap-4 justify-center
                 transition-all duration-1000 delay-700
                 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
               `}

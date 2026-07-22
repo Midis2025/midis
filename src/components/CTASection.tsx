@@ -67,28 +67,28 @@ export const CTASection = () => {
       className="relative min-h-[60svh] md:min-h-[100svh] bg-white overflow-hidden flex items-center"
     >
       {/* 👇 text-black added here */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center text-black">
+      <div className="relative z-10 w-full max-w-[1440px] xl:max-w-[1680px] 2xl:max-w-[1800px] mx-auto px-6 md:px-12 lg:px-16 xl:px-20 text-center text-black">
 
         {/* 👇 color changed to black */}
-        <p className="text-xs sm:text-sm tracking-widest uppercase mb-8 sm:mb-10 text-black">
+        <p className="text-xs sm:text-sm xl:text-base tracking-widest uppercase mb-8 sm:mb-10 text-black font-semibold">
           JOIN US TODAY!
         </p>
 
         {/* LINE 1 */}
         <div className="flex flex-wrap justify-center mb-2 sm:mb-6">
-          <span className="cta-text text-[clamp(42px,11vw,5rem)] md:text-[clamp(40px,6vw,5rem)] font-extrabold overflow-hidden tracking-[-1.2px] md:tracking-[-1.6px] lg:tracking-tighter leading-[1.1]">
+          <span className="cta-text text-[clamp(42px,10vw,5rem)] md:text-[clamp(50px,5vw,6rem)] lg:text-[clamp(60px,5.2vw,6.8rem)] xl:text-[clamp(72px,6vw,8.5rem)] 2xl:text-[clamp(84px,6.5vw,10rem)] font-extrabold overflow-hidden tracking-[-1.2px] md:tracking-[-1.6px] lg:tracking-tighter leading-[1.1]">
             <span className="inline-block">LET&apos;S BUILD</span>
           </span>
         </div>
 
         {/* LINE 2 */}
         <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-6 mb-2 sm:mb-6 px-2">
-          <span className="cta-text text-[clamp(42px,11vw,5rem)] md:text-[clamp(40px,6vw,5rem)] font-extrabold overflow-hidden tracking-[-1.2px] md:tracking-[-1.6px] lg:tracking-tighter leading-[1.1]">
+          <span className="cta-text text-[clamp(42px,10vw,5rem)] md:text-[clamp(50px,5vw,6rem)] lg:text-[clamp(60px,5.2vw,6.8rem)] xl:text-[clamp(72px,6vw,8.5rem)] 2xl:text-[clamp(84px,6.5vw,10rem)] font-extrabold overflow-hidden tracking-[-1.2px] md:tracking-[-1.6px] lg:tracking-tighter leading-[1.1]">
             <span className="inline-block">SOMETHING</span>
           </span>
 
           {/* INLINE IMAGE - Hidden on mobile */}
-          <span className="hidden md:inline-flex relative w-20 h-10 sm:w-28 sm:h-16 lg:w-36 lg:h-20 shrink-0 align-middle">
+          <span className="hidden md:inline-flex relative w-20 h-10 sm:w-28 sm:h-16 lg:w-44 lg:h-22 xl:w-52 xl:h-26 2xl:w-60 2xl:h-30 shrink-0 align-middle">
             <span
               ref={imageWrapRef}
               className="
@@ -114,14 +114,14 @@ export const CTASection = () => {
             </span>
           </span>
 
-          <span className="cta-text text-[clamp(42px,11vw,5rem)] md:text-[clamp(40px,6vw,5rem)] font-extrabold overflow-hidden tracking-[-1.2px] md:tracking-[-1.6px] lg:tracking-tighter leading-[1.1]">
+          <span className="cta-text text-[clamp(42px,10vw,5rem)] md:text-[clamp(50px,5vw,6rem)] lg:text-[clamp(60px,5.2vw,6.8rem)] xl:text-[clamp(72px,6vw,8.5rem)] 2xl:text-[clamp(84px,6.5vw,10rem)] font-extrabold overflow-hidden tracking-[-1.2px] md:tracking-[-1.6px] lg:tracking-tighter leading-[1.1]">
             <span className="inline-block">AMAZING</span>
           </span>
         </div>
 
         {/* LINE 3 */}
         <div className="flex flex-wrap justify-center mb-10 sm:mb-14">
-          <span className="cta-text text-[clamp(42px,11vw,5rem)] md:text-[clamp(40px,6vw,5rem)] font-extrabold overflow-hidden tracking-[-1.2px] md:tracking-[-1.6px] lg:tracking-tighter leading-[1.1]">
+          <span className="cta-text text-[clamp(42px,10vw,5rem)] md:text-[clamp(50px,5vw,6rem)] lg:text-[clamp(60px,5.2vw,6.8rem)] xl:text-[clamp(72px,6vw,8.5rem)] 2xl:text-[clamp(84px,6.5vw,10rem)] font-extrabold overflow-hidden tracking-[-1.2px] md:tracking-[-1.6px] lg:tracking-tighter leading-[1.1]">
             <span className="inline-block">TOGETHER</span>
           </span>
         </div>

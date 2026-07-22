@@ -66,12 +66,12 @@ const AboutSection: React.FC = () => {
           sticky
           top-0
           h-auto
-          pb-12
+          pb-20
           sm:h-[100svh]
           sm:pb-0
           flex
           items-start
-          pt-12
+          pt-20
           sm:pt-0
           sm:items-center
           justify-center

@@ -33,9 +33,10 @@ export const TeamSection: React.FC = () => {
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: "+=2400",
+            end: "+=1600",
             scrub: 1.2,
             pin: true,
+            anticipatePin: 1,
           },
         });
 
@@ -46,14 +47,14 @@ export const TeamSection: React.FC = () => {
       });
 
       mm.add("(max-width: 767px)", () => {
-        // Mobile version: Much shorter pin, text simply fades, cards fade in.
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: "+=2400", // Massively increased scrolling duration for mobile to make it much slower
+            end: "+=1400",
             scrub: 1,
             pin: true,
+            anticipatePin: 1,
           },
         });
 
@@ -137,10 +138,10 @@ export const TeamSection: React.FC = () => {
 
       {/* ================= GRID ================= */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="max-w-[1440px] w-full px-6">
+        <div className="max-w-[1440px] lg:max-w-[1180px] w-full px-6">
           <div
             ref={gridRef}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-[32px]"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-x-6 sm:gap-y-6 lg:gap-8"
           >
             {teamMembers.map((member, i) => (
               <div
@@ -149,9 +150,9 @@ export const TeamSection: React.FC = () => {
               >
                 {/* ✅ IMAGE FIXED */}
                 <img
-                  src={member.img}
+                  src={encodeURI(member.img)}
                   alt={member.name}
-                  className="max-w-full max-h-full object-contain"
+                  className="team-img"
                 />
 
                 {/* ===== BOTTOM MARQUEE ===== */}

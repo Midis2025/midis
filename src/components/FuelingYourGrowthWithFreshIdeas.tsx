@@ -96,12 +96,12 @@ const FuelingYourGrowthWithFreshIdeas: React.FC = () => {
           <img
             src="/MIDIS/afshin-t2y-9iMwtLr1WvI-unsplash.webp"
             alt="Growth Idea 1"
-            className="w-full h-[50vh] sm:h-[60vh] object-cover md:absolute md:top-0 md:left-0 md:h-full md:w-full"
+            className="w-full h-[30vh] sm:h-[40vh] object-cover md:absolute md:top-0 md:left-0 md:h-full md:w-full"
           />
           <img
             src="/MIDIS/3b51c993abf75b4afd5f93cc6602eea6.webp"
             alt="Growth Idea 2"
-            className="hidden md:block w-full h-[50vh] sm:h-[60vh] object-cover mb-1 md:mb-0 md:absolute md:top-0 md:left-0 md:h-full md:w-full"
+            className="hidden md:block w-full h-[30vh] sm:h-[40vh] object-cover mb-1 md:mb-0 md:absolute md:top-0 md:left-0 md:h-full md:w-full"
           />
 
         </div>
@@ -113,7 +113,7 @@ const FuelingYourGrowthWithFreshIdeas: React.FC = () => {
               md:sticky md:top-0
               flex flex-col justify-center
               px-6 sm:px-10 md:px-20
-              py-16 md:py-0 md:min-h-[100svh]
+              py-20 md:py-0 md:min-h-[100svh]
             "
           >
             <h1 className="font-extrabold text-black leading-[1.1] mb-6 text-[38px] sm:text-[45px] md:text-[55px]">

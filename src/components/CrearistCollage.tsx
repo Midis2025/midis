@@ -198,7 +198,7 @@ export default function CrearistCollage() {
       {/* 1. LAYER: TEXT (BEHIND IMAGES - z-0) */}
       <div
         ref={titleGroupRef}
-        className="relative md:absolute inset-0 flex flex-col items-center md:justify-center justify-start z-0 select-none md:pointer-events-none text-center px-4 sm:px-6 md:px-0 pt-8 sm:pt-12 pb-6 sm:pb-8 md:py-0"
+        className="relative md:absolute inset-0 flex flex-col items-center md:justify-center justify-start z-0 select-none md:pointer-events-none text-center px-4 sm:px-6 md:px-0 pt-20 sm:pt-24 pb-6 sm:pb-8 md:py-0"
       >
         <span className="text-[9px] sm:text-[10px] md:text-[10px] font-bold tracking-[0.2em] sm:tracking-[0.25em] text-black/30 mb-3 sm:mb-6 uppercase">
           TOP RATED GLOBAL DIGITAL AGENCY

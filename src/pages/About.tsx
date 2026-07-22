@@ -387,7 +387,7 @@ const DirectorsSection = () => {
             </motion.div>
 
             {/* Content Half - Minimalist centered */}
-            <div className="lg:w-1/2 flex items-center justify-center p-8 md:p-16 lg:p-24 bg-white relative">
+            <div className="lg:w-1/2 flex items-center justify-center p-6 sm:p-8 md:p-16 lg:p-24 bg-white relative">
               {/* Background Large Number Watermark */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] select-none">
                 <span className="text-[25vw] font-black leading-none" style={{ fontFamily: 'Anton, sans-serif' }}>
@@ -400,16 +400,16 @@ const DirectorsSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true }}
-                className="max-w-md space-y-10 relative z-10"
+                className="max-w-md w-full space-y-6 sm:space-y-10 relative z-10"
               >
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   <div className="w-12 h-1 bg-orange-600" />
                   <span className="block text-orange-600 font-bold text-[13px] tracking-[0.3em] uppercase">
                     {director.role}
                   </span>
-                  <h3 className="text-5xl md:text-7xl font-black uppercase text-[#0C0E12] tracking-tighter leading-none" style={{ fontFamily: 'Anton, sans-serif' }}>
+                  <h3 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase text-[#0C0E12] tracking-normal sm:tracking-tight leading-[1.05]" style={{ fontFamily: 'Anton, sans-serif' }}>
                     {director.name.split(' ')[0]} <br />
-                    <span className="text-transparent" style={{ WebkitTextStroke: '2px #0C0E12' }}>{director.name.split(' ')[1]}</span>
+                    <span className="text-transparent" style={{ WebkitTextStroke: '1.5px #0C0E12' }}>{director.name.split(' ')[1]}</span>
                   </h3>
                 </div>
 
