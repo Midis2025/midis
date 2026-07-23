@@ -49,13 +49,13 @@ export const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="w-full bg-[#0C0E12] text-white pt-16 pb-10 px-6 md:px-16 lg:px-24"
+      className="w-full bg-[#0C0E12] text-white pt-8 sm:pt-12 md:pt-16 pb-6 sm:pb-8 md:pb-10 px-6 md:px-16 lg:px-24"
     >
       {/* ================= TOP CTA ================= */}
     
 
       {/* ================= MAIN GRID ================= */}
-      <div className="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 border-t border-white/10 pt-10 pb-8">
+      <div className="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 border-t border-white/10 pt-6 sm:pt-8 md:pt-10 pb-6 md:pb-8">
 
         {/* TOP SERVICES */}
         <div className="footer-col">
@@ -129,7 +129,7 @@ export const Footer = () => {
       </div>
 
       {/* ================= COPYRIGHT ================= */}
-      <div className="footer-copy border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-gray-500 text-[10px] uppercase tracking-[0.2em] font-bold">
+      <div className="footer-copy border-t border-white/10 pt-5 sm:pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-gray-500 text-[10px] uppercase tracking-[0.2em] font-bold">
         <span>© {new Date().getFullYear()} Midis. All Rights Reserved.</span>
         <span className="text-white/20 italic">Innovative Solutions for Modern Challenges</span>
       </div>

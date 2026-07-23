@@ -90,7 +90,7 @@
 
 /* Section spacing - top/bottom */
 .section-spacing {
-  @apply py-12;
+  @apply py-10;
   @apply sm:py-16;
   @apply md:py-20;
   @apply lg:py-24;
@@ -98,15 +98,15 @@
 }
 
 .section-spacing-sm {
-  @apply py-8;
+  @apply py-6;
   @apply sm:py-10;
   @apply md:py-12;
   @apply lg:py-16;
 }
 
 .section-spacing-lg {
-  @apply py-16;
-  @apply sm:py-20;
+  @apply py-10;
+  @apply sm:py-16;
   @apply md:py-28;
   @apply lg:py-32;
   @apply xl:py-40;

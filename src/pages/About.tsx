@@ -125,7 +125,7 @@ const AboutHero = () => {
           <div className="w-10 h-10 rounded-xl bg-orange-600/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-600/20 animate-pulse">
             <Sparkles size={20} strokeWidth={2.5} fill="currentColor" className="opacity-80" />
           </div>
-          <span className="text-white/50 text-[11px] uppercase font-semibold tracking-[0.3em]">About Midis</span>
+          <span className="text-white/50 text-[11px] uppercase font-semibold tracking-[0.3em] font-sans">About Midis</span>
           <div className="w-12 h-px bg-white/20" />
         </motion.div>
 
@@ -141,8 +141,6 @@ const AboutHero = () => {
           <div className="flex flex-wrap justify-center items-center gap-x-[0.2em] md:gap-x-[0.35em] mt-1">
             {sublineWords.map((word, i) => (
               <motion.span key={`s-${i}`} initial={{ opacity: 0, y: 80, rotateX: 90 }} animate={{ opacity: 1, y: 0, rotateX: 0 }} transition={{ duration: 0.8, delay: 0.55 + i * 0.12, ease: [0.16, 1, 0.3, 1] }} className="inline-flex items-center">
-                {/* Removed Hero Image Decoration */}
-
                 <span className={`text-[clamp(2.8rem,11vw,10rem)] leading-[0.9] font-normal uppercase tracking-tight ${i === 2 ? "bg-gradient-to-r from-orange-400 via-orange-300 to-amber-200 bg-clip-text text-transparent" : "text-white"}`} style={{ fontFamily: "Anton, sans-serif" }}>
                   {word}
                 </span>
@@ -169,11 +167,11 @@ const AboutHero = () => {
 
         {/* Bottom Stats */}
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.5 }} className="w-full mt-auto pt-8">
-          <div className="border-t border-white/10 pt-8 flex flex-wrap justify-between items-center gap-y-6 gap-x-4">
+          <div className="border-t border-white/10 pt-8 grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-4 md:gap-x-8 lg:gap-x-12 items-center">
             {stats.map((stat, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.6 + i * 0.1 }} className="flex items-baseline gap-3">
-                <span className="text-3xl md:text-4xl font-black tracking-tighter text-white" style={{ fontFamily: "Anton, sans-serif" }}>{stat.value}</span>
-                <span className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-white/30 font-semibold">{stat.label}</span>
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.6 + i * 0.1 }} className="flex items-center gap-3 md:gap-4">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tighter text-white shrink-0 leading-none" style={{ fontFamily: "Anton, sans-serif" }}>{stat.value}</span>
+                <span className="text-[10px] md:text-[11px] uppercase tracking-[0.15em] md:tracking-[0.2em] text-white/40 font-semibold leading-tight">{stat.label}</span>
               </motion.div>
             ))}
           </div>
@@ -196,19 +194,19 @@ const AboutHero = () => {
 
 const WhoWeAreSection = () => {
   return (
-    <section className="bg-white py-16 md:py-32 lg:py-40 px-4 md:px-12 lg:px-24">
+    <section className="bg-white py-10 sm:py-16 md:py-24 lg:py-36 px-4 md:px-12 lg:px-24">
       <div className="max-w-[1300px] mx-auto">
         {/* Label */}
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-10">
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-8 sm:mb-10">
           <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-500/20">
             <Sparkles size={20} strokeWidth={3} />
           </div>
           <span className="text-black font-bold text-[11px] tracking-[0.25em] uppercase">Who We Are</span>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-24">
           {/* Left — Big heading + paragraphs */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[30px] md:text-5xl lg:text-6xl font-black uppercase text-[#0C0E12] leading-[0.95] tracking-tight">
               NOT JUST ANOTHER <br />
               <span className="bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">DIGITAL AGENCY</span>
@@ -224,7 +222,7 @@ const WhoWeAreSection = () => {
           </div>
 
           {/* Right — Continued text + accent card */}
-          <div className="space-y-8 lg:pt-6">
+          <div className="space-y-6 sm:space-y-8 md:pt-2 lg:pt-6">
             <motion.p variants={fadeUp} custom={3} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[#3a3a4a] text-base md:text-lg leading-relaxed font-medium">
               We've worked with businesses in different corners of the world. Some were startups trying to get noticed. Others were established companies looking for smarter growth. Different goals, different markets—but the same outcome: <strong className="text-[#0C0E12]">measurable results that make sense for the business</strong>.
             </motion.p>
@@ -236,11 +234,11 @@ const WhoWeAreSection = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="relative bg-[#0C0E12] rounded-3xl p-8 md:p-10 overflow-hidden"
+              className="relative bg-[#0C0E12] rounded-3xl p-6 sm:p-8 md:p-10 overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-orange-500/20 to-transparent rounded-bl-full" />
               <div className="relative z-10">
-                <span className="text-orange-400 text-5xl mb-4 block">→</span>
+                <span className="text-orange-400 text-4xl sm:text-5xl mb-3 sm:mb-4 block">→</span>
                 <p className="text-white/80 text-base md:text-lg leading-relaxed font-medium">
                   We don't chase vanity metrics. We build <strong className="text-white">systems that help you grow</strong> month after month.
                 </p>
@@ -259,49 +257,48 @@ const WhoWeAreSection = () => {
 
 const WhyMidisSection = () => {
   return (
-    <section className="bg-[#faf9f7] py-16 md:py-32 lg:py-40 px-4 md:px-12 lg:px-24">
+    <section className="bg-[#faf9f7] py-8 sm:py-16 md:py-24 lg:py-36 px-4 md:px-12 lg:px-24">
       <div className="max-w-[1300px] mx-auto">
         {/* Header */}
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-500/20">
-            <Sparkles size={20} strokeWidth={3} />
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-3 sm:mb-6">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-500/20">
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={3} />
           </div>
           <span className="text-black font-bold text-[11px] tracking-[0.25em] uppercase">Why Choose Us</span>
         </motion.div>
 
-        <motion.h2 variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[30px] md:text-5xl lg:text-7xl font-black uppercase text-[#0C0E12] leading-[0.9] tracking-tight mb-6">
+        <motion.h2 variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[26px] sm:text-[30px] md:text-5xl lg:text-7xl font-black uppercase text-[#0C0E12] leading-[0.95] md:leading-[0.9] tracking-tight mb-3 sm:mb-6">
           WHY MIDIS AND <br />
           <span className="bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">NOT SOMEONE ELSE?</span>
         </motion.h2>
 
-        <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[#3a3a4a] text-base md:text-lg max-w-2xl leading-relaxed font-medium mb-16">
+        <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[#3a3a4a] text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-medium mb-6 sm:mb-12 md:mb-16">
           Let's be honest: there are plenty of agencies out there. So why us? Here's what clients tell us:
         </motion.p>
 
         {/* Reason Cards */}
-        <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {whyMidisReasons.map((reason, i) => (
             <motion.div
               key={i}
               variants={fadeUp}
               custom={i}
-              className="group relative bg-white rounded-3xl p-8 md:p-10 border border-black/5 hover:border-orange-500/20 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(249,115,22,0.08)] cursor-default overflow-hidden"
+              className="group relative bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 border border-black/5 hover:border-orange-500/20 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(249,115,22,0.08)] cursor-default overflow-hidden"
             >
               {/* Hover gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/[0.03] to-purple-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/[0.03] to-purple-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl sm:rounded-3xl" />
 
               <div className="relative z-10">
-                <div className="flex items-start gap-5">
-                  <div className={`w-16 h-16 rounded-[20px] bg-gradient-to-br ${reason.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm border border-black/5 relative overflow-hidden`}>
+                <div className="flex items-start gap-3.5 sm:gap-4 md:gap-5">
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-lg sm:rounded-[20px] bg-gradient-to-br ${reason.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm border border-black/5 relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
                     <reason.icon
-                      size={28}
-                      className={`text-black/80 relative z-10 ${reason.icon === Orbit ? "animate-[spin_10s_linear_infinite]" : ""}`}
+                      className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-black/80 relative z-10 ${reason.icon === Orbit ? "animate-[spin_10s_linear_infinite]" : ""}`}
                     />
                   </div>
                   <div>
-                    <h3 className="text-xl md:text-2xl font-black uppercase text-[#0C0E12] tracking-tight mb-2 leading-tight group-hover:text-orange-600 transition-colors duration-300">{reason.title}</h3>
-                    <p className="text-[#5a5a6a] text-base leading-relaxed font-medium group-hover:text-[#2a2a3a] transition-colors duration-300">{reason.desc}</p>
+                    <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-black uppercase text-[#0C0E12] tracking-tight mb-1 sm:mb-2 leading-tight group-hover:text-orange-600 transition-colors duration-300">{reason.title}</h3>
+                    <p className="text-[#5a5a6a] text-xs sm:text-sm md:text-base leading-relaxed font-medium group-hover:text-[#2a2a3a] transition-colors duration-300">{reason.desc}</p>
                   </div>
                 </div>
               </div>
@@ -327,7 +324,9 @@ const DirectorsSection = () => {
       bio: "Sagar Bakshi is the Managing Director of Midis, where he leads strategy, operations, and digital growth initiatives. With a focus on AI-driven solutions, automation, and brand building, he helps businesses scale smarter and faster while turning complex challenges into clear, actionable strategies. Sagar brings hands-on experience from multiple e-commerce ventures, ranging from home decor and wellness brands to streetwear, ensuring every project is designed for practical growth and long-term success.",
       image: "/images/Sagar-bakshi.jpg.webp",
       bg: "bg-orange-50/50",
-      num: "01"
+      num: "01",
+      imgPos: "object-top md:object-center",
+      imgScale: "scale-100 group-hover:scale-105"
     },
     {
       name: "Gaurav Sharma",
@@ -335,19 +334,21 @@ const DirectorsSection = () => {
       bio: "Gaurav Sharma is the CEO and a Director at Midis, where he drives the company’s vision, strategy, and innovation. With deep expertise in digital solutions, branding, marketing, and web development, he ensures that every project delivers measurable results and meaningful impact for clients. Gaurav plays a pivotal role at Mining Discovery, overseeing content strategy, platform growth, and insights delivery for the global mining industry.",
       image: "/images/gaurav-sharma.png",
       bg: "bg-blue-50/50",
-      num: "02"
+      num: "02",
+      imgPos: "object-cover object-center",
+      imgScale: "scale-[1.35] -translate-y-[8%] group-hover:scale-[1.4]"
     }
   ];
 
   return (
     <section className="bg-white py-0 overflow-hidden">
       {/* Intro Header */}
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-24 py-24 md:py-32">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-24 pt-6 pb-6 sm:pt-16 sm:pb-12 md:py-24 lg:py-32">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
         >
           <div className="flex items-center gap-4">
             <span className="w-12 h-[2px] bg-black" />
@@ -363,7 +364,7 @@ const DirectorsSection = () => {
       {/* Split Screen Rows */}
       <div className="flex flex-col border-t border-black/5">
         {directors.map((director, i) => (
-          <div key={i} className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} min-h-[80vh] border-b border-black/5`}>
+          <div key={i} className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} min-h-0 md:min-h-[600px] lg:min-h-[80vh] items-stretch border-b border-black/5`}>
 
             {/* Image Half - Full Bleed */}
             <motion.div
@@ -371,26 +372,26 @@ const DirectorsSection = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              className="lg:w-1/2 relative group overflow-hidden h-[500px] lg:h-auto"
+              className="w-full md:w-1/2 relative group overflow-hidden h-[380px] md:h-auto md:self-stretch"
             >
               <img
                 src={director.image}
                 alt={director.name}
-                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105"
+                className={`absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ${director.imgPos} ${director.imgScale}`}
               />
               <div className={`absolute inset-0 ${director.bg} mix-blend-multiply opacity-20 group-hover:opacity-0 transition-opacity duration-700`} />
 
               {/* Floating ID Tag */}
-              <div className="absolute top-10 left-10 lg:left-20 bg-white px-6 py-2 rounded-full shadow-2xl">
-                <span className="text-black font-black text-sm tracking-widest">{director.num}</span>
+              <div className="absolute top-4 left-4 sm:top-8 sm:left-8 md:left-12 lg:left-20 z-20 bg-white px-4 py-1.5 sm:px-6 sm:py-2 rounded-full shadow-2xl">
+                <span className="text-black font-black text-xs sm:text-sm tracking-widest">{director.num}</span>
               </div>
             </motion.div>
 
             {/* Content Half - Minimalist centered */}
-            <div className="lg:w-1/2 flex items-center justify-center p-6 sm:p-8 md:p-16 lg:p-24 bg-white relative">
+            <div className="w-full md:w-1/2 flex items-center justify-center pt-6 pb-3 px-6 sm:p-10 md:p-12 lg:p-24 bg-white relative md:self-stretch">
               {/* Background Large Number Watermark */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] select-none">
-                <span className="text-[25vw] font-black leading-none" style={{ fontFamily: 'Anton, sans-serif' }}>
+                <span className="text-[25vw] md:text-[18vw] font-black leading-none" style={{ fontFamily: 'Anton, sans-serif' }}>
                   {director.num}
                 </span>
               </div>
@@ -400,26 +401,26 @@ const DirectorsSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true }}
-                className="max-w-md w-full space-y-6 sm:space-y-10 relative z-10"
+                className="max-w-md w-full space-y-4 sm:space-y-8 md:space-y-10 relative z-10"
               >
-                <div className="space-y-3 sm:space-y-4">
+                <div className="space-y-2.5 sm:space-y-4">
                   <div className="w-12 h-1 bg-orange-600" />
                   <span className="block text-orange-600 font-bold text-[13px] tracking-[0.3em] uppercase">
                     {director.role}
                   </span>
-                  <h3 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase text-[#0C0E12] tracking-normal sm:tracking-tight leading-[1.05]" style={{ fontFamily: 'Anton, sans-serif' }}>
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black uppercase text-[#0C0E12] tracking-normal sm:tracking-tight leading-[1.05]" style={{ fontFamily: 'Anton, sans-serif' }}>
                     {director.name.split(' ')[0]} <br />
                     <span className="text-transparent" style={{ WebkitTextStroke: '1.5px #0C0E12' }}>{director.name.split(' ')[1]}</span>
                   </h3>
                 </div>
 
-                <p className="text-[#3a3a4a] text-lg md:text-xl leading-relaxed font-medium">
+                <p className="text-[#3a3a4a] text-base sm:text-lg md:text-xl leading-relaxed font-medium">
                   {director.bio}
                 </p>
 
-                <div className="pt-4">
+                <div className="pt-2 sm:pt-4">
                   <button className="flex items-center gap-4 group">
-                    <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center transition-all duration-300">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black flex items-center justify-center transition-all duration-300">
                       <Linkedin size={18} className="text-white" />
                     </div>
                     <span className="text-black font-black text-xs tracking-widest uppercase">Connect on LinkedIn</span>
@@ -435,52 +436,48 @@ const DirectorsSection = () => {
   );
 };
 
-
-
-
-
 /* ═══════════════════════════════════════════════════════
    COMPONENT 5 — WHAT YOU'LL GAIN
    ═══════════════════════════════════════════════════════ */
 
 const GainsSection = () => {
   return (
-    <section className="bg-white py-16 md:py-32 lg:py-40 px-4 md:px-12 lg:px-24">
+    <section className="bg-white py-10 sm:py-16 md:py-32 lg:py-40 px-4 md:px-12 lg:px-24">
       <div className="max-w-[1300px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-24 items-center">
           {/* Left */}
           <div>
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-6">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-4 sm:mb-6">
               <div className="w-10 h-10 rounded-xl bg-orange-600/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-600/20 animate-pulse">
                 <Sparkles size={20} strokeWidth={2.5} fill="currentColor" className="opacity-80" />
               </div>
               <span className="text-black font-bold text-[11px] tracking-[0.25em] uppercase">Partnership</span>
             </motion.div>
 
-            <motion.h2 variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[30px] md:text-5xl lg:text-6xl font-black uppercase text-[#0C0E12] leading-[0.95] tracking-tight mb-6">
+            <motion.h2 variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[30px] md:text-5xl lg:text-6xl font-black uppercase text-[#0C0E12] leading-[0.95] tracking-tight mb-4 sm:mb-6">
               WHAT YOU'LL <br />
               <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 bg-clip-text text-transparent">GAIN WITH MIDIS</span>
             </motion.h2>
 
-            <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[#3a3a4a] text-base md:text-lg leading-relaxed font-medium mb-10">
+            <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[#3a3a4a] text-base md:text-lg leading-relaxed font-medium mb-8 sm:mb-10">
               When you work with Midis, you're not just outsourcing tasks — you're building a partnership.
             </motion.p>
           </div>
 
           {/* Right — Gains list */}
-          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="space-y-5">
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="space-y-3.5 sm:space-y-5">
             {gains.map((gain, i) => (
               <motion.div
                 key={i}
                 variants={fadeUp}
                 custom={i}
-                className="group flex items-start gap-5 p-6 rounded-2xl bg-[#faf9f7] border border-black/5 hover:border-orange-500/20 hover:shadow-xl transition-all duration-500"
+                className="group flex items-start gap-3.5 sm:gap-5 p-4 sm:p-6 rounded-2xl bg-[#faf9f7] border border-black/5 hover:border-orange-500/20 hover:shadow-xl transition-all duration-500"
               >
-                <div className="w-12 h-12 rounded-2xl bg-orange-500/10 backdrop-blur-md border border-orange-500/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300 shadow-sm relative overflow-hidden">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-orange-500/10 backdrop-blur-md border border-orange-500/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300 shadow-sm relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-orange-600/10 to-transparent" />
-                  <Sparkles className="w-5 h-5 text-orange-600 relative z-10" strokeWidth={2.5} />
+                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600 relative z-10" strokeWidth={2.5} />
                 </div>
-                <p className="text-[#2a2a3a] text-base md:text-lg font-semibold leading-relaxed">{gain.text}</p>
+                <p className="text-[#2a2a3a] text-sm sm:text-base md:text-lg font-semibold leading-relaxed">{gain.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -520,24 +517,24 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="bg-white py-16 md:py-32 lg:py-40 px-4 md:px-12 lg:px-24">
+    <section className="bg-white py-10 sm:py-16 md:py-32 lg:py-40 px-4 md:px-12 lg:px-24">
       <div className="max-w-[1000px] mx-auto">
         {/* Header */}
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-6">
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-4 sm:mb-6">
           <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-500/20">
             <Sparkles size={20} strokeWidth={3} />
           </div>
           <span className="text-black font-bold text-[11px] tracking-[0.25em] uppercase">FAQ</span>
         </motion.div>
 
-        <motion.h2 variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[30px] md:text-5xl lg:text-6xl font-black uppercase text-[#0C0E12] leading-[0.95] tracking-tight mb-16">
+        <motion.h2 variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-[30px] md:text-5xl lg:text-6xl font-black uppercase text-[#0C0E12] leading-[0.95] tracking-tight mb-8 sm:mb-12 md:mb-16">
           FREQUENTLY ASKED <br />
           <span className="bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">QUESTIONS</span>
         </motion.h2>
 
         <div className="divide-y divide-black/10">
           {faqs.map((f, i) => (
-            <motion.div key={i} variants={fadeUp} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} className="py-8 md:py-10">
+            <motion.div key={i} variants={fadeUp} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} className="py-5 sm:py-8 md:py-10">
               <button onClick={() => setOpenIndex(openIndex === i ? -1 : i)} className="w-full flex justify-between items-center group gap-4">
                 <h4 className={`text-lg md:text-2xl font-black uppercase tracking-tighter transition-all text-left ${openIndex === i ? "text-orange-500" : "text-[#0C0E12]/80"}`}>{f.q}</h4>
                 <div className={`w-11 h-11 border border-black/10 rounded-full flex items-center justify-center transition-all duration-500 flex-shrink-0 ${openIndex === i ? "rotate-180 bg-[#0C0E12] text-white" : ""}`}>
@@ -565,7 +562,7 @@ const FAQSection = () => {
 
 const StartBuildingCTA = () => {
   return (
-    <section className="relative bg-[#0C0E12] py-20 md:py-36 lg:py-44 px-4 md:px-12 lg:px-24 overflow-hidden">
+    <section className="relative bg-[#0C0E12] py-12 sm:py-20 md:py-36 lg:py-44 px-4 md:px-12 lg:px-24 overflow-hidden">
       {/* Background orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/10 via-transparent to-purple-500/10 rounded-full blur-[100px]" />
@@ -597,6 +594,7 @@ const StartBuildingCTA = () => {
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
+
 
         <motion.p variants={fadeUp} custom={4} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-white/20 text-sm font-medium mt-8">
           Let's talk about where you want your business to be six months from now.

@@ -22,13 +22,14 @@ export const TeamSection: React.FC = () => {
     const cards = grid.querySelectorAll(".team-card");
 
     const ctx = gsap.context(() => {
-      gsap.set(lines, { y: 90, opacity: 0 });
-      gsap.set([dedi, cated], { x: 0 });
-      gsap.set(cards, { opacity: 0 });
-
       const mm = gsap.matchMedia();
 
+      // Desktop (>= 768px)
       mm.add("(min-width: 768px)", () => {
+        gsap.set(lines, { y: 90, opacity: 0 });
+        gsap.set([dedi, cated], { x: 0 });
+        gsap.set(cards, { opacity: 0 });
+
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
@@ -46,7 +47,12 @@ export const TeamSection: React.FC = () => {
         tl.to(cards, { opacity: 1, stagger: { each: 0.08, from: "center" }, duration: 1, ease: "power2.out" }, "-=0.3");
       });
 
-      mm.add("(max-width: 767px)", () => {
+      // Mobile / Tablet (480px - 767px)
+      mm.add("(min-width: 480px) and (max-width: 767px)", () => {
+        gsap.set(lines, { y: 35, opacity: 0 });
+        gsap.set([dedi, cated], { x: 0 });
+        gsap.set(cards, { opacity: 0 });
+
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
@@ -58,9 +64,32 @@ export const TeamSection: React.FC = () => {
           },
         });
 
-        tl.to(lines, { y: 0, opacity: 1, stagger: 0.1, duration: 1, ease: "power4.out" });
-        tl.to([dedi, cated], { x: (i) => (i === 0 ? -60 : 60), duration: 1.2, ease: "power4.inOut" }, "-=0.2");
+        tl.to(lines, { y: 0, opacity: 1, stagger: 0.12, duration: 1, ease: "power4.out" });
+        tl.to([dedi, cated], { x: (i) => (i === 0 ? -35 : 35), duration: 1.2, ease: "power4.inOut" }, "-=0.2");
         tl.to(heading, { opacity: 0, y: -40, duration: 0.9, ease: "power3.inOut" });
+        tl.to(cards, { opacity: 1, stagger: { each: 0.05, from: "start" }, duration: 1, ease: "power2.out" }, "-=0.3");
+      });
+
+      // Small Mobile (< 480px)
+      mm.add("(max-width: 479px)", () => {
+        gsap.set(lines, { y: 20, opacity: 0 });
+        gsap.set([dedi, cated], { x: 0 });
+        gsap.set(cards, { opacity: 0 });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=1200",
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+          },
+        });
+
+        tl.to(lines, { y: 0, opacity: 1, stagger: 0.1, duration: 1, ease: "power4.out" });
+        tl.to([dedi, cated], { x: (i) => (i === 0 ? -15 : 15), duration: 1.2, ease: "power4.inOut" }, "-=0.2");
+        tl.to(heading, { opacity: 0, y: -25, duration: 0.9, ease: "power3.inOut" });
         tl.to(cards, { opacity: 1, stagger: { each: 0.05, from: "start" }, duration: 1, ease: "power2.out" }, "-=0.3");
       });
     }, section);
@@ -118,21 +147,23 @@ export const TeamSection: React.FC = () => {
       className="relative bg-[#0B0C0E] overflow-hidden h-[100svh] min-h-[100svh] md:h-screen md:min-h-[700px]"
     >
       {/* ================= HEADING ================= */}
-      <div className="absolute inset-0 flex items-center justify-center z-20 px-6 pointer-events-none">
+      <div className="absolute inset-0 flex items-center justify-center z-20 px-4 sm:px-6 pointer-events-none overflow-hidden">
         <h1
           ref={headingRef}
           className="
-            font-anton text-white text-center leading-[0.9]
-            text-[30px] sm:text-[5rem] md:text-[7rem] lg:text-[9rem]
-            tracking-[-1.6px] lg:tracking-tighter
+            font-anton text-white text-center
+            leading-[1.15] sm:leading-[1.05] md:leading-[0.9]
+            text-[clamp(1.75rem,7.5vw,3.2rem)] sm:text-[5rem] md:text-[7rem] lg:text-[9rem]
+            tracking-tight md:tracking-[-1.6px] lg:tracking-tighter
+            max-w-full
           "
         >
-          <span className="line block">MEET OUR</span>
-          <span className="line block">
+          <span className="line block py-0.5 sm:py-0">MEET OUR</span>
+          <span className="line block py-0.5 sm:py-0">
             <span className="dedi inline-block">DEDI</span>
-            <span className="cated inline-block ml-3">CATED</span>
+            <span className="cated inline-block ml-2 sm:ml-3">CATED</span>
           </span>
-          <span className="line block">MEMBERS</span>
+          <span className="line block py-0.5 sm:py-0">MEMBERS</span>
         </h1>
       </div>
 

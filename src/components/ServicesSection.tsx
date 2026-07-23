@@ -49,13 +49,13 @@ const services = [
 
 export const ServicesSection = () => {
   return (
-    <section className="bg-[#0B0B0B] antialiased text-white relative overflow-hidden py-20 md:py-24 lg:py-28">
+    <section className="bg-[#0B0B0B] antialiased text-white relative overflow-hidden py-10 sm:py-16 md:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 w-full">
-        <div className="flex flex-col gap-24">
+        <div className="flex flex-col gap-10 sm:gap-16 md:gap-24">
           {services.map((service) => (
             <div
               key={service.number}
-              className="service-item w-full border-t border-white/10 pt-16 group"
+              className="service-item w-full border-t border-white/10 pt-8 sm:pt-12 md:pt-16 group"
             >
               <div className="py-2">
                 {/* 1. TITLE & NUMBER HEADER */}

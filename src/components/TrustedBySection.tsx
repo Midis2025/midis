@@ -88,9 +88,9 @@ export const TrustedBySection: React.FC = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-20 md:py-32 bg-white overflow-hidden flex flex-col items-center">
+        <section ref={sectionRef} className="py-10 sm:py-16 md:py-32 bg-white overflow-hidden flex flex-col items-center">
             {/* Heading */}
-            <div className="text-center px-4 max-w-3xl mb-12 md:mb-20 trusted-fade">
+            <div className="text-center px-4 max-w-3xl mb-8 sm:mb-12 md:mb-20 trusted-fade">
                 <h2 className="text-[48px] leading-[0.9] sm:text-[70px] md:text-[85px] font-bold text-black tracking-tighter mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
                     Trusted by<br />
                     +50 founders

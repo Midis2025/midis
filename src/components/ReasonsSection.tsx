@@ -127,7 +127,7 @@ export const ReasonsSection: React.FC = () => {
   return (
     <section ref={sectionRef} data-navbar-theme="dark" className="bg-white overflow-hidden">
       {/* ================= HEADING ================= */}
-      <div className="py-16 md:py-24 lg:py-28 flex items-center">
+      <div className="py-10 sm:py-16 md:py-24 lg:py-28 flex items-center">
         <div className="max-w-7xl w-full px-4 sm:px-6 md:px-16 lg:px-24">
           <h2
             className="uppercase font-black leading-[0.9] text-black
