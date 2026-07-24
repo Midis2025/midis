@@ -119,7 +119,7 @@ const AboutHero = () => {
         <div className="absolute top-0 left-3/4 w-px h-full bg-white" />
       </div>
 
-      <div className="max-w-[1400px] mx-auto relative z-10 w-full flex flex-col items-center justify-center px-6 pt-40 pb-16 min-h-screen">
+      <div className="max-w-[1400px] mx-auto relative z-10 w-full flex flex-col items-center justify-center px-6 pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 min-h-screen">
         {/* Top Label */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} className="flex items-center gap-3 mb-12">
           <div className="w-10 h-10 rounded-xl bg-orange-600/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-600/20 animate-pulse">
@@ -169,9 +169,9 @@ const AboutHero = () => {
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.5 }} className="w-full mt-auto pt-8">
           <div className="border-t border-white/10 pt-8 grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-4 md:gap-x-8 lg:gap-x-12 items-center">
             {stats.map((stat, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.6 + i * 0.1 }} className="flex items-center gap-3 md:gap-4">
-                <span className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tighter text-white shrink-0 leading-none" style={{ fontFamily: "Anton, sans-serif" }}>{stat.value}</span>
-                <span className="text-[10px] md:text-[11px] uppercase tracking-[0.15em] md:tracking-[0.2em] text-white/40 font-semibold leading-tight">{stat.label}</span>
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.6 + i * 0.1 }} className="flex items-center gap-2.5 sm:gap-3 md:gap-4">
+                <span className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-normal text-white shrink-0 leading-none" style={{ fontFamily: "Anton, sans-serif" }}>{stat.value}</span>
+                <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] md:tracking-[0.18em] text-white/50 font-semibold leading-tight">{stat.label}</span>
               </motion.div>
             ))}
           </div>
@@ -391,7 +391,7 @@ const DirectorsSection = () => {
             <div className="w-full md:w-1/2 flex items-center justify-center pt-6 pb-3 px-6 sm:p-10 md:p-12 lg:p-24 bg-white relative md:self-stretch">
               {/* Background Large Number Watermark */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] select-none">
-                <span className="text-[25vw] md:text-[18vw] font-black leading-none" style={{ fontFamily: 'Anton, sans-serif' }}>
+                <span className="text-[25vw] md:text-[18vw] font-normal leading-none" style={{ fontFamily: 'Anton, sans-serif' }}>
                   {director.num}
                 </span>
               </div>
@@ -408,7 +408,7 @@ const DirectorsSection = () => {
                   <span className="block text-orange-600 font-bold text-[13px] tracking-[0.3em] uppercase">
                     {director.role}
                   </span>
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black uppercase text-[#0C0E12] tracking-normal sm:tracking-tight leading-[1.05]" style={{ fontFamily: 'Anton, sans-serif' }}>
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-normal uppercase text-[#0C0E12] tracking-normal sm:tracking-tight leading-[1.05]" style={{ fontFamily: 'Anton, sans-serif' }}>
                     {director.name.split(' ')[0]} <br />
                     <span className="text-transparent" style={{ WebkitTextStroke: '1.5px #0C0E12' }}>{director.name.split(' ')[1]}</span>
                   </h3>
