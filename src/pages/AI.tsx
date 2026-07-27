@@ -229,7 +229,7 @@ const AIIndustries = () => {
   return (
     <section className="bg-white py-10 sm:py-16 md:py-24 lg:py-40 px-6 overflow-hidden text-black">
       <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-20 items-center">
           <div>
             <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-black uppercase leading-none mb-6 sm:mb-8 lg:mb-10 tracking-tighter">
               Industries <br /> We Serve
@@ -247,21 +247,21 @@ const AIIndustries = () => {
             </div>
           </div>
           <div className="relative">
-            <div className="rounded-[30px] sm:rounded-[40px] overflow-hidden aspect-square lg:aspect-video relative z-10 border border-gray-100 shadow-2xl">
+            <div className="rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] overflow-hidden aspect-[16/9] lg:aspect-video relative z-10 border border-gray-100 shadow-2xl">
               <img
                 src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop"
                 alt="AI Development"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-6 sm:bottom-6 sm:left-6 lg:bottom-10 lg:left-10 text-white">
                 <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1 sm:mb-2 opacity-70">Efficiency & Scale</p>
-                <h4 className="text-xl sm:text-2xl font-black uppercase tracking-tight">Smart Tech Solutions</h4>
+                <h4 className="text-lg sm:text-xl lg:text-2xl font-black uppercase tracking-tight">Smart Tech Solutions</h4>
               </div>
             </div>
             {/* Shapes */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-100 rounded-full blur-[60px] -z-0" />
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-orange-100 rounded-full blur-[60px] -z-0" />
+            <div className="absolute -top-6 -right-6 sm:-top-10 sm:-right-10 w-32 h-32 sm:w-40 sm:h-40 bg-purple-100 rounded-full blur-[50px] sm:blur-[60px] -z-0 pointer-events-none" />
+            <div className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 w-32 h-32 sm:w-40 sm:h-40 bg-orange-100 rounded-full blur-[50px] sm:blur-[60px] -z-0 pointer-events-none" />
           </div>
         </div>
       </div>

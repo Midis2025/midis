@@ -11,7 +11,8 @@ import {
   Instagram,
   Linkedin,
   Facebook,
-  Youtube
+  Youtube,
+  ChevronDown
 } from "lucide-react";
 
 export default function Contact() {
@@ -257,7 +258,7 @@ export default function Contact() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="lg:col-span-7"
             >
-              <div className="bg-white rounded-[40px] p-8 md:p-12 shadow-2xl shadow-black/5 border border-gray-100">
+              <div className="bg-white rounded-3xl sm:rounded-[36px] p-6 sm:p-10 md:p-12 shadow-2xl shadow-black/5 border border-gray-100">
                 <AnimatePresence mode="wait">
                   {submitted ? (
                     <motion.div
@@ -265,127 +266,152 @@ export default function Contact() {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
-                      className="py-20 text-center"
+                      className="py-16 text-center"
                     >
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: "spring", duration: 0.6 }}
-                        className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8"
+                        className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
                       >
-                        <CheckCircle className="w-12 h-12 text-green-600" />
+                        <CheckCircle className="w-10 h-10 text-green-600" />
                       </motion.div>
-                      <h3 className="text-3xl font-black text-[#0C0E12] mb-4">Request Received!</h3>
-                      <p className="text-gray-500 text-lg">Our experts will contact you shortly to schedule your session.</p>
+                      <h3 className="text-2xl sm:text-3xl font-black text-[#0C0E12] mb-3">Request Received!</h3>
+                      <p className="text-gray-500 text-base sm:text-lg">Our experts will contact you shortly to schedule your session.</p>
                     </motion.div>
                   ) : (
                     <motion.form
                       key="form"
                       onSubmit={handleSubmit}
-                      className="space-y-8"
+                      className="space-y-5 sm:space-y-6"
                     >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         {/* Name */}
-                        <div className="relative">
-                          <label className={`absolute left-0 transition-all duration-300 pointer-events-none ${focusedField === 'name' || formData.name
-                            ? 'text-[10px] font-bold text-orange-600 -top-2 uppercase tracking-[0.2em]'
-                            : 'text-gray-400 top-4'
-                            }`}>
-                            Your Name *
+                        <div className="flex flex-col gap-1.5">
+                          <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-gray-700">
+                            Your Name <span className="text-orange-600">*</span>
                           </label>
                           <input
+                            id="name"
                             type="text"
                             name="name"
+                            placeholder="John Doe"
                             value={formData.name}
                             onChange={handleChange}
                             onFocus={() => setFocusedField('name')}
                             onBlur={() => setFocusedField(null)}
                             required
-                            className="w-full bg-transparent border-b-2 border-gray-200 py-4 focus:border-orange-600 outline-none transition-all text-[#0C0E12] font-medium"
+                            className={`w-full bg-gray-50/60 border rounded-xl px-4 py-3.5 text-[#0C0E12] font-medium text-sm sm:text-base outline-none transition-all duration-200 placeholder:text-gray-400 ${
+                              focusedField === 'name'
+                                ? 'border-orange-600 bg-white ring-4 ring-orange-500/10 shadow-sm'
+                                : 'border-gray-200 hover:border-gray-300'
+                            }`}
                           />
                         </div>
 
                         {/* Email */}
-                        <div className="relative">
-                          <label className={`absolute left-0 transition-all duration-300 pointer-events-none ${focusedField === 'email' || formData.email
-                            ? 'text-[10px] font-bold text-orange-600 -top-2 uppercase tracking-[0.2em]'
-                            : 'text-gray-400 top-4'
-                            }`}>
-                            Your Email *
+                        <div className="flex flex-col gap-1.5">
+                          <label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-gray-700">
+                            Your Email <span className="text-orange-600">*</span>
                           </label>
                           <input
+                            id="email"
                             type="email"
                             name="email"
+                            placeholder="john@example.com"
                             value={formData.email}
                             onChange={handleChange}
                             onFocus={() => setFocusedField('email')}
                             onBlur={() => setFocusedField(null)}
                             required
-                            className="w-full bg-transparent border-b-2 border-gray-200 py-4 focus:border-orange-600 outline-none transition-all text-[#0C0E12] font-medium"
+                            className={`w-full bg-gray-50/60 border rounded-xl px-4 py-3.5 text-[#0C0E12] font-medium text-sm sm:text-base outline-none transition-all duration-200 placeholder:text-gray-400 ${
+                              focusedField === 'email'
+                                ? 'border-orange-600 bg-white ring-4 ring-orange-500/10 shadow-sm'
+                                : 'border-gray-200 hover:border-gray-300'
+                            }`}
                           />
                         </div>
 
                         {/* Phone */}
-                        <div className="relative">
-                          <label className={`absolute left-0 transition-all duration-300 pointer-events-none ${focusedField === 'phone' || formData.phone
-                            ? 'text-[10px] font-bold text-orange-600 -top-2 uppercase tracking-[0.2em]'
-                            : 'text-gray-400 top-4'
-                            }`}>
+                        <div className="flex flex-col gap-1.5">
+                          <label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider text-gray-700">
                             Phone Number
                           </label>
                           <input
+                            id="phone"
                             type="tel"
                             name="phone"
+                            placeholder="+1 (555) 000-0000"
                             value={formData.phone}
                             onChange={handleChange}
                             onFocus={() => setFocusedField('phone')}
                             onBlur={() => setFocusedField(null)}
-                            className="w-full bg-transparent border-b-2 border-gray-200 py-4 focus:border-orange-600 outline-none transition-all text-[#0C0E12] font-medium"
+                            className={`w-full bg-gray-50/60 border rounded-xl px-4 py-3.5 text-[#0C0E12] font-medium text-sm sm:text-base outline-none transition-all duration-200 placeholder:text-gray-400 ${
+                              focusedField === 'phone'
+                                ? 'border-orange-600 bg-white ring-4 ring-orange-500/10 shadow-sm'
+                                : 'border-gray-200 hover:border-gray-300'
+                            }`}
                           />
                         </div>
 
                         {/* Service Selection */}
-                        <div className="relative">
-                          <label className={`absolute left-0 transition-all duration-300 pointer-events-none ${focusedField === 'service' || formData.service
-                            ? 'text-[10px] font-bold text-orange-600 -top-2 uppercase tracking-[0.2em]'
-                            : 'text-gray-400 top-4'
-                            }`}>
-                            Select a Service *
+                        <div className="flex flex-col gap-1.5">
+                          <label htmlFor="service" className="text-xs font-bold uppercase tracking-wider text-gray-700">
+                            Select a Service <span className="text-orange-600">*</span>
                           </label>
-                          <select
-                            name="service"
-                            value={formData.service}
-                            onChange={handleChange}
-                            onFocus={() => setFocusedField('service')}
-                            onBlur={() => setFocusedField(null)}
-                            required
-                            className="w-full bg-transparent border-b-2 border-gray-200 py-4 focus:border-orange-600 outline-none transition-all text-[#0C0E12] font-medium appearance-none"
-                          >
-                            <option value=""></option>
-                            {services.map(s => (
-                              <option key={s} value={s}>{s}</option>
-                            ))}
-                          </select>
+                          <div className="relative">
+                            <select
+                              id="service"
+                              name="service"
+                              value={formData.service}
+                              onChange={handleChange}
+                              onFocus={() => setFocusedField('service')}
+                              onBlur={() => setFocusedField(null)}
+                              required
+                              className={`w-full bg-gray-50/60 border rounded-xl pl-4 pr-10 py-3.5 text-[#0C0E12] font-medium text-sm sm:text-base outline-none transition-all duration-200 appearance-none cursor-pointer ${
+                                formData.service === '' ? 'text-gray-400' : 'text-[#0C0E12]'
+                              } ${
+                                focusedField === 'service'
+                                  ? 'border-orange-600 bg-white ring-4 ring-orange-500/10 shadow-sm'
+                                  : 'border-gray-200 hover:border-gray-300'
+                              }`}
+                            >
+                              <option value="" disabled hidden>
+                                Choose a service...
+                              </option>
+                              {services.map(s => (
+                                <option key={s} value={s} className="text-[#0C0E12]">
+                                  {s}
+                                </option>
+                              ))}
+                            </select>
+                            <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                              <ChevronDown size={18} />
+                            </div>
+                          </div>
                         </div>
                       </div>
 
                       {/* Message */}
-                      <div className="relative">
-                        <label className={`absolute left-0 transition-all duration-300 pointer-events-none ${focusedField === 'message' || formData.message
-                          ? 'text-[10px] font-bold text-orange-600 -top-2 uppercase tracking-[0.2em]'
-                          : 'text-gray-400 top-4'
-                          }`}>
-                          Your Message *
+                      <div className="flex flex-col gap-1.5">
+                        <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-gray-700">
+                          Your Message <span className="text-orange-600">*</span>
                         </label>
                         <textarea
+                          id="message"
                           name="message"
+                          placeholder="Tell us about your project or goals..."
                           value={formData.message}
                           onChange={handleChange}
                           onFocus={() => setFocusedField('message')}
                           onBlur={() => setFocusedField(null)}
                           required
                           rows={4}
-                          className="w-full bg-transparent border-b-2 border-gray-200 py-4 focus:border-orange-600 outline-none transition-all text-[#0C0E12] font-medium resize-none"
+                          className={`w-full bg-gray-50/60 border rounded-xl p-4 text-[#0C0E12] font-medium text-sm sm:text-base outline-none transition-all duration-200 min-h-[120px] max-h-[220px] resize-y placeholder:text-gray-400 ${
+                            focusedField === 'message'
+                              ? 'border-orange-600 bg-white ring-4 ring-orange-500/10 shadow-sm'
+                              : 'border-gray-200 hover:border-gray-300'
+                          }`}
                         />
                       </div>
 
@@ -393,18 +419,18 @@ export default function Contact() {
                       <motion.button
                         type="submit"
                         disabled={isSubmitting}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="w-full bg-[#0C0E12] text-white py-6 rounded-2xl font-black uppercase text-[11px] tracking-[0.15em] flex items-center justify-center gap-4 hover:bg-orange-600 transition-all duration-500 disabled:opacity-70 group"
+                        whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
+                        whileTap={{ scale: isSubmitting ? 1 : 0.99 }}
+                        className="w-full bg-[#0C0E12] text-white py-4 sm:py-4.5 rounded-xl font-black uppercase text-xs sm:text-sm tracking-widest flex items-center justify-center gap-3 hover:bg-orange-600 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-black/5 group"
                       >
                         {isSubmitting ? (
                           <>
                             <Loader2 className="w-5 h-5 animate-spin" />
-                            Booking Strategy...
+                            <span>Booking Strategy...</span>
                           </>
                         ) : (
                           <>
-                            Send Message
+                            <span>Send Message</span>
                             <Send size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                           </>
                         )}

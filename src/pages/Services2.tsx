@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback, useMemo } from "react";
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring, type MotionValue } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -67,6 +67,12 @@ const HeroSection = () => {
 };
 
 /* ================= SECTION 2: EXPERIENCE (OPTIMIZED) ================= */
+const clientAvatars = [
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"
+];
+
 const ExperienceSection = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -81,38 +87,38 @@ const ExperienceSection = () => {
   const smoothOpacity = useSpring(opacity, gentleSpring);
 
   return (
-    <section ref={sectionRef} className="bg-white px-4 sm:px-6 lg:px-20 relative border-t border-gray-100">
-      <div className="max-w-[1400px] mx-auto py-16 sm:py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0">
+    <section ref={sectionRef} className="bg-white px-6 lg:px-20 relative border-t border-gray-100">
+      <div className="max-w-[1400px] mx-auto py-12 sm:py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-0">
 
         {/* Left Side */}
         <motion.div
           style={{ opacity: smoothOpacity, y: smoothY, willChange: "transform, opacity" }}
-          className="relative lg:border-r border-gray-100 pr-0 lg:pr-24 pb-12 lg:pb-0"
+          className="relative lg:border-r border-gray-100 pr-0 lg:pr-24 pb-8 lg:pb-0"
         >
-          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-black mb-6 sm:mb-12">Who Are We?</p>
+          <p className="text-xs font-black uppercase tracking-[0.3em] text-orange-600 mb-4 sm:mb-8">Who Are We?</p>
 
-          <div className="flex items-start">
-            <span className="text-[20vw] sm:text-[18rem] lg:text-[20rem] xl:text-[24rem] font-black leading-[0.75] tracking-tighter text-[#0C0E12] select-none">
+          <div className="flex items-center sm:items-start">
+            <span className="text-[5.5rem] min-[375px]:text-[6.5rem] min-[430px]:text-[7.5rem] sm:text-[14rem] lg:text-[20rem] xl:text-[24rem] font-black leading-[0.8] lg:leading-[0.75] tracking-tighter text-[#0C0E12] select-none">
               15
             </span>
-            <div className="flex flex-col pt-6 sm:pt-12 ml-2 sm:ml-4">
-              <p className="uppercase tracking-[0.3em] sm:tracking-[0.4em] font-black text-[8px] sm:text-[9px] text-black lg:rotate-90 lg:origin-left whitespace-nowrap">
+            <div className="flex flex-col pt-2 sm:pt-10 lg:pt-12 ml-3 sm:ml-4">
+              <p className="uppercase tracking-[0.2em] sm:tracking-[0.3em] font-black text-xs sm:text-sm lg:text-[9px] text-black lg:rotate-90 lg:origin-left whitespace-nowrap leading-tight">
                 Years of Work <br className="hidden lg:block" /> Experience
               </p>
             </div>
           </div>
 
-          <div className="mt-12 sm:mt-20 flex items-center gap-4 sm:gap-6">
+          <div className="mt-8 sm:mt-14 lg:mt-20 flex items-center gap-4 sm:gap-6">
             <div className="flex -space-x-3 sm:-space-x-4">
-              {[1, 2, 3].map(i => (
-                <div key={i} className="w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 border-white bg-gray-100 overflow-hidden shadow-lg">
-                  <img src={`/images/port/${i + 5}.webp`} className="w-full h-full object-cover grayscale" alt={`Client ${i}`} />
+              {clientAvatars.map((url, i) => (
+                <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-white bg-gray-100 overflow-hidden shadow-md">
+                  <img src={url} className="w-full h-full object-cover" alt={`Client review avatar ${i + 1}`} />
                 </div>
               ))}
             </div>
             <div className="flex flex-col">
-              <p className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-black/40">More than 25k</p>
-              <p className="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-[#0C0E12]">Clients Reviews</p>
+              <p className="text-[10px] sm:text-xs uppercase font-black tracking-widest text-black/40">More than 25k</p>
+              <p className="text-xs sm:text-sm uppercase font-black tracking-widest text-[#0C0E12]">Client Reviews</p>
             </div>
           </div>
         </motion.div>
@@ -120,21 +126,22 @@ const ExperienceSection = () => {
         {/* Right Side */}
         <div className="lg:pl-24 flex flex-col pt-0 lg:pt-0">
           <div className="max-w-xl">
-            <p className="text-gray-600 text-base sm:text-lg leading-relaxed font-medium mb-4">
+            <p className="text-gray-600 text-base sm:text-lg leading-relaxed font-medium mb-6">
               We are a passionate creative agency with over 15 years of experience in branding, design, digital marketing, and storytelling. We help businesses stand out with innovative strategies, stunning visuals, and impactful campaigns that drive engagement and growth.
             </p>
-            <a href="#" className="inline-block text-black font-bold border-b border-black text-sm pb-1 hover:text-gray-500 hover:border-gray-500 transition-colors">
-              Let's create something extraordinary!
-            </a>
+            <Link to="/contact" className="inline-flex items-center gap-2 text-black font-bold border-b-2 border-black text-sm sm:text-base pb-1 hover:text-orange-600 hover:border-orange-600 transition-colors group">
+              <span>Let's create something extraordinary!</span>
+              <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
           </div>
 
-          {/* Image with simpler Mobile Reveal */}
+          {/* Image with Mobile Reveal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="mt-12 sm:mt-20 relative aspect-[16/10] sm:aspect-[4/3] rounded-lg overflow-hidden shadow-2xl"
+            className="mt-8 sm:mt-14 lg:mt-20 relative aspect-[16/10] sm:aspect-[4/3] rounded-xl overflow-hidden shadow-2xl"
           >
             <motion.img
               initial={{ scale: 1.1 }}
@@ -259,33 +266,40 @@ const StackingCard = ({
   onExplore: (service: typeof servicesData[0]) => void;
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+
+  // Measure scroll progress as user scrolls past this card
+  // "start start" -> Card reaches top sticky position
+  // "end start" -> Next card covers this card
   const { scrollYProgress } = useScroll({
     target: cardRef,
-    offset: ["start end", "start start"]
+    offset: ["start start", "end start"]
   });
 
-  // Card stacking transforms
+  const isLast = index === totalCards - 1;
+
+  // Outgoing card animation: Fades out completely as the next card arrives
+  const cardOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.25, 0.65, 1],
+    [1, 1, isLast ? 1 : 0, isLast ? 1 : 0]
+  );
+
   const cardScale = useTransform(
     scrollYProgress,
-    [0, 1],
-    [1, 0.95 - (index * 0.02)]
+    [0, 0.25, 0.65, 1],
+    [1, 1, isLast ? 1 : 0.95, isLast ? 1 : 0.95]
   );
 
   const cardY = useTransform(
     scrollYProgress,
-    [0, 1],
-    [0, index * 30]
-  );
-
-  const cardOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    [1, 1, index === totalCards - 1 ? 1 : 0.8]
+    [0, 0.25, 0.65, 1],
+    [0, 0, isLast ? 0 : -20, isLast ? 0 : -20]
   );
 
   // Smooth springs for 60fps
   const smoothScale = useSpring(cardScale, { damping: 30, stiffness: 200 });
   const smoothY = useSpring(cardY, { damping: 30, stiffness: 200 });
+  const smoothOpacity = useSpring(cardOpacity, { damping: 30, stiffness: 200 });
 
   return (
     <motion.div
@@ -293,16 +307,16 @@ const StackingCard = ({
       style={{
         scale: smoothScale,
         y: smoothY,
-        opacity: cardOpacity,
+        opacity: smoothOpacity,
         willChange: "transform, opacity",
-        zIndex: totalCards - index,
+        zIndex: index + 10,
       }}
-      className="sticky top-24 md:top-32 mb-8 md:mb-12"
+      className="sticky top-20 sm:top-24 md:top-32 mb-16 sm:mb-24 lg:mb-32"
     >
       <div
-        className="relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[40px] bg-[#0C0E12] shadow-2xl"
+        className="relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[40px] bg-[#0C0E12] shadow-2xl border border-white/10"
         style={{
-          boxShadow: `0 30px 60px -20px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05)`
+          boxShadow: `0 30px 60px -20px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08)`
         }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -322,18 +336,18 @@ const StackingCard = ({
 
             {/* Card Number */}
             <div
-              className="absolute top-6 left-6 w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-sm"
+              className="absolute top-6 left-6 px-3.5 py-1.5 rounded-full flex items-center justify-center text-white font-black text-xs sm:text-sm shadow-md"
               style={{ backgroundColor: service.color }}
             >
-              0{index + 1}
+              0{index + 1} / {totalCards < 10 ? `0${totalCards}` : totalCards}
             </div>
           </div>
 
           {/* Content Side */}
-          <div className="p-8 sm:p-10 lg:p-16 flex flex-col justify-center relative">
+          <div className="p-8 sm:p-10 lg:p-16 flex flex-col justify-center relative bg-[#0C0E12]">
             {/* Decorative Line */}
             <div
-              className="absolute top-0 left-8 sm:left-10 lg:left-16 w-16 h-1 rounded-full"
+              className="w-16 h-1 rounded-full mb-6"
               style={{ backgroundColor: service.color }}
             />
 
