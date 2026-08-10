@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from '@phosphor-icons/react';
 
 const BlogDetail = () => {
   const { id } = useParams();

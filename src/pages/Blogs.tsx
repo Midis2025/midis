@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Navigation } from '@/components/Navigation';
 import { Link } from 'react-router-dom';
 import { Footer } from '@/components/Footer';
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "@phosphor-icons/react";
 
 /* ───────────────────────── MOCK DATA ───────────────────────── */
 

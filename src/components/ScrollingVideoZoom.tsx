@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Play, Pause } from "lucide-react";
+import { Play, Pause } from "@phosphor-icons/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -98,9 +98,9 @@ export const ScrollingVideoZoom = () => {
                             >
                                 <div className="flex items-center justify-center text-black">
                                     {isPlaying ? (
-                                        <Pause size={32} className="fill-black" />
+                                        <Pause size={32} weight="fill" />
                                     ) : (
-                                        <Play size={32} className="fill-black translate-x-1" />
+                                        <Play size={32} weight="fill" className="translate-x-1" />
                                     )}
                                 </div>
                             </button>

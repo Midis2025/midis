@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Linkedin, Youtube, Facebook } from "lucide-react";
+import { InstagramLogo, LinkedinLogo, YoutubeLogo, FacebookLogo } from "@phosphor-icons/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -113,16 +113,16 @@ export const Footer = () => {
           <h3 className="text-lg font-black uppercase tracking-tighter mb-3">Follow Us</h3>
           <div className="flex flex-wrap gap-3">
             <a href="https://www.instagram.com/officialmidis/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black hover:border-white transition-all duration-300 group">
-              <Instagram size={18} className="group-hover:scale-110 transition-transform" />
+              <InstagramLogo size={18} className="group-hover:scale-110 transition-transform" />
             </a>
             <a href="https://www.linkedin.com/company/midismarket/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black hover:border-white transition-all duration-300 group">
-              <Linkedin size={18} className="group-hover:scale-110 transition-transform" />
+              <LinkedinLogo size={18} className="group-hover:scale-110 transition-transform" />
             </a>
             <a href="https://www.youtube.com/@MidisOfficial" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black hover:border-white transition-all duration-300 group">
-              <Youtube size={18} className="group-hover:scale-110 transition-transform" />
+              <YoutubeLogo size={18} className="group-hover:scale-110 transition-transform" />
             </a>
             <a href="https://www.facebook.com/people/Midis/61579354660327/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black hover:border-white transition-all duration-300 group">
-              <Facebook size={18} className="group-hover:scale-110 transition-transform" />
+              <FacebookLogo size={18} className="group-hover:scale-110 transition-transform" />
             </a>
           </div>
         </div>

@@ -3,17 +3,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import {
-  Send,
-  Mail,
+  PaperPlaneTilt,
+  EnvelopeSimple,
   Phone,
   CheckCircle,
-  Loader2,
-  Instagram,
-  Linkedin,
-  Facebook,
-  Youtube,
-  ChevronDown
-} from "lucide-react";
+  CircleNotch,
+  InstagramLogo,
+  LinkedinLogo,
+  FacebookLogo,
+  YoutubeLogo,
+  CaretDown
+} from "@phosphor-icons/react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -100,10 +100,10 @@ export default function Contact() {
 
 
   const socialLinks = [
-    { icon: Instagram, href: "https://www.instagram.com/officialmidis/", label: "Instagram" },
-    { icon: Linkedin, href: "https://www.linkedin.com/company/midismarket/", label: "LinkedIn" },
-    { icon: Facebook, href: "https://www.facebook.com/people/Midis/61579354660327/", label: "Facebook" },
-    { icon: Youtube, href: "https://www.youtube.com/@MidisOfficial", label: "Youtube" }
+    { icon: InstagramLogo, href: "https://www.instagram.com/officialmidis/", label: "InstagramLogo" },
+    { icon: LinkedinLogo, href: "https://www.linkedin.com/company/midismarket/", label: "LinkedIn" },
+    { icon: FacebookLogo, href: "https://www.facebook.com/people/Midis/61579354660327/", label: "FacebookLogo" },
+    { icon: YoutubeLogo, href: "https://www.youtube.com/@MidisOfficial", label: "YoutubeLogo" }
   ];
 
   const services = [
@@ -208,7 +208,7 @@ export default function Contact() {
               <div className="space-y-8 mb-12">
                 <div className="flex items-center gap-6">
                   <div className="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600">
-                    <Mail size={24} />
+                    <EnvelopeSimple size={24} weight="duotone" />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Email Us</p>
@@ -217,7 +217,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center gap-6">
                   <div className="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600">
-                    <Phone size={24} />
+                    <Phone size={24} weight="duotone" />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Call Us</p>
@@ -274,7 +274,7 @@ export default function Contact() {
                         transition={{ type: "spring", duration: 0.6 }}
                         className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
                       >
-                        <CheckCircle className="w-10 h-10 text-green-600" />
+                        <CheckCircle weight="fill" className="w-10 h-10 text-green-600" />
                       </motion.div>
                       <h3 className="text-2xl sm:text-3xl font-black text-[#0C0E12] mb-3">Request Received!</h3>
                       <p className="text-gray-500 text-base sm:text-lg">Our experts will contact you shortly to schedule your session.</p>
@@ -386,7 +386,7 @@ export default function Contact() {
                               ))}
                             </select>
                             <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                              <ChevronDown size={18} />
+                              <CaretDown size={18} />
                             </div>
                           </div>
                         </div>
@@ -425,13 +425,13 @@ export default function Contact() {
                       >
                         {isSubmitting ? (
                           <>
-                            <Loader2 className="w-5 h-5 animate-spin" />
+                            <CircleNotch weight="bold" className="w-5 h-5 animate-spin" />
                             <span>Booking Strategy...</span>
                           </>
                         ) : (
                           <>
                             <span>Send Message</span>
-                            <Send size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                            <PaperPlaneTilt size={16} weight="fill" className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                           </>
                         )}
                       </motion.button>

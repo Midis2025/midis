@@ -1,7 +1,7 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "@phosphor-icons/react";
 
 const NotFound = () => {
   const location = useLocation();
@@ -71,7 +71,7 @@ const NotFound = () => {
               to="/" 
               className="inline-flex items-center gap-3 px-10 py-5 bg-white text-black rounded-full font-black text-xs tracking-widest uppercase hover:bg-orange-600 hover:text-white transition-all shadow-2xl"
             >
-              <ArrowLeft size={16} strokeWidth={3} /> Return to Home
+              <ArrowLeft size={16} weight="bold" /> Return to Home
             </Link>
           </motion.div>
         </motion.div>

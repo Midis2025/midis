@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { ChevronDown, ArrowRight, Sparkles, Check, Zap, Linkedin, Orbit, Rocket, HeartHandshake } from "lucide-react";
+import { CaretDown, ArrowRight, Sparkle, Check, Lightning, LinkedinLogo, Planet, Rocket, Handshake } from "@phosphor-icons/react";
 
 /* ───────────────────────── ANIMATION HELPERS ───────────────────────── */
 
@@ -27,7 +27,7 @@ const staggerContainer = {
 
 const whyMidisReasons = [
   {
-    icon: Orbit,
+    icon: Planet,
     title: "Global Perspective",
     desc: "We understand how people behave online in different cultures, so our strategies adapt—they are not copy-paste.",
     color: "from-blue-500/20 to-cyan-500/20"
@@ -39,13 +39,13 @@ const whyMidisReasons = [
     color: "from-green-500/20 to-emerald-500/20"
   },
   {
-    icon: HeartHandshake,
+    icon: Handshake,
     title: "Real Collaboration",
     desc: "We don't disappear after sending a report. We work alongside you, adjusting strategy when the market shifts.",
     color: "from-orange-500/20 to-amber-500/20"
   },
   {
-    icon: Zap,
+    icon: Lightning,
     title: "Ideas & Data Balance",
     desc: "We love creative campaigns, but numbers keep us grounded.",
     color: "from-purple-500/20 to-pink-500/20"
@@ -123,7 +123,7 @@ const AboutHero = () => {
         {/* Top Label */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} className="flex items-center gap-3 mb-12">
           <div className="w-10 h-10 rounded-xl bg-orange-600/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-600/20 animate-pulse">
-            <Sparkles size={20} strokeWidth={2.5} fill="currentColor" className="opacity-80" />
+            <Sparkle size={20} weight="fill" className="opacity-80" />
           </div>
           <span className="text-white/50 text-[11px] uppercase font-semibold tracking-[0.3em] font-sans">About Midis</span>
           <div className="w-12 h-px bg-white/20" />
@@ -199,7 +199,7 @@ const WhoWeAreSection = () => {
         {/* Label */}
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-8 sm:mb-10">
           <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-500/20">
-            <Sparkles size={20} strokeWidth={3} />
+            <Sparkle size={20} weight="bold" />
           </div>
           <span className="text-black font-bold text-[11px] tracking-[0.25em] uppercase">Who We Are</span>
         </motion.div>
@@ -262,7 +262,7 @@ const WhyMidisSection = () => {
         {/* Header */}
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-3 sm:mb-6">
           <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-500/20">
-            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={3} />
+            <Sparkle className="w-4 h-4 sm:w-5 sm:h-5" weight="bold" />
           </div>
           <span className="text-black font-bold text-[11px] tracking-[0.25em] uppercase">Why Choose Us</span>
         </motion.div>
@@ -293,7 +293,7 @@ const WhyMidisSection = () => {
                   <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-lg sm:rounded-[20px] bg-gradient-to-br ${reason.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm border border-black/5 relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
                     <reason.icon
-                      className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-black/80 relative z-10 ${reason.icon === Orbit ? "animate-[spin_10s_linear_infinite]" : ""}`}
+                      className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-black/80 relative z-10 ${reason.icon === Planet ? "animate-[spin_10s_linear_infinite]" : ""}`}
                     />
                   </div>
                   <div>
@@ -421,7 +421,7 @@ const DirectorsSection = () => {
                 <div className="pt-2 sm:pt-4">
                   <button className="flex items-center gap-4 group">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black flex items-center justify-center transition-all duration-300">
-                      <Linkedin size={18} className="text-white" />
+                      <LinkedinLogo size={18} className="text-white" />
                     </div>
                     <span className="text-black font-black text-xs tracking-widest uppercase">Connect on LinkedIn</span>
                   </button>
@@ -449,7 +449,7 @@ const GainsSection = () => {
           <div>
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-4 sm:mb-6">
               <div className="w-10 h-10 rounded-xl bg-orange-600/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-600/20 animate-pulse">
-                <Sparkles size={20} strokeWidth={2.5} fill="currentColor" className="opacity-80" />
+                <Sparkle size={20} weight="fill" className="opacity-80" />
               </div>
               <span className="text-black font-bold text-[11px] tracking-[0.25em] uppercase">Partnership</span>
             </motion.div>
@@ -475,7 +475,7 @@ const GainsSection = () => {
               >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-orange-500/10 backdrop-blur-md border border-orange-500/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300 shadow-sm relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-orange-600/10 to-transparent" />
-                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600 relative z-10" strokeWidth={2.5} />
+                  <Sparkle className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600 relative z-10" weight="bold" />
                 </div>
                 <p className="text-[#2a2a3a] text-sm sm:text-base md:text-lg font-semibold leading-relaxed">{gain.text}</p>
               </motion.div>
@@ -522,7 +522,7 @@ const FAQSection = () => {
         {/* Header */}
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center gap-3 mb-4 sm:mb-6">
           <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-500/20">
-            <Sparkles size={20} strokeWidth={3} />
+            <Sparkle size={20} weight="bold" />
           </div>
           <span className="text-black font-bold text-[11px] tracking-[0.25em] uppercase">FAQ</span>
         </motion.div>
@@ -538,7 +538,7 @@ const FAQSection = () => {
               <button onClick={() => setOpenIndex(openIndex === i ? -1 : i)} className="w-full flex justify-between items-center group gap-4">
                 <h4 className={`text-lg md:text-2xl font-black uppercase tracking-tighter transition-all text-left ${openIndex === i ? "text-orange-500" : "text-[#0C0E12]/80"}`}>{f.q}</h4>
                 <div className={`w-11 h-11 border border-black/10 rounded-full flex items-center justify-center transition-all duration-500 flex-shrink-0 ${openIndex === i ? "rotate-180 bg-[#0C0E12] text-white" : ""}`}>
-                  <ChevronDown size={22} />
+                  <CaretDown size={22} />
                 </div>
               </button>
               <AnimatePresence>
@@ -571,7 +571,7 @@ const StartBuildingCTA = () => {
       <div className="max-w-[1000px] mx-auto relative z-10 text-center">
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex items-center justify-center gap-3 mb-8">
           <div className="w-10 h-10 rounded-xl bg-orange-600/10 flex items-center justify-center text-orange-600 backdrop-blur-md border border-orange-600/20 animate-pulse">
-            <Sparkles size={20} strokeWidth={2.5} fill="currentColor" className="opacity-80" />
+            <Sparkle size={20} weight="fill" className="opacity-80" />
           </div>
           <span className="text-white/40 font-bold text-[11px] tracking-[0.25em] uppercase">Get Started</span>
         </motion.div>

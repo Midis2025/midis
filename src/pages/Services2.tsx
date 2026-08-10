@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring, type MotionValue } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "@phosphor-icons/react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Link } from "react-router-dom";
@@ -375,7 +375,7 @@ const StackingCard = ({
               onClick={() => onExplore(service)}
               className="self-start px-8 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] text-white border-2 border-white/20 hover:bg-white hover:text-black transition-colors flex items-center gap-3"
             >
-              Explore Service <ArrowUpRight size={16} strokeWidth={3} />
+              Explore Service <ArrowUpRight size={16} weight="bold" />
             </motion.button>
 
             {/* Background decoration */}
@@ -649,7 +649,7 @@ const CTACollage = () => {
             whileTap={{ scale: 0.95 }}
             className="px-8 sm:px-10 py-4 sm:py-5 bg-[#14161B] text-white rounded-full font-bold uppercase tracking-widest text-[10px] sm:text-[11px] inline-flex items-center gap-2 sm:gap-3 shadow-2xl hover:bg-orange-600 transition-colors mx-auto"
           >
-            View All Projects <ArrowUpRight size={16} strokeWidth={3} className="sm:w-[18px] sm:h-[18px]" />
+            View All Projects <ArrowUpRight size={16} weight="bold" className="sm:w-[18px] sm:h-[18px]" />
           </motion.button>
         </Link>
       </div>

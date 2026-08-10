@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle2, Cpu, Globe, Rocket, Zap, ArrowRight } from "lucide-react";
+import { X, CheckCircle, Cpu, Globe, Rocket, Lightning, ArrowRight } from "@phosphor-icons/react";
 
 interface ServicePopupProps {
   isOpen: boolean;
@@ -16,10 +16,10 @@ export const ServicePopup = ({ isOpen, onClose, service }: ServicePopupProps) =>
   if (!service) return null;
 
   const features = [
-    { icon: <Zap size={20} />, title: "Turbo Speed", desc: "Optimized for maximum performance and lightning-fast delivery." },
-    { icon: <Cpu size={20} />, title: "Smart Integration", desc: "Seamlessly connects with your existing tech stack and workflows." },
-    { icon: <Globe size={20} />, title: "Global Reach", desc: "Built with scalability in mind to support your growth worldwide." },
-    { icon: <Rocket size={20} />, title: "Future Ready", desc: "Uses cutting-edge technologies to stay ahead of the curve." },
+    { icon: <Lightning size={20} weight="duotone" />, title: "Turbo Speed", desc: "Optimized for maximum performance and lightning-fast delivery." },
+    { icon: <Cpu size={20} weight="duotone" />, title: "Smart Integration", desc: "Seamlessly connects with your existing tech stack and workflows." },
+    { icon: <Globe size={20} weight="duotone" />, title: "Global Reach", desc: "Built with scalability in mind to support your growth worldwide." },
+    { icon: <Rocket size={20} weight="duotone" />, title: "Future Ready", desc: "Uses cutting-edge technologies to stay ahead of the curve." },
   ];
 
   return (
@@ -153,7 +153,7 @@ export const ServicePopup = ({ isOpen, onClose, service }: ServicePopupProps) =>
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-4 text-white/90 group/item">
                         <div className="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center group-hover/item:bg-orange-500 transition-colors duration-300">
-                          <CheckCircle2 size={12} className="text-white" />
+                          <CheckCircle size={12} weight="fill" className="text-white" />
                         </div>
                         <span className="text-sm sm:text-base font-medium">{item}</span>
                       </div>

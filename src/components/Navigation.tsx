@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ArrowUpRight, Instagram, Linkedin, Youtube, Facebook } from "lucide-react";
+import { List, X, ArrowUpRight, InstagramLogo, LinkedinLogo, YoutubeLogo, FacebookLogo } from "@phosphor-icons/react";
 import { navItems } from "@/data/navigation";
 import { useScrollHide } from "@/hooks/useScrollHide";
 
@@ -138,10 +138,10 @@ export const Navigation = () => {
           {/* ================= RIGHT SIDE (DESKTOP ICONS) ================= */}
           <div className="hidden lg:flex items-center gap-1.5 xl:gap-2.5 2xl:gap-4 z-10 shrink-0">
             {[
-              { icon: <Instagram className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-[18px] 2xl:h-[18px]" />, href: "https://www.instagram.com/officialmidis/" },
-              { icon: <Linkedin className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-[18px] 2xl:h-[18px]" />, href: "https://www.linkedin.com/company/midismarket/" },
-              { icon: <Youtube className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-[18px] 2xl:h-[18px]" />, href: "https://www.youtube.com/@MidisOfficial" },
-              { icon: <Facebook className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-[18px] 2xl:h-[18px]" />, href: "https://www.facebook.com/people/Midis/61579354660327/" }
+              { icon: <InstagramLogo className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-[18px] 2xl:h-[18px]" />, href: "https://www.instagram.com/officialmidis/" },
+              { icon: <LinkedinLogo className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-[18px] 2xl:h-[18px]" />, href: "https://www.linkedin.com/company/midismarket/" },
+              { icon: <YoutubeLogo className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-[18px] 2xl:h-[18px]" />, href: "https://www.youtube.com/@MidisOfficial" },
+              { icon: <FacebookLogo className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-[18px] 2xl:h-[18px]" />, href: "https://www.facebook.com/people/Midis/61579354660327/" }
             ].map((social, i) => (
               <a
                 key={i}
@@ -168,7 +168,7 @@ export const Navigation = () => {
                 : "text-white bg-white/10 border-white/10"
             }`}
           >
-            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            {isMobileMenuOpen ? <X size={22} weight="bold" /> : <List size={22} weight="bold" />}
           </button>
         </div>
 
@@ -207,28 +207,28 @@ export const Navigation = () => {
               target="_blank" rel="noopener noreferrer"
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-all"
             >
-              <Instagram className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px]" />
+              <InstagramLogo className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px]" />
             </a>
             <a
               href="https://www.linkedin.com/company/midismarket/"
               target="_blank" rel="noopener noreferrer"
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-all"
             >
-              <Linkedin className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px]" />
+              <LinkedinLogo className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px]" />
             </a>
             <a
               href="https://www.youtube.com/@MidisOfficial"
               target="_blank" rel="noopener noreferrer"
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-all"
             >
-              <Youtube className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px]" />
+              <YoutubeLogo className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px]" />
             </a>
             <a
               href="https://www.facebook.com/people/Midis/61579354660327/"
               target="_blank" rel="noopener noreferrer"
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-all"
             >
-              <Facebook className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px]" />
+              <FacebookLogo className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px]" />
             </a>
           </div>
         </div>

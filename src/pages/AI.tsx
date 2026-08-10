@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ChevronDown, Check, Zap, Brain, MessageSquare, Code } from "lucide-react";
+import { ArrowUpRight, CaretDown, Check, Lightning, Brain, ChatCentered, Code } from "@phosphor-icons/react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 
@@ -69,7 +69,7 @@ const AIHero = () => {
             className="flex flex-wrap justify-center gap-4 sm:gap-6"
           >
             <Link to="/contact" className="px-8 py-4 sm:px-10 sm:py-5 bg-orange-600 text-white rounded-full font-black text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-all flex items-center gap-3 shadow-2xl">
-              Get an AI Consultation <ArrowUpRight size={18} strokeWidth={3} />
+              Get an AI Consultation <ArrowUpRight size={18} weight="bold" />
             </Link>
             <button className="px-8 py-4 sm:px-10 sm:py-5 border-2 border-white/20 text-white rounded-full font-black text-xs tracking-widest uppercase hover:bg-white/5 transition-all">
               Explore Our Services
@@ -103,14 +103,14 @@ const AIServices = () => {
     {
       title: "ChatGPT Integration",
       desc: "Integrate the power of ChatGPT into your platform, app, or website. Whether for customer support, lead generation, or internal knowledge systems, we deliver human-like interactions that boost efficiency.",
-      icon: <MessageSquare size={32} />,
+      icon: <ChatCentered size={32} />,
       color: "#FF6B35",
       features: ["Custom Brand Tone Setup", "Multilingual Experiences", "CRM & Website Integration", "Ongoing Optimisation"]
     },
     {
       title: "OpenAI API Integration",
       desc: "Unlock the full potential of OpenAI’s ecosystem (GPT, DALL-E, Whisper). We connect advanced AI models into your existing systems for intelligent automation, creative generation, and predictive insights.",
-      icon: <Zap size={32} />,
+      icon: <Lightning size={32} />,
       color: "#9B5DE5",
       features: ["Content Automation", "Summarisation Systems", "AI-Based Analytics", "Smart Virtual Assistants"]
     },
@@ -304,7 +304,7 @@ const AIFAQ = () => {
               >
                 <h4 className="text-base sm:text-xl font-bold uppercase tracking-tight pr-6 sm:pr-8">{faq.q}</h4>
                 <div className={`transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}>
-                  <ChevronDown size={20} className="sm:w-6 sm:h-6" />
+                  <CaretDown size={20} className="sm:w-6 sm:h-6" />
                 </div>
               </button>
               <AnimatePresence>
@@ -363,7 +363,7 @@ export default function AI() {
           whileTap={{ scale: 0.95 }}
           className="px-8 py-5 sm:px-10 sm:py-6 bg-orange-600 text-white rounded-full font-black uppercase tracking-widest text-xs flex items-center gap-4 shadow-2xl"
         >
-          Start Your AI Journey <ArrowUpRight size={20} strokeWidth={3} />
+          Start Your AI Journey <ArrowUpRight size={20} weight="bold" />
         </motion.button>
 
         {/* Background glow */}
