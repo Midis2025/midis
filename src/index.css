@@ -338,12 +338,25 @@
   /* 🔥 MAIN FIX – face/head safe */
   object-position: top center;
 
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Desaturated at rest so hover brings the member to life in colour. */
+  filter: grayscale(1);
+
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Safe zoom */
-.team-card:hover .team-img {
+/* Safe zoom + full colour */
+.team-card:hover .team-img,
+.team-card:focus-within .team-img {
   transform: scale(1.06);
+  filter: grayscale(0);
+}
+
+/* Touch devices have no hover, so leave those images in colour. */
+@media (hover: none) {
+  .team-img {
+    filter: grayscale(0);
+  }
 }
 
 /* ================= DIAGONAL RIBBON ================= */

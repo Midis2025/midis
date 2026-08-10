@@ -49,7 +49,10 @@ export default function CrearistCollage() {
         scrollTrigger: {
           trigger: container,
           start: "top top",
-          end: "+=1200%", // Increased for slower, more luxurious scrolling
+          // Timeline runs ~18.5s. At +=400% (~4 viewports) that's ~195px of
+          // scroll per timeline-second, a normal scrubbed rate. The old +=1200%
+          // was ~585px/s and made this one section 36% of the whole page.
+          end: "+=400%",
           scrub: 1.5, // Added more smooth inertia
           pin: true,
           anticipatePin: 1,

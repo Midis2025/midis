@@ -27,22 +27,19 @@ export const ScrollingVideoZoom = () => {
                 },
             });
 
-            // Zoom animation
+            // Zoom animation.
+            // clip-path + scale instead of width/height: no layout on any frame,
+            // and the video is never stretched (it stays full-bleed underneath).
+            // 25% -> 71% of the normalised diagonal = small circle -> covers the box.
             tl.fromTo(
                 videoWrapperRef.current,
-                {
-                    scale: 0.5,
-                    borderRadius: "50%",
-                    width: "40vw",
-                    height: "40vw",
-                },
-                {
-                    scale: 1,
-                    borderRadius: "0px",
-                    width: "100%",
-                    height: "100vh",
-                    ease: "power2.inOut",
-                }
+                { clipPath: "circle(25% at 50% 50%)" },
+                { clipPath: "circle(71% at 50% 50%)", ease: "power2.inOut" }
+            ).fromTo(
+                videoRef.current,
+                { scale: 1.3 },
+                { scale: 1, ease: "power2.inOut" },
+                0
             );
 
             // Fade out button as we zoom in
@@ -74,7 +71,7 @@ export const ScrollingVideoZoom = () => {
             <div className="h-screen w-full flex items-center justify-center">
                 <div
                     ref={videoWrapperRef}
-                    className="relative overflow-hidden bg-neutral-900"
+                    className="relative w-full h-screen overflow-hidden bg-neutral-900 [will-change:clip-path]"
                 >
                     <video
                         ref={videoRef}
@@ -83,7 +80,7 @@ export const ScrollingVideoZoom = () => {
                         muted
                         loop
                         playsInline
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover will-change-transform"
                     />
 
                     {/* Central Play/Pause Button - Premium Aesthetic */}

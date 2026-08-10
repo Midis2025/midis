@@ -29,6 +29,9 @@ export const CTASection = () => {
       });
 
       /* ================= PIN + IMAGE ZOOM ================= */
+      // Centre via GSAP so it owns the transform and `scale` composes with it.
+      gsap.set(imageWrap, { xPercent: -50, yPercent: -50 });
+
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px)", () => {
@@ -43,9 +46,14 @@ export const CTASection = () => {
           },
         });
 
+        // Uniform scale instead of width/height: composited, no layout per frame.
+        // Function-based so it re-measures on ScrollTrigger.refresh (resize).
         tl.to(imageWrap, {
-          width: "150vw",
-          height: "150vh",
+          scale: () =>
+            Math.max(
+              (window.innerWidth * 1.5) / imageWrap.offsetWidth,
+              (window.innerHeight * 1.5) / imageWrap.offsetHeight
+            ),
           borderRadius: "0px",
           ease: "power2.inOut",
         });
@@ -99,10 +107,7 @@ export const CTASection = () => {
                 overflow-hidden
                 will-change-transform
               "
-              style={{
-                transform: "translate(-50%, -50%)",
-                zIndex: 50,
-              }}
+              style={{ zIndex: 50 }}
             >
               <img
                 src="/MIDIS/growth (33).avif"

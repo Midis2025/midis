@@ -1,3 +1,11 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitReveal } from "@/components/SplitReveal";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
@@ -48,15 +56,67 @@ const services = [
 ];
 
 export const ServicesSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  // Handed down so each panel's SplitReveal measures along the track's x axis.
+  const [trackTween, setTrackTween] = useState<gsap.core.Tween | null>(null);
+
+  // Deliberately useEffect, not useGSAP: useGSAP runs on useLayoutEffect, which
+  // fires before the useEffect every sibling section uses. That created this
+  // pinned trigger before the earlier sections' pin spacers existed, so it
+  // measured its start ~3600px too high and overlapped CrearistCollage's pin.
+  // ScrollTriggers must be created in page order.
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+
+      // Desktop only. A pinned horizontal track on a phone fights the browser's
+      // own gesture handling, so small screens keep the vertical stack.
+      mm.add("(min-width: 768px)", () => {
+        const track = trackRef.current;
+        if (!track) return;
+
+        const distance = () => track.scrollWidth - window.innerWidth;
+
+        const tween = gsap.to(track, {
+          x: () => -distance(),
+          // Required: any other ease breaks the 1:1 scroll-to-position mapping.
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: () => "+=" + distance(),
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        setTrackTween(tween);
+        return () => setTrackTween(null);
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="bg-[#0B0B0B] antialiased text-white relative overflow-hidden py-10 sm:py-16 md:py-24 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 w-full">
-        <div className="flex flex-col gap-10 sm:gap-16 md:gap-24">
-          {services.map((service) => (
-            <div
-              key={service.number}
-              className="service-item w-full border-t border-white/10 pt-8 sm:pt-12 md:pt-16 group"
-            >
+    <section
+      ref={sectionRef}
+      className="bg-[#0B0B0B] antialiased text-white relative overflow-hidden py-10 sm:py-0"
+    >
+      <div
+        ref={trackRef}
+        className="flex flex-col md:flex-row md:h-screen md:items-center md:will-change-transform"
+      >
+        {services.map((service) => (
+          <div
+            key={service.number}
+            // 80vw leaves the next panel peeking, which is what tells the eye
+            // this section moves sideways.
+            className="service-item w-full md:w-[80vw] md:shrink-0 px-4 sm:px-6 lg:px-12 md:px-16 border-t md:border-t-0 md:border-l border-white/10 pt-8 md:pt-0 group"
+          >
               <div className="py-2">
                 {/* 1. TITLE & NUMBER HEADER */}
                 <div className="relative w-full flex justify-between items-end pb-8">
@@ -64,9 +124,16 @@ export const ServicesSection = () => {
                     <span className="text-[12px] md:text-[16px] font-bold tracking-tight text-white/40 mb-2 md:mb-3">
                       {service.number}
                     </span>
-                    <h3 className="font-black tracking-tighter uppercase text-[clamp(2.5rem,10vw,8rem)] leading-[0.8] mb-0 select-none text-white">
+                    <SplitReveal
+                      as="h3"
+                      chars
+                      containerAnimation={trackTween}
+                      // Sized to fit an 80vw panel minus padding and the arrow
+                      // button; 7vw clipped the longer titles at the panel edge.
+                      className="font-black tracking-tighter uppercase text-[clamp(2rem,4.5vw,3.75rem)] leading-[0.85] mb-0 select-none text-white"
+                    >
                       {service.title}
-                    </h3>
+                    </SplitReveal>
                   </div>
 
                   <div className="mb-6 w-12 h-12 md:w-20 md:h-20 rounded-full border border-white/20 flex items-center justify-center bg-white text-black">
@@ -122,9 +189,8 @@ export const ServicesSection = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -23,6 +23,7 @@ function useCounters(
   stats: Stat[]
 ) {
   useEffect(() => {
+    const ctx = gsap.context(() => {
     stats.forEach((stat, i) => {
       const el = countersRef.current[i];
       if (!el) return;
@@ -56,6 +57,9 @@ function useCounters(
         },
       });
     });
+    });
+
+    return () => ctx.revert();
   }, [countersRef, stats]);
 }
 
@@ -80,24 +84,28 @@ function StackSection() {
   useEffect(() => {
     if (!sectionRef.current || !card2Ref.current) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "+=120%",
-        pin: true,
-        scrub: true,
-        anticipatePin: 1,
-      },
-    });
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "+=120%",
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+        },
+      });
 
-    // Card-2 stacks upward over Card-1
-    tl.fromTo(
-      card2Ref.current,
-      { y: "0%" },
-      { y: "-100%", ease: "power3.out" },
-      0.4
-    );
+      // Card-2 stacks upward over Card-1
+      tl.fromTo(
+        card2Ref.current,
+        { y: "0%" },
+        { y: "-100%", ease: "power3.out" },
+        0.4
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (

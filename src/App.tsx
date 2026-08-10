@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 /* Lazy load pages for code splitting */
@@ -32,6 +33,11 @@ const ScrollToTop = () => {
     } else {
       window.scrollTo(0, 0);
     }
+
+    // Routes are React.lazy, so the new page mounts after this effect and any
+    // ScrollTriggers on it are measured against the outgoing layout.
+    const id = requestAnimationFrame(() => ScrollTrigger.refresh());
+    return () => cancelAnimationFrame(id);
   }, [pathname]);
 
   return null;

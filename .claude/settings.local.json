@@ -8,5 +8,8 @@
       "Bash(./scripts/optimize-images.sh)",
       "Bash(npm run build)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "shadcn"
+  ]
 }

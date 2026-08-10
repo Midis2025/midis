@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitReveal } from "@/components/SplitReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -116,11 +117,14 @@ const FuelingYourGrowthWithFreshIdeas: React.FC = () => {
               py-20 md:py-0 md:min-h-[100svh]
             "
           >
-            <h1 className="font-extrabold text-black leading-[1.1] mb-6 text-[38px] sm:text-[45px] md:text-[55px]">
+            <SplitReveal
+              as="h1"
+              className="font-extrabold text-black leading-[1.1] mb-6 text-[38px] sm:text-[45px] md:text-[55px]"
+            >
               EMPOWERING <br />
               DIGITAL GROWTH <br />
               FOR STARTUPS
-            </h1>
+            </SplitReveal>
 
             <p className="text-[16px] sm:text-[17px] text-gray-600 leading-7 max-w-[480px] mb-8">
               We blend performance with creativity to offer powerful digital marketing strategies—SEO,
