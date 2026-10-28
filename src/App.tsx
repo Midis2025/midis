@@ -18,6 +18,7 @@ const CaseStudy = lazy(() => import("./pages/CaseStudy"));
 const Work = lazy(() => import("./pages/Work"));
 const AI = lazy(() => import("./pages/AI"));
 const Contact = lazy(() => import("./pages/Contact"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 import { SmoothScroll } from "@/components/SmoothScroll";
@@ -81,6 +82,8 @@ const App = () => {
                 <Route path="/work" element={<Work />} />
                 <Route path="/ai" element={<AI />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
 
                 {/* 404 */}
                 <Route path="*" element={<NotFound />} />

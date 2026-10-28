@@ -79,6 +79,7 @@ export const Footer = () => {
             <li><Link to="/services2" className="hover:text-orange-500 transition-colors">Services</Link></li>
             <li><Link to="/about" className="hover:text-orange-500 transition-colors">About Us</Link></li>
             <li><Link to="/blogs" className="hover:text-orange-500 transition-colors">Blogs</Link></li>
+            <li><Link to="/privacy-policy" className="hover:text-orange-500 transition-colors">Privacy Policy</Link></li>
           </ul>
         </div>
 
@@ -131,7 +132,11 @@ export const Footer = () => {
       {/* ================= COPYRIGHT ================= */}
       <div className="footer-copy border-t border-white/10 pt-5 sm:pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-gray-500 text-[10px] uppercase tracking-[0.2em] font-bold">
         <span>© {new Date().getFullYear()} Midis. All Rights Reserved.</span>
-        <span className="text-white/20 italic">Innovative Solutions for Modern Challenges</span>
+        <div className="flex items-center gap-3 sm:gap-4">
+          <Link to="/privacy-policy" className="hover:text-orange-500 transition-colors">Privacy Policy</Link>
+          <span className="text-white/20">•</span>
+          <span className="text-white/20 italic">Innovative Solutions for Modern Challenges</span>
+        </div>
       </div>
     </footer>
   );
