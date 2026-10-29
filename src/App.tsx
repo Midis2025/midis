@@ -19,6 +19,7 @@ const Work = lazy(() => import("./pages/Work"));
 const AI = lazy(() => import("./pages/AI"));
 const Contact = lazy(() => import("./pages/Contact"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const WebDevelopment = lazy(() => import("./pages/WebDevelopment"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 import { SmoothScroll } from "@/components/SmoothScroll";
@@ -84,6 +85,12 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
+
+                {/* Website Development Landing Page */}
+                <Route path="/website-development" element={<WebDevelopment />} />
+                <Route path="/webdevlopemnt" element={<WebDevelopment />} />
+                <Route path="/webdevelopment" element={<WebDevelopment />} />
+                <Route path="/web-development" element={<WebDevelopment />} />
 
                 {/* 404 */}
                 <Route path="*" element={<NotFound />} />

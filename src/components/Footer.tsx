@@ -61,7 +61,7 @@ export const Footer = () => {
         <div className="footer-col">
           <h3 className="text-lg font-black uppercase tracking-tighter mb-3">Our Top Service</h3>
           <ul className="space-y-2 text-gray-400 text-sm font-medium">
-            <li><Link to="/services2" className="hover:text-orange-500 transition-colors">Web Development</Link></li>
+            <li><Link to="/website-development" className="hover:text-orange-500 transition-colors">Web Development</Link></li>
             <li><Link to="/services2" className="hover:text-orange-500 transition-colors">Web Designing</Link></li>
             <li><Link to="/services2" className="hover:text-orange-500 transition-colors">Graphic Design</Link></li>
             <li><Link to="/services2" className="hover:text-orange-500 transition-colors">Content Writing</Link></li>
