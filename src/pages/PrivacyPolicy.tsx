@@ -443,7 +443,7 @@ const PrivacyPolicy = () => {
                     <span className="text-xs uppercase tracking-widest font-bold text-white/60">Office</span>
                   </div>
                   <p className="text-white/80 text-xs leading-relaxed font-medium">
-                    1st Floor, E 279, Industrial Area, Sector 75, S.A.S Nagar, Punjab 160055, India
+                    3rd Floor, Bala Ji Tech Tower 2, Phase 8B, Industrial Area, Sector 73, Sahibzada Ajit Singh Nagar, Punjab 160055
                   </p>
                 </div>
               </div>

@@ -5,7 +5,7 @@
 export const CONTACT_INFO = {
   phone: "+1 (862) 295-0117",
   email: "hello@midis.com",
-  address: "123 Business St, City, State",
+  address: "3rd Floor, Bala Ji Tech Tower 2, Phase 8B, Industrial Area, Sector 73, Sahibzada Ajit Singh Nagar, Punjab 160055",
   hours: "Mon-Fri: 9AM-6PM",
 } as const;
 

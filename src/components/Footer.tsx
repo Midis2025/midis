@@ -101,9 +101,7 @@ export const Footer = () => {
             <li className="flex flex-col gap-0.5">
               <span className="text-xs uppercase text-white/40 tracking-widest">Address</span>
               <span className="text-white leading-relaxed">
-                1st Floor, E 279, Industrial Area,<br />
-                Sector 75, S.A.S Nagar, Punjab<br />
-                160055
+                3rd Floor, Bala Ji Tech Tower 2, Phase 8B, Industrial Area, Sector 73, Sahibzada Ajit Singh Nagar, Punjab 160055
               </span>
             </li>
           </ul>
