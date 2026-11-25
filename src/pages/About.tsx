@@ -332,11 +332,11 @@ const DirectorsSection = () => {
       name: "Gaurav Sharma",
       role: "CEO & Director",
       bio: "Gaurav Sharma is the CEO and a Director at Midis, where he drives the company’s vision, strategy, and innovation. With deep expertise in digital solutions, branding, marketing, and web development, he ensures that every project delivers measurable results and meaningful impact for clients. Gaurav plays a pivotal role at Mining Discovery, overseeing content strategy, platform growth, and insights delivery for the global mining industry.",
-      image: "/images/gaurav-sharma.png",
+      image: "/images/gaurav-sharma.png?v=2",
       bg: "bg-blue-50/50",
       num: "02",
-      imgPos: "object-cover object-center",
-      imgScale: "scale-[1.35] -translate-y-[8%] group-hover:scale-[1.4]"
+      imgPos: "object-[50%_20%]",
+      imgScale: "scale-100 group-hover:scale-105"
     }
   ];
 
